@@ -9,18 +9,18 @@
   },
   "dependencies": {
     "@splidejs/vue-splide": "^0.6.12",
-    "axios": "^1.3.6",
-    "firebase": "^9.22.0",
-    "pinia": "^2.0.32",
-    "pinia-plugin-persistedstate": "^3.1.0",
-    "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "axios": "^1.6.8",
+    "firebase": "^10.9.0",
+    "pinia": "^2.1.7",
+    "pinia-plugin-persistedstate": "^3.2.1",
+    "vue": "^3.4.21",
+    "vue-router": "^4.3.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.0.0",
-    "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.2",
-    "vite": "^4.1.4"
+    "@vitejs/plugin-vue": "^5.0.4",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.1",
+    "vite": "^5.2.6"
   }
 }
