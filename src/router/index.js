@@ -1,63 +1,60 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: "/login",
-      name: "Login",
-      component: () => import('../views/LoginView.vue')
+      path: '/login',
+      name: 'Login',
+      component: () => import('../views/LoginView.vue'),
     },
     {
-      path: "/register",
-      name: "Register",
-      component: () => import('../views/RegisterView.vue')
+      path: '/register',
+      name: 'Register',
+      component: () => import('../views/RegisterView.vue'),
     },
     {
-      path: "/",
-      name: "Home",
+      path: '/',
+      name: 'Home',
       component: () => import('../views/HomeView.vue'),
-      meta:{
-      requiresAuth: true
-      }
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
-      path: "/cart",
-      name: "Cart",
-      component: () => import('../views/ShopcartView.vue'),
-      meta:{
-      requiresAuth: true
-      }
+      path: '/cart',
+      name: 'Cart',
+      component: () => import('../views/ShopCartView.vue'),
+      meta: {
+        requiresAuth: true,
+      },
     },
     {
-      path: "/products/:productId",
-      name: "Product",
+      path: '/products/:productId',
+      name: 'Product',
       component: () => import('../views/ProductView.vue'),
-      meta:{
-      requiresAuth: true
-      }
+      meta: {
+        requiresAuth: true,
+      },
     },
-  ]
-})
+  ],
+});
 router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token')
-  
+  const token = localStorage.getItem('token');
 
-
-  if (to.matched.some(record => record.meta.requiresAuth)) {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     if (!token) {
       // no token, redirect to login page
-      next({ name: 'Login' })
+      next({ name: 'Login' });
     } else {
       // token exists, allow access to the route
-     next()
+      next();
     }
   } else {
     // this route does not require auth, allow access to all
-    next()
+    next();
   }
-})
+});
 
-
-export default router
+export default router;
