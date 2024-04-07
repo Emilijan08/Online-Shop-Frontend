@@ -1,38 +1,43 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from "vue-router";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/login',
-      name: 'Login',
-      component: () => import('../views/LoginView.vue'),
+      path: "/login",
+      name: "Login",
+      component: () => import("../views/LoginView.vue"),
     },
     {
-      path: '/register',
-      name: 'Register',
-      component: () => import('../views/RegisterView.vue'),
+      path: "/register",
+      name: "Register",
+      component: () => import("../views/RegisterView.vue"),
     },
     {
-      path: '/',
-      name: 'Home',
-      component: () => import('../views/HomeView.vue'),
+      path: "/",
+      name: "Home",
+      component: () => import("../views/HomeView.vue"),
       meta: {
         requiresAuth: true,
       },
     },
     {
-      path: '/cart',
-      name: 'Cart',
-      component: () => import('../views/ShopCartView.vue'),
+      path: "/cart",
+      name: "Cart",
+      component: () => import("../views/ShopCartView.vue"),
       meta: {
         requiresAuth: true,
       },
     },
     {
-      path: '/products/:productId',
-      name: 'Product',
-      component: () => import('../views/ProductView.vue'),
+      path: "/products/:productId",
+      name: "Product",
+      component: () => import("../views/ProductView.vue"),
+    },
+    {
+      path: "/whishlist/:whishlistId",
+      name: "Whishlist",
+      component: () => import("../views/WishList.vue"),
       meta: {
         requiresAuth: true,
       },
@@ -40,13 +45,13 @@ const router = createRouter({
   ],
 });
 router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     if (!token) {
       // no token, redirect to login page
-      next({ name: 'Login' });
+      next({ name: "Login" });
     } else {
       // token exists, allow access to the route
       next();
