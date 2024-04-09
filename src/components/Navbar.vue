@@ -70,17 +70,20 @@ let mobileMenu = ref(false)
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-              /></svg
-            ><span v-if="cartItem" class="flex absolute -mt-1 ml-4">
+              />
+            </svg>
+            <span v-if="cartItem" class="flex absolute -mt-1 ml-4">
               <span
                 class="animate-ping absolute inline-flex h-3 w-3 rounded-full bg-pink-400 opacity-75"
               ></span>
               <span
                 class="relative inline-flex rounded-full h-3 w-3 bg-pink-500"
               >
-              </span> </span
-          ></RouterLink>
-          <RouterLink to="/" class="hover:text-gray-200 flex" href="#">
+              </span>
+            </span>
+          </RouterLink>
+
+          <RouterLink to="/whishlist" class="hover:text-gray-200 flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="mr-2 mt-1 h-6 w-6 flex items-center"
@@ -96,6 +99,7 @@ let mobileMenu = ref(false)
               />
             </svg>
           </RouterLink>
+
           <li
             @click="auth.logout()"
             class="text-sm font-bold text-white hover:text-blue-400 cursor-pointer"

@@ -1,4 +1,10 @@
 import { createRouter, createWebHistory } from "vue-router";
+import LoginView from "../views/LoginView.vue";
+import RegisterView from "../views/RegisterView.vue";
+import HomeView from "../views/HomeView.vue";
+import ShopCartView from "../views/ShopCartView.vue";
+import ProductView from "../views/ProductView.vue";
+import WishList from "../views/WishList.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -6,17 +12,17 @@ const router = createRouter({
     {
       path: "/login",
       name: "Login",
-      component: () => import("../views/LoginView.vue"),
+      component: LoginView,
     },
     {
       path: "/register",
       name: "Register",
-      component: () => import("../views/RegisterView.vue"),
+      component: RegisterView,
     },
     {
       path: "/",
       name: "Home",
-      component: () => import("../views/HomeView.vue"),
+      component: HomeView,
       meta: {
         requiresAuth: true,
       },
@@ -24,7 +30,7 @@ const router = createRouter({
     {
       path: "/cart",
       name: "Cart",
-      component: () => import("../views/ShopCartView.vue"),
+      component: ShopCartView,
       meta: {
         requiresAuth: true,
       },
@@ -32,12 +38,12 @@ const router = createRouter({
     {
       path: "/products/:productId",
       name: "Product",
-      component: () => import("../views/ProductView.vue"),
+      component: ProductView,
     },
     {
-      path: "/whishlist/:whishlistId",
+      path: "/whishlist",
       name: "Whishlist",
-      component: () => import("../views/WishList.vue"),
+      component: WishList,
       meta: {
         requiresAuth: true,
       },
