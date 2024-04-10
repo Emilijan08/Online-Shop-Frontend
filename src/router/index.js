@@ -30,7 +30,7 @@ const router = createRouter({
     {
       path: "/cart",
       name: "Cart",
-      component: ShopCartView,
+      component: ShopCartNewView,
       meta: {
         requiresAuth: true,
       },
