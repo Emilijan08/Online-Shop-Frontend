@@ -216,8 +216,8 @@ import { StarIcon } from '@heroicons/vue/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'
 import { useProductStore } from '../stores/ProductsStore'
+import { Dialog } from '@headlessui/vue'
 
-const selectedColor = ref(product.colors[0])
 const store = useProductStore()
 
 defineProps({
@@ -275,4 +275,5 @@ const product = {
     // More sections...
   ]
 }
+const selectedColor = ref(product.colors[0])
 </script>
