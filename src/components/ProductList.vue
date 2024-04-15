@@ -58,10 +58,10 @@ const filteredProducts = computed(() => {
       <div class="grid grid-cols-2 md:grid-cols-4 gap-y-1 gap-x-1">
         <Product
           v-for="product in filteredProducts"
-          :product-name="product.productName"
+          :productName="product.productName"
           :key="product._id"
           :price="product.price"
-          :product-img="product.productImage"
+          :productImg="product.productImage"
           :id="product._id"
         ></Product>
         <h1 v-show="filteredProducts.length === 0">
