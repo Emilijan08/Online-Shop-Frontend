@@ -1,18 +1,3 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/typography'),
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
--->
 <template>
   <div class="bg-white">
     <div
@@ -214,7 +199,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import {
   Disclosure,
   DisclosureButton,
@@ -230,6 +214,7 @@ import {
 } from '@headlessui/vue'
 import { StarIcon } from '@heroicons/vue/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
+import { ref } from 'vue'
 
 const product = {
   name: 'Zip Tote Basket',

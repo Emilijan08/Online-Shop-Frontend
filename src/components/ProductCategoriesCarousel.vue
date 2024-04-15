@@ -1,18 +1,3 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-      require('@tailwindcss/aspect-ratio'),
-    ],
-  }
-  ```
--->
 <template>
   <div class="bg-white">
     <!-- Mobile menu -->
@@ -423,7 +408,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import {
   Dialog,
   DialogPanel,
@@ -439,6 +423,7 @@ import {
   TransitionChild,
   TransitionRoot
 } from '@headlessui/vue'
+import { ChevronDownIcon } from '@heroicons/vue/20/solid'
 import {
   Bars3Icon,
   MagnifyingGlassIcon,
@@ -446,7 +431,7 @@ import {
   ShoppingBagIcon,
   XMarkIcon
 } from '@heroicons/vue/24/outline'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import { ref } from 'vue'
 
 const currencies = ['CAD', 'USD', 'AUD', 'EUR', 'GBP']
 const navigation = {
