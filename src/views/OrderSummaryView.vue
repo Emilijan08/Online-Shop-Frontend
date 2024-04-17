@@ -7,7 +7,11 @@
     <body class="h-full">
     ```
   -->
-  <main class="relative lg:min-h-full">
+  <Navbar class:" flex flex-direction:col align-items: start"> </Navbar>
+
+
+  <main class="relative lg:min-h-full>>   </main>
+
     <div
       class="h-80 overflow-hidden lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-12"
     >
@@ -148,6 +152,11 @@
 </template>
 
 <script setup>
+
+
+
+import Navbar from '../components/Navbar.vue'
+
 const products = [
   {
     id: 1,

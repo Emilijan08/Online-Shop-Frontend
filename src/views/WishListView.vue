@@ -24,6 +24,6 @@ import { RouterLink } from 'vue-router'
 #Heart {
   width: 150px;
   height: 115px;
-  borderbox: 1px solid black;
+  border: 1px solid black;
 }
 </style>
