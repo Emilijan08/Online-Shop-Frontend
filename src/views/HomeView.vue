@@ -3,13 +3,14 @@ import Carousel from '../components/Carousel.vue'
 import Filter from '../components/Filter.vue'
 import Navbar from '../components/Navbar.vue'
 import ProductList from '../components/ProductList.vue'
+import ProductCategoriesCarousel from '../components/ProductCategoriesCarousel.vue'
 </script>
 
 <template>
   <div>
-    <Navbar />
     <Carousel />
     <Filter />
+    <ProductCategoriesCarousel />
     <ProductList />
 
     <footer class="bg-gray-900 py-6 lg:py-8">

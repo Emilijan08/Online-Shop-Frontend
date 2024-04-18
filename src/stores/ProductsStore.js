@@ -1,22 +1,22 @@
-import axios from 'axios';
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import axios from "axios";
+import { defineStore } from "pinia";
+import { ref } from "vue";
 
-export const useProductStore = defineStore('product', {
+export const useProductStore = defineStore("product", {
   state: () => ({
     products: ref([]),
     loading: false,
     comments: ref([{}]),
     productsOnCart: ref([]),
-    selectedBrand: 'All',
-    selectedGender: 'All',
-    selectedPrice: 'All',
-    selectedType: 'All',
+    selectedBrand: "All",
+    selectedGender: "All",
+    selectedPrice: "All",
+    selectedType: "All",
   }),
 
   actions: {
     async getProducts() {
-      const URL = 'https://marketserver.onrender.com/products';
+      const URL = "https://marketserver.onrender.com/products";
       this.loading = true;
       const response = await axios.get(URL);
       this.products = await response.data;

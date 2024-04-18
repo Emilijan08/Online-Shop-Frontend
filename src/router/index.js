@@ -1,63 +1,69 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import LoginView from '../views/LoginView.vue';
-import ProductView from '../views/ProductView.vue';
-import RegisterView from '../views/RegisterView.vue';
-import ShopCartNewView from '../views/ShopCartNewView.vue';
-import WishListView from '../views/WishListView.vue';
+import { createRouter, createWebHistory } from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import LoginView from "../views/LoginView.vue";
+import ProductView from "../views/ProductView.vue";
+import RegisterView from "../views/RegisterView.vue";
+import ShopCartNewView from "../views/ShopCartNewView.vue";
+import WishListView from "../views/WishListView.vue";
+import OrderSummaryView from "../views/OrderSummaryView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/login',
-      name: 'Login',
+      path: "/login",
+      name: "Login",
       component: LoginView,
     },
     {
-      path: '/register',
-      name: 'Register',
+      path: "/register",
+      name: "Register",
       component: RegisterView,
     },
     {
-      path: '/',
-      name: 'Home',
+      path: "/",
+      name: "Home",
       component: HomeView,
       meta: {
         requiresAuth: true,
       },
     },
     {
-      path: '/cart',
-      name: 'Cart',
+      path: "/cart",
+      name: "Cart",
       component: ShopCartNewView,
       meta: {
         requiresAuth: true,
       },
     },
     {
-      path: '/products/:productId',
-      name: 'Product',
+      path: "/products/:productId",
+      name: "Product",
       component: ProductView,
     },
     {
-      path: '/whishlist',
-      name: 'Whishlist',
+      path: "/whishlist",
+      name: "Whishlist",
       component: WishListView,
       meta: {
         requiresAuth: true,
       },
     },
+    {
+      path: "/order-summary",
+      name: "OrderSummary",
+      component: OrderSummaryView,
+    },
   ],
 });
 router.beforeEach((to, from, next) => {
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     // this route requires auth, check if logged in
     if (!token) {
       // no token, redirect to login page
-      next({ name: 'Login' });
+      next({ name: "Login" });
     } else {
       // token exists, allow access to the route
       next();

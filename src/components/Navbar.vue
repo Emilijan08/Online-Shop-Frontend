@@ -17,8 +17,8 @@ let mobileMenu = ref(false)
 <template>
   <!-- component -->
   <!-- Header -->
-  <div class="sticky top-0 z-10">
-    <div class="bg-gray-900">
+  <div class="sticky top-0 z-10 w-full">
+    <div class="bg-gray-900 w-full">
       <nav
         class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center text-white"
       >
