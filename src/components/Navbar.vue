@@ -54,7 +54,7 @@ let mobileMenu = ref(false)
           </li>
 
           <li class="text-sm font-bold text-white hover:text-blue-400">
-            <a href="#">Contact Us</a>
+            <RouterLink to="/aboutus">About us </RouterLink>
           </li>
 
           <RouterLink to="/cart" class="flex">

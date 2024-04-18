@@ -76,3 +76,4 @@ const incentives = [
   }
 ]
 </script>
+<style scoped></style>

@@ -6,6 +6,7 @@ import RegisterView from "../views/RegisterView.vue";
 import ShopCartNewView from "../views/ShopCartNewView.vue";
 import WishListView from "../views/WishListView.vue";
 import OrderSummaryView from "../views/OrderSummaryView.vue";
+import AboutUsView from "../views/AboutUsView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -53,6 +54,11 @@ const router = createRouter({
       path: "/order-summary",
       name: "OrderSummary",
       component: OrderSummaryView,
+    },
+    {
+      path: "/aboutus",
+      name: "About Us",
+      component: AboutUsView,
     },
   ],
 });
