@@ -57,6 +57,10 @@ let mobileMenu = ref(false)
             <RouterLink to="/aboutus">About us </RouterLink>
           </li>
 
+          <li class="text-sm font-bold text-white hover:text-blue-400">
+            <RouterLink to="/faq">FAQ</RouterLink>
+          </li>
+
           <RouterLink to="/cart" class="flex">
             <svg
               xmlns="http://www.w3.org/2000/svg"

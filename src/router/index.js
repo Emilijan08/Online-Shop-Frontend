@@ -7,6 +7,7 @@ import ShopCartNewView from "../views/ShopCartNewView.vue";
 import WishListView from "../views/WishListView.vue";
 import OrderSummaryView from "../views/OrderSummaryView.vue";
 import AboutUsView from "../views/AboutUsView.vue";
+import FAQView from "../views/FAQView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -59,6 +60,11 @@ const router = createRouter({
       path: "/aboutus",
       name: "About Us",
       component: AboutUsView,
+    },
+    {
+      path: "/faq",
+      name: "FAQ",
+      component: FAQView,
     },
   ],
 });
