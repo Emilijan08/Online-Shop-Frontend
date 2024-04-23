@@ -203,8 +203,7 @@
 </template>
 
 <script setup>
-import {
-  Disclosure,
+Disclosure,
   DisclosureButton,
   DisclosurePanel,
   RadioGroup,
@@ -215,7 +214,7 @@ import {
   TabList,
   TabPanel,
   TabPanels
-} from '@headlessui/vue'
+import { Dialog } from '@headlessui/vue'
 import { StarIcon } from '@heroicons/vue/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'

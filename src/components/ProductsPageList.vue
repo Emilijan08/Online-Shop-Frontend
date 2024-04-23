@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useAuthStore } from '../stores/AuthStore'
 import { useProductStore } from '../stores/ProductsStore'
-import Product from './Productdescription.vue'
+import Product from './ProductDetails.vue'
 
 const store = useProductStore()
 const userStore = useAuthStore()

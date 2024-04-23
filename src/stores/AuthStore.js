@@ -1,24 +1,24 @@
-import axios from 'axios';
-import { defineStore } from 'pinia';
-import { ref } from 'vue';
-import router from '../router';
+import axios from "axios";
+import { defineStore } from "pinia";
+import { ref } from "vue";
+import router from "../router";
 
-export const useAuthStore = defineStore('auth', {
+export const useAuthStore = defineStore("auth", {
   state: () => ({
     error: false,
-    message: ref(''),
-    token: '',
+    message: ref(""),
+    token: "",
     user: {
-      username: '',
-      role: '',
+      username: "",
+      role: "",
     },
   }),
   persist: {
-    paths: ['token', 'user.username', 'user.role'],
+    paths: ["token", "user.username", "user.role"],
   },
   actions: {
     async login(temp_username, password) {
-      const URL = 'https://marketserver.onrender.com/login';
+      const URL = "https://marketserver.onrender.com/login";
       try {
         const res = await axios.post(URL, {
           username: temp_username,
@@ -31,15 +31,15 @@ export const useAuthStore = defineStore('auth', {
         this.user.username = username;
         this.user.role = role;
 
-        localStorage.setItem('token', this.token);
+        localStorage.setItem("token", this.token);
 
-        router.push('/');
+        router.push("/");
       } catch (err) {
         this.error = true;
       }
     },
     async register(temp_username, password, confirmPassword) {
-      const URL = 'https://marketserver.onrender.com/register';
+      const URL = "https://marketserver.onrender.com/register";
       try {
         const res = await axios.post(URL, {
           username: temp_username,
@@ -50,17 +50,17 @@ export const useAuthStore = defineStore('auth', {
         this.token = token;
         this.user.username = username;
         this.user.role = role;
-        localStorage.setItem('token', this.token);
-        router.push('/');
+        localStorage.setItem("token", this.token);
+        router.push("/");
       } catch (err) {
         this.error = true;
         this.message = err.response.data.message;
       }
     },
     async logout() {
-      await router.push('/login');
-      localStorage.removeItem('auth');
-      localStorage.removeItem('token');
+      await router.push("/login");
+      localStorage.removeItem("auth");
+      localStorage.removeItem("token");
     },
   },
 });

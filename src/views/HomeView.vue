@@ -2,7 +2,7 @@
 import Carousel from '../components/Carousel.vue'
 import Filter from '../components/Filter.vue'
 import Navbar from '../components/Navbar.vue'
-import ProductList from '../components/ProductList.vue'
+import ProductPage from '../components/ProductsPageTailwind.vue'
 import ProductCategoriesCarousel from '../components/ProductCategoriesCarousel.vue'
 </script>
 
@@ -13,7 +13,7 @@ import ProductCategoriesCarousel from '../components/ProductCategoriesCarousel.v
     />
     <Carousel />
     <Filter />
-    <ProductList />
+    <ProductPage />
   </div>
 </template>
 
