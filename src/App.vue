@@ -2,7 +2,7 @@
 import { RouterView } from 'vue-router'
 import { useProductStore } from './stores/ProductsStore'
 import Navbar from './components/Navbar.vue'
-import StoreNavigationProductCategoriesCarousel from './components/StoreNavigationProductCategoriesCarousel.vue'
+import Footer from './components/Footer.vue'
 
 const store = useProductStore()
 store.getProducts()
@@ -10,11 +10,8 @@ store.getProducts()
 
 <template>
   <div>
-    <Navbar class="flex flex-direction:col align-items:start" />
-
-    <StoreNavigationProductCategoriesCarousel
-      class="flex flex-direction:col align-items:start"
-    />
+    <Navbar class="flex flex-direction:col align-items: flex-start" />
+    <Footer class="flex flex-direction:col align-items: flex-end" />
 
     <h1 v-if="store.loading">Loading...</h1>
     <RouterView v-else></RouterView>

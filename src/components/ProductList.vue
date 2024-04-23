@@ -54,6 +54,7 @@ const filteredProducts = computed(() => {
 <template>
   <section class="bg-gray-100 py-20">
     <div class="container mx-auto px-4">
+      <!----Product List Grid--->
       <h1 class="text-2xl font-bold mb-10">Welcome, {{ username }}</h1>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-y-1 gap-x-1">
         <Product
