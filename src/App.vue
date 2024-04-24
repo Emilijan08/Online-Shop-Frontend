@@ -11,9 +11,10 @@ store.getProducts()
 <template>
   <div>
     <Navbar class="flex flex-direction:col align-items: flex-start" />
-    <Footer class="flex flex-direction:col align-items: flex-end" />
 
     <h1 v-if="store.loading">Loading...</h1>
     <RouterView v-else></RouterView>
+
+    <Footer />
   </div>
 </template>
