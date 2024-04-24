@@ -1,9 +1,8 @@
 <script setup>
 import Carousel from '../components/Carousel.vue'
-import Filter from '../components/Filter.vue'
 import Navbar from '../components/Navbar.vue'
-import ProductPage from '../components/ProductsPageTailwind.vue'
 import ProductCategoriesCarousel from '../components/ProductCategoriesCarousel.vue'
+import ProductsPageTailwind from '../components/ProductsPageTailwind.vue'
 </script>
 
 <template>
@@ -12,8 +11,7 @@ import ProductCategoriesCarousel from '../components/ProductCategoriesCarousel.v
       class="flex flex-direction:col align-items:start"
     />
     <Carousel />
-    <Filter />
-    <ProductPage />
+    <ProductsPageTailwind />
   </div>
 </template>
 

@@ -15,6 +15,6 @@ store.getProducts()
     <h1 v-if="store.loading">Loading...</h1>
     <RouterView v-else></RouterView>
 
-    <Footer />
+    <Footer class="flex flex-direction:col align-items: flex-end" />
   </div>
 </template>
