@@ -1,3 +1,4 @@
+import { RouterLink } from 'vue-router';
 <!--
   This example requires some changes to your config:
   
@@ -109,12 +110,13 @@
               </div>
 
               <div>
-                <button
-                  type="submit"
+                <RouterLink
+                  to="/"
                   class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
+                  <!---Link to HomeView, therefore to /---->
                   Sign in
-                </button>
+                </RouterLink>
               </div>
             </form>
           </div>
