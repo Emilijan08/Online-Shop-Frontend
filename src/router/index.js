@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import LoginView from "../views/LoginView.vue";
 import ProductView from "../views/ProductView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import ShopCartNewView from "../views/ShopCartNewView.vue";
@@ -8,6 +7,7 @@ import WishListView from "../views/WishListView.vue";
 import OrderSummaryView from "../views/OrderSummaryView.vue";
 import AboutUsView from "../views/AboutUsView.vue";
 import FAQView from "../views/FAQView.vue";
+import LoginSignInView from "../views/LoginSignInView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -15,7 +15,7 @@ const router = createRouter({
     {
       path: "/login",
       name: "Login",
-      component: LoginView,
+      component: LoginSignInView,
     },
     {
       path: "/register",

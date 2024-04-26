@@ -21,7 +21,7 @@
     <body class="h-full">
     ```
   -->
-  <div class="flex min-h-full flex-1 border border-red mt-24">
+  <div class="flex min-h-full flex-1 border border-red mt-24 mb-72">
     <!--Sign in Div Left + Right-->
     <div
       class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
@@ -43,11 +43,13 @@
           <p class="mt-2 text-sm leading-6 text-gray-500">
             Dont have an account?
             {{ ' ' }}
-            <a
-              href="#"
-              class="font-semibold text-indigo-600 hover:text-indigo-500"
-              >Register here</a
-            >
+            <RouterLink to="/register">
+              <a
+                href="#"
+                class="font-semibold text-indigo-600 hover:text-indigo-500"
+                >Register here</a
+              >
+            </RouterLink>
           </p>
         </div>
 
@@ -58,7 +60,7 @@
                 <label
                   for="email"
                   class="block text-sm font-medium leading-6 text-gray-900"
-                  >Email address</label
+                  >Username</label
                 >
                 <div class="mt-2">
                   <input
