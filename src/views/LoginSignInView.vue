@@ -1,4 +1,14 @@
-import { RouterLink } from 'vue-router';
+<script setup>
+import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
+import { useAuthStore } from '../stores/AuthStore'
+
+let username = ref('')
+let password = ref('')
+
+const store = useAuthStore()
+</script>
+
 <!--
   This example requires some changes to your config:
   
@@ -56,20 +66,24 @@ import { RouterLink } from 'vue-router';
 
         <div class="mt-10">
           <div>
-            <form action="#" method="POST" class="space-y-6">
+            <form
+              @submit.prevent="store.login(username, password)"
+              class="space-y-6"
+            >
               <div>
                 <label
-                  for="email"
+                  for="username"
                   class="block text-sm font-medium leading-6 text-gray-900"
                   >Username</label
                 >
                 <div class="mt-2">
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autocomplete="email"
-                    required=""
+                    id="username"
+                    name="username"
+                    type="text"
+                    autocomplete="username"
+                    v-model="username"
+                    required
                     class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -87,7 +101,8 @@ import { RouterLink } from 'vue-router';
                     name="password"
                     type="password"
                     autocomplete="current-password"
-                    required=""
+                    v-model="password"
+                    required
                     class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -110,13 +125,12 @@ import { RouterLink } from 'vue-router';
               </div>
 
               <div>
-                <RouterLink
-                  to="/"
+                <button
                   class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  type="submit"
                 >
-                  <!---Link to HomeView, therefore to /---->
-                  Sign in
-                </RouterLink>
+                  Login
+                </button>
               </div>
             </form>
           </div>
