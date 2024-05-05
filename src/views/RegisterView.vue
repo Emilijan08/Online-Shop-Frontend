@@ -25,7 +25,9 @@ let confirmPassword = ref('')
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" method="POST">
+      <form class="space-y-6" action="#" method="POST"
+        @submit.prevent="store.register(username, password, confirmPassword)"
+      >
         <div>
           <label
             for="username"
