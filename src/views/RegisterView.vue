@@ -10,11 +10,37 @@ let username = ref('')
 let password = ref('')
 let confirmPassword = ref('')
 
+const register = () => {
+  if (arePasswordsEqual()) {
+    // Benutzerobjekt erstellen
+    const newUser = {
+      username: username.value,
+      password: password.value,
+      confirmPassword: confirmPassword.value,
+      userId: Math.floor(Math.random() * 1000000) // Generiere eine zufällige userId
+    }
+    // Benutzer zum users-Array hinzufügen
+    users.push(newUser)
+    console.log('User added:', newUser)
+    // Weitere Logik hier ...
+    // Optional: Formularfelder zurücksetzen
+    username.value = ''
+    password.value = ''
+    confirmPassword.value = ''
+  }
+}
+
+let users = []
+
 const arePasswordsEqual = () => {
   if (password === confirmPassword) {
     console.log('Passwords are equal')
+
+    return true
   } else {
     console.log('Passwords are not equal')
+
+    return false
   }
 }
 </script>
@@ -101,7 +127,7 @@ const arePasswordsEqual = () => {
               id="confirmpassword"
               name="confirmpassword"
               v-model="confirmPassword"
-              type="confirmpasswordpassword"
+              type="confirmpassword"
               autocomplete="current-password"
               required=""
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
