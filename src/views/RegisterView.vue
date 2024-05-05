@@ -1,26 +1,13 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
-<template>
-  <!--
-    This example requires updating your template:
+<script setup>
+import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
-    ```
-    <html class="h-full bg-white">
-    <body class="h-full">
-    ```
-  -->
+let username = ref('')
+let password = ref('')
+let confirmPassword = ref('')
+</script>
+
+<template>
   <div
     class="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 mb-64"
   >
@@ -48,6 +35,7 @@
           <div class="mt-2">
             <input
               id="username"
+              v-model="username"
               name="username"
               type="text"
               autocomplete="username"
@@ -76,7 +64,19 @@
             <input
               id="password"
               name="password"
+              v-model="password"
               type="password"
+              autocomplete="current-password"
+              required=""
+              class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+            />
+          </div>
+          <div>
+            <input
+              id="confirmpassword"
+              name="confirmpassword"
+              v-model="confirmPassword"
+              type="confirmpasswordpassword"
               autocomplete="current-password"
               required=""
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
