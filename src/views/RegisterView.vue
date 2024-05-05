@@ -41,13 +41,9 @@ const arePasswordsEqual = () => {
         class="space-y-6"
         action="#"
         method="POST"
-<<<<<<< Updated upstream
-        @submit.prevent="store.register(username, password, confirmPassword)"
-=======
         @submit.prevent="
           store.register(username, password, confirmPassword, arePasswordsEqual)
         "
->>>>>>> Stashed changes
       >
         <div>
           <label
