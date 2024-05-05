@@ -9,6 +9,14 @@ const store = useAuthStore()
 let username = ref('')
 let password = ref('')
 let confirmPassword = ref('')
+
+const arePasswordsEqual = () => {
+  if (password === confirmPassword) {
+    console.log('Passwords are equal')
+  } else {
+    console.log('Passwords are not equal')
+  }
+}
 </script>
 
 <template>
@@ -33,7 +41,13 @@ let confirmPassword = ref('')
         class="space-y-6"
         action="#"
         method="POST"
+<<<<<<< Updated upstream
         @submit.prevent="store.register(username, password, confirmPassword)"
+=======
+        @submit.prevent="
+          store.register(username, password, confirmPassword, arePasswordsEqual)
+        "
+>>>>>>> Stashed changes
       >
         <div>
           <label
@@ -80,7 +94,13 @@ let confirmPassword = ref('')
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
-          <div>
+          <div class="mt-7">
+            <label
+              for="confirmpassword"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Confirm Password</label
+            >
+
             <input
               id="confirmpassword"
               name="confirmpassword"
