@@ -2,6 +2,10 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
+import { useAuthStore } from '../stores/AuthStore'
+
+const store = useAuthStore()
+
 let username = ref('')
 let password = ref('')
 let confirmPassword = ref('')
@@ -25,7 +29,10 @@ let confirmPassword = ref('')
     </div>
 
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-      <form class="space-y-6" action="#" method="POST"
+      <form
+        class="space-y-6"
+        action="#"
+        method="POST"
         @submit.prevent="store.register(username, password, confirmPassword)"
       >
         <div>
