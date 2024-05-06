@@ -8,6 +8,7 @@ import OrderSummaryView from "../views/OrderSummaryView.vue";
 import AboutUsView from "../views/AboutUsView.vue";
 import FAQView from "../views/FAQView.vue";
 import LoginSignInView from "../views/LoginSignInView.vue";
+import PageNotFoundView from "../views/PageNotFoundView.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -65,6 +66,11 @@ const router = createRouter({
       path: "/faq",
       name: "FAQ",
       component: FAQView,
+    },
+    {
+      path: "/:catchall(.*)*",
+      name: "Not Found",
+      component: PageNotFoundView,
     },
   ],
 });

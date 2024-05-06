@@ -15,19 +15,18 @@ let mobileMenu = ref(false)
 </script>
 
 <template>
-  <!-- component -->
-  <!-- Header -->
-  <div class="sticky top-0 z-10 w-full">
+  <nav>
+    <!-- Navigationselemente hier -->
     <div class="bg-gray-900 w-full">
       <nav
         class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center text-white"
       >
         <div class="flex items-center justify-between">
-          <router-link
+          <!--- <router-link
             to="/"
             class="text-xl font-bold text-white md:text-2xl hover:text-blue-400"
             >Shoe Market
-          </router-link>
+          </router-link> -->
           <!-- Mobile menu button -->
           <div @click="mobileMenu = !mobileMenu" class="flex md:hidden">
             <button
@@ -113,5 +112,5 @@ let mobileMenu = ref(false)
         </ul>
       </nav>
     </div>
-  </div>
+  </nav>
 </template>

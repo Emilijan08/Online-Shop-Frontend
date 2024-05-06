@@ -1,6 +1,5 @@
 <script setup>
 import Carousel from '../components/Carousel.vue'
-import Navbar from '../components/Navbar.vue'
 import ProductCategoriesCarousel from '../components/ProductCategoriesCarousel.vue'
 import ProductsPageTailwind from '../components/ProductsPageTailwind.vue'
 </script>
