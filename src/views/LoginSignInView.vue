@@ -9,139 +9,123 @@ let password = ref('')
 const store = useAuthStore()
 </script>
 
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <template>
-  <!--
-    This example requires updating your template:
-
-    ```
+  <div>
     <html class="h-full bg-white">
-    <body class="h-full">
-    ```
-  -->
-  <div class="flex min-h-full flex-1 border border-red mt-24 mb-72">
-    <!--Sign in Div Left + Right-->
-    <div
-      class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
-    >
-      <!-----Sign in to Your account Div Left-->
-      <div class="mx-auto w-full max-w-sm lg:w-96">
-        <div>
-          <img
-            class="h-10 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
-          <h2
-            class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900"
+      <body class="h-full">
+        <div class="flex min-h-full flex-1 border border-red mt-24 mb-72">
+          <!--Sign in Div Left + Right-->
+          <div
+            class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
           >
-            Sign in to your account
-          </h2>
-          <p class="mt-2 text-sm leading-6 text-gray-500">
-            Dont have an account?
-            {{ ' ' }}
-            <RouterLink to="/register">
-              <a
-                href="#"
-                class="font-semibold text-indigo-600 hover:text-indigo-500"
-                >Register here</a
-              >
-            </RouterLink>
-          </p>
-        </div>
-
-        <div class="mt-10">
-          <div>
-            <form
-              @submit.prevent="store.login(username, password)"
-              class="space-y-6"
-            >
+            <!--Sign in to Your account Div Left-->
+            <div class="mx-auto w-full max-w-sm lg:w-96">
               <div>
-                <label
-                  for="username"
-                  class="block text-sm font-medium leading-6 text-gray-900"
-                  >Username</label
+                <img
+                  class="h-10 w-auto"
+                  src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                  alt="Your Company"
+                />
+                <h2
+                  class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900"
                 >
-                <div class="mt-2">
-                  <input
-                    id="username"
-                    name="username"
-                    type="text"
-                    autocomplete="username"
-                    v-model="username"
-                    required
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
+                  Sign in to your account
+                </h2>
+                <p class="mt-2 text-sm leading-6 text-gray-500">
+                  Dont have an account?
+                  {{ ' ' }}
+                  <RouterLink to="/register">
+                    <a
+                      href="#"
+                      class="font-semibold text-indigo-600 hover:text-indigo-500"
+                      >Register here</a
+                    >
+                  </RouterLink>
+                </p>
               </div>
 
-              <div>
-                <label
-                  for="password"
-                  class="block text-sm font-medium leading-6 text-gray-900"
-                  >Password</label
-                >
-                <div class="mt-2">
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    autocomplete="current-password"
-                    v-model="password"
-                    required
-                    class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div class="flex items-center justify-between">
-                <div class="flex items-center">
-                  <input
-                    id="remember-me"
-                    name="remember-me"
-                    type="checkbox"
-                    class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
-                  />
-                  <label
-                    for="remember-me"
-                    class="ml-3 block text-sm leading-6 text-gray-700"
-                    >Remember me</label
+              <div class="mt-10">
+                <div>
+                  <form
+                    @submit.prevent="store.login(username, password)"
+                    class="space-y-6"
                   >
+                    <div>
+                      <label
+                        for="username"
+                        class="block text-sm font-medium leading-6 text-gray-900"
+                        >Username</label
+                      >
+                      <div class="mt-2">
+                        <input
+                          id="username"
+                          name="username"
+                          type="text"
+                          autocomplete="username"
+                          v-model="username"
+                          required
+                          class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label
+                        for="Password"
+                        class="block text-sm font-medium leading-6 text-gray-900"
+                        >Password</label
+                      >
+                      <div class="mt-2">
+                        <input
+                          id="Password"
+                          name="password"
+                          type="password"
+                          autocomplete="current-password"
+                          v-model="password"
+                          required
+                          class="block w-full rounded-md border-0 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                        />
+                      </div>
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center">
+                        <input
+                          id="remember-me"
+                          name="remember-me"
+                          type="checkbox"
+                          class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                        />
+                        <label
+                          for="remember-me"
+                          class="ml-3 block text-sm leading-6 text-gray-700"
+                          >Remember me</label
+                        >
+                      </div>
+                    </div>
+
+                    <div>
+                      <button
+                        class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                        type="submit"
+                      >
+                        Login
+                      </button>
+                    </div>
+                  </form>
                 </div>
               </div>
-
-              <div>
-                <button
-                  class="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                  type="submit"
-                >
-                  Login
-                </button>
-              </div>
-            </form>
+            </div>
+            <div class="relative hidden w-0 flex-1 lg:block">
+              <img
+                class="absolute inset-0 h-full w-full object-cover"
+                src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
+                alt=""
+              />
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="relative hidden w-0 flex-1 lg:block">
-      <img
-        class="absolute inset-0 h-full w-full object-cover"
-        src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
-        alt=""
-      />
-    </div>
+      </body>
+    </html>
   </div>
 </template>

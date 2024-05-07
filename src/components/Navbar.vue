@@ -22,11 +22,11 @@ let mobileMenu = ref(false)
         class="container px-6 py-8 mx-auto md:flex md:justify-between md:items-center text-white"
       >
         <div class="flex items-center justify-between">
-          <!--- <router-link
+          <router-link
             to="/"
             class="text-xl font-bold text-white md:text-2xl hover:text-blue-400"
             >Shoe Market
-          </router-link> -->
+          </router-link>
           <!-- Mobile menu button -->
           <div @click="mobileMenu = !mobileMenu" class="flex md:hidden">
             <button
@@ -59,6 +59,9 @@ let mobileMenu = ref(false)
           <li class="text-sm font-bold text-white hover:text-blue-400">
             <RouterLink to="/faq">FAQ</RouterLink>
           </li>
+
+          <!-- Hier wird die Verlinkung zur SignIn-Seite entfernt -->
+          <!-- <RouterLink to="/signin" class="text-sm font-bold text-white hover:text-blue-400">Sign In</RouterLink> -->
 
           <RouterLink to="/cart" class="flex">
             <svg

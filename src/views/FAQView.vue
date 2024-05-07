@@ -4,13 +4,34 @@ import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
 
 const faqs = [
   {
-    question: "What's the best thing about Switzerland?",
+    question: 'How long does shipping normally take?',
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
-    question: "What's the best thing about Switzerland?",
+      'It normaly takes 3-5 business days, deppending on your location.If we ship outside of the Europe, it can take up to 10 business days or more.'
+  },
+  {
+    question: 'Where do we ship?',
+    answer: 'We ship worldwide.'
+  },
+  {
+    question:
+      'How can I contact customer service if I have questions or problems?',
+    answer: 'You can contact us via email at '
+  },
+  {
+    question: 'Is there a return guarantee and how does it work?',
     answer:
-      "I don't know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
+      'if your Product was already damaged, when you bought it, you can return it within 14 days when you still have the receipt.If the product simply stops working or experiences any issues, you have a two-year warranty and can return it back, when you still have the receipt.'
+  },
+  {
+    question: 'Why is this E-Commerce Store so great?',
+    answer: 'Idk tbh lol'
+  },
+  {
+    question: 'Can I change or cancel my order after it has been placed?',
+    answer:
+      'if you ordered a Product and want to cancel the Order, you have to cancel the order at max 45min after you placed your Order.If you want to change your Order, you have to cancel the Order and place a new one.'
   }
+
   // More questions...
 ]
 </script>
