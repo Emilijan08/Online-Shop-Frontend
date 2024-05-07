@@ -15,7 +15,8 @@ const faqs = [
   {
     question:
       'How can I contact customer service if I have questions or problems?',
-    answer: 'You can contact us via email at '
+    answer:
+      'You can contact us via email at ... or via phone at +12-34-567-89-04.'
   },
   {
     question: 'Is there a return guarantee and how does it work?',
