@@ -57,34 +57,29 @@
 <script setup>
 const categories = [
   {
-    name: 'Handcrafted Collection',
+    name: 'iMacs and Laptops Collection',
     href: '#',
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-01-collection-01.jpg',
+      'https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=800',
     imageAlt:
-      'Brown leather key ring with brass metal loops and rivets on wood table.',
-    description:
-      'Keep your phone, keys, and wallet together, so you can lose everything at once.'
+      'Close-up of a iMac and a Macbook on a desk with a white mouse and keyboard.',
+    description: 'Discover our latest Collection of iMacs and Laptops.'
   },
   {
-    name: 'Organized Desk Collection',
+    name: 'Smartphone Collection',
     href: '#',
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-01-collection-02.jpg',
-    imageAlt:
-      'Natural leather mouse pad on white desk next to porcelain mug and keyboard.',
-    description:
-      'The rest of the house will still be a mess, but your desk will look great.'
+      'https://images.pexels.com/photos/4549408/pexels-photo-4549408.jpeg?auto=compress&cs=tinysrgb&w=800',
+    imageAlt: 'Close up of a Person on a Bed on their phone.',
+    description: 'Discover our latest Collection of Smartphones.'
   },
   {
-    name: 'Focus Collection',
+    name: 'Smartwatch Collection',
     href: '#',
     imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-01-collection-03.jpg',
-    imageAlt:
-      'Person placing task list card into walnut card holder next to felt carrying case on leather desk pad.',
-    description:
-      'Be more productive than enterprise project managers with a single piece of paper.'
+      'https://images.pexels.com/photos/1682821/pexels-photo-1682821.jpeg?auto=compress&cs=tinysrgb&w=800',
+    imageAlt: 'Close up of a Smartwatch on a persons wrist.',
+    description: 'Discover our latest Collection of Smartwatches.'
   }
 ]
 </script>

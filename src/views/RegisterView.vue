@@ -73,16 +73,16 @@ const arePasswordsEqual = () => {
       >
         <div>
           <label
-            for="username"
+            for="register-username"
             class="block text-sm font-medium leading-6 text-gray-900"
             >Username</label
           >
           <div class="mt-2">
             <input
-              id="username"
-              v-model="username"
+              id="register-username"
               name="username"
               type="text"
+              v-model="username"
               autocomplete="username"
               required
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -93,7 +93,7 @@ const arePasswordsEqual = () => {
         <div>
           <div class="flex items-center justify-between">
             <label
-              for="password"
+              for="register-Password"
               class="block text-sm font-medium leading-6 text-gray-900"
               >Password</label
             >
@@ -107,29 +107,29 @@ const arePasswordsEqual = () => {
           </div>
           <div class="mt-2">
             <input
-              id="password"
+              id="register-Password"
               name="password"
-              v-model="password"
               type="password"
+              v-model="password"
               autocomplete="current-password"
-              required=""
+              required
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>
           <div class="mt-7">
             <label
-              for="confirmpassword"
+              for="register-confirmpassword"
               class="block text-sm font-medium leading-6 text-gray-900"
               >Confirm Password</label
             >
 
             <input
-              id="confirmpassword"
+              id="register-confirmPassword"
               name="confirmpassword"
+              type="password"
               v-model="confirmPassword"
-              type="confirmpassword"
               autocomplete="current-password"
-              required=""
+              required
               class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
             />
           </div>

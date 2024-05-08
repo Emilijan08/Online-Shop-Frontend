@@ -1,61 +1,69 @@
-<script setup>
-import { ref } from 'vue'
-import { useAuthStore } from '../stores/AuthStore'
-import { RouterLink } from 'vue-router'
-</script>
-
 <template>
   <div>
     <div>
       <h1 class="h1">WishList</h1>
     </div>
     <div class="WhishlistThing">
-      <p id="ProductName">the Whislisted Products name</p>
       <div>
-        <a
-          href="https://www.psdgraphics.com/wp-content/uploads/2022/01/perfect-heart-shape.png"
-          id="Heart"
-        >
-          <img
-            id="Heart"
-            src="https://www.psdgraphics.com/wp-content/uploads/2022/01/perfect-heart-shape.png"
-            alt="Heart"
-          />
-        </a>
+        <img
+          id="ProductImage"
+          src="https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg"
+          alt="ProductImage"
+        />
+      </div>
+      <div id="ProductName">
+        <p>the Whislisted Products name</p>
+      </div>
+      <div id="Heart">
+        <img
+          src="https://www.psdgraphics.com/wp-content/uploads/2022/01/perfect-heart-shape.png"
+          alt="Heart"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-#Heart {
-  width: 60px;
-  height: 46px;
-  border: 1px solid rgb(13, 255, 0);
-}
-
 .h1 {
   font-size: 50px;
-  text-align: center;
   color: rgb(94, 101, 102);
   font-weight: bold;
   font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+#ProductImage {
+  width: 100px;
+  height: 100px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+#Heart {
+  width: 60px;
+  height: 46px;
+  border: 1px solid rgb(255, 255, 255);
+  display: flex;
+  margin-left: auto;
+  margin-right: 10px;
 }
 
 .WhishlistThing {
-  border: 1px solid black;
+  border: 1px solid rgb(0, 0, 0);
+  border-left: 1px solid rgb(255, 255, 255);
+  border-right: 1px solid rgb(255, 255, 255);
   display: flex;
-  justify-content: start;
+  align-items: center;
 }
 
 #ProductName {
-  order: 1;
-  border: 1px solid black;
+  border-left: 1px solid rgb(255, 255, 255);
+  padding-left: 10px;
   font-size: 30px;
   font-weight: bold;
   font-family: Arial, sans-serif;
-  color: rgb(94, 101, 1 02);
-  margin: 0;
-  padding: 0;
+  color: rgb(94, 101, 102);
 }
 </style>
