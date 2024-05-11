@@ -45,7 +45,7 @@ const logoutUser = () => {
     <!-- Sign-in Formular -->
     <div class="flex min-h-full flex-1 border border-red mt-24 mb-72">
       <div
-        class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24"
+        class="flex flex-1 flex-col justify-center px-4 py-12 sm:px-6 lg: lg:px-20 xl:px-24"
       >
         <div class="mx-auto w-full max-w-sm lg:w-96">
           <div>
@@ -142,11 +142,12 @@ const logoutUser = () => {
             </div>
           </div>
         </div>
-        <div class="relative hidden w-0 flex-1 lg:block">
+
+        <div class="relative w-full flex-1 lg:block">
           <img
-            class="absolute inset-0 h-full w-full object-cover"
-            src="https://images.unsplash.com/photo-1496917756835-20cb06e75b4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1908&q=80"
-            alt=""
+            class="absolute inset-0 h-full w-full object-cover z-50"
+            src="https://cdn.pixabay.com/photo/2017/08/01/22/15/imac-2568270_1280.jpg"
+            alt="your Company"
           />
         </div>
       </div>

@@ -6,22 +6,23 @@ const faqs = [
   {
     question: 'How long does shipping normally take?',
     answer:
-      'It normaly takes 3-5 business days, deppending on your location.If we ship outside of the Europe, it can take up to 10 business days or more.'
+      'Shipping times may vary depending on factors such as your location, shipping method selected, and any potential customs processes. Typically, orders are processed and shipped within 5-20 days, and standard shipping times range from 4-14 days. For expedited shipping options or specific inquiries about your orders shipping status, please reach out to our customer service team for personalized assistance.'
   },
   {
     question: 'Where do we ship?',
-    answer: 'We ship worldwide.'
+    answer:
+      'We ship worldwide! We are proud to offer international shipping to our customers in over 100 countries. For more information on shipping rates and delivery times to your specific location, please refer to our shipping policy or contact our customer service team for assistance.'
   },
   {
     question:
       'How can I contact customer service if I have questions or problems?',
     answer:
-      'You can contact us via email at ... or via phone at +12-34-567-89-04.'
+      'Our customer service team is available to assist you with any questions or issues you may have. You can contact us via email at theOnlineShop@gmail.com or via phone at +12 34 567 89 01, and our representatives will be happy to help you. We strive to provide timely and helpful assistance to ensure your shopping experience is smooth and enjoyable.'
   },
   {
     question: 'Is there a return guarantee and how does it work?',
     answer:
-      'if your Product was already damaged, when you bought it, you can return it within 14 days when you still have the receipt.If the product simply stops working or experiences any issues, you have a two-year warranty and can return it back, when you still have the receipt.'
+      'Yes, we offer a return guarantee to ensure your satisfaction with your purchase. If you are not completely satisfied with your order, you can return it within 14 days of receipt for a refund or exchange. To initiate a return, simply [insert return process instructions]. Please review our return policy for more details on eligibility and terms'
   },
   {
     question: 'Why is this E-Commerce Store so great?',
@@ -30,7 +31,12 @@ const faqs = [
   {
     question: 'Can I change or cancel my order after it has been placed?',
     answer:
-      'if you ordered a Product and want to cancel the Order, you have to cancel the order at max 45min after you placed your Order.If you want to change your Order, you have to cancel the Order and place a new one.'
+      'Yes, you may be able to change or cancel your order, depending on its current status and our policies. We recommend contacting our customer service team as soon as possible with your order details to request any changes or cancellations. Please note that orders that have already been processed or shipped may not be eligible for changes or cancellations.'
+  },
+  {
+    question: 'are your Payment methods secure?',
+    answer:
+      'Yes, our payment methods are secure. We prioritize the security of our customers financial information and use industry-standard encryption technologies to ensure the confidentiality of all transactions. Additionally, we employ secure payment gateways that adhere to strict security protocols to safeguard your personal and financial data.'
   }
 
   // More questions...

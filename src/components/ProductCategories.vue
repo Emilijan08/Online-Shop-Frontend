@@ -69,7 +69,7 @@ const categories = [
     name: 'Smartphone Collection',
     href: '#',
     imageSrc:
-      'https://images.pexels.com/photos/4549408/pexels-photo-4549408.jpeg?auto=compress&cs=tinysrgb&w=800',
+      'https://cdn.pixabay.com/photo/2014/08/05/10/30/iphone-410324_1280.jpg',
     imageAlt: 'Close up of a Person on a Bed on their phone.',
     description: 'Discover our latest Collection of Smartphones.'
   },

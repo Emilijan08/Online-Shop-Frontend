@@ -1,34 +1,26 @@
 <script setup>
+import { useRoute } from 'vue-router'
+
 const footerNavigation = {
   products: [
-    { name: 'Bags', href: '#' },
-    { name: 'Tees', href: '#' },
-    { name: 'Objects', href: '#' },
-    { name: 'Home Goods', href: '#' },
+    { name: 'Smartwatches', href: '#' },
+    { name: 'iMacs', href: '#' },
+    { name: 'Laptops', href: '#' },
+    { name: 'Smartphones', href: '#' },
     { name: 'Accessories', href: '#' }
   ],
-  company: [
-    { name: 'Who we are', href: '#' },
-    { name: 'Sustainability', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Careers', href: '#' },
-    { name: 'Terms & Conditions', href: '#' },
-    {
-      name: 'Privacy',
-      href: '#'
-    }
-  ],
+  company: [{ name: 'About us', to: '/aboutus' }],
   customerService: [
-    { name: 'Contact', href: '#' },
-    { name: 'Shipping', href: '#' },
-    { name: 'Returns', href: '#' },
-    { name: 'Warranty', href: '#' },
-    { name: 'Secure Payments', href: '#' },
-    { name: 'FAQ', href: '#' },
-    { name: 'Find a store', href: '#' }
+    { name: 'Contact', to: '/faq' },
+    { name: 'Shipping', to: '/faq' },
+    { name: 'Returns', to: '/faq' },
+    { name: 'Warranty', to: '/faq' },
+    { name: 'Secure Payments', to: '/faq' },
+    { name: 'FAQ', to: '/faq' }
   ]
 }
 </script>
+
 <template>
   <footer
     aria-labelledby="footer-heading"
@@ -64,11 +56,9 @@ const footerNavigation = {
                     :key="item.name"
                     class="text-sm"
                   >
-                    <a
-                      :href="item.href"
-                      class="text-gray-500 hover:text-gray-600"
-                      >{{ item.name }}</a
-                    >
+                    <a to="#" class="text-gray-500 hover:text-gray-600">{{
+                      item.name
+                    }}</a>
                   </li>
                 </ul>
               </div>
@@ -81,7 +71,7 @@ const footerNavigation = {
                     class="text-sm"
                   >
                     <a
-                      :href="item.href"
+                      href="/aboutus"
                       class="text-gray-500 hover:text-gray-600"
                       >{{ item.name }}</a
                     >
@@ -99,10 +89,10 @@ const footerNavigation = {
                   :key="item.name"
                   class="text-sm"
                 >
-                  <a
-                    :href="item.href"
+                  <router-link
+                    to="/faq"
                     class="text-gray-500 hover:text-gray-600"
-                    >{{ item.name }}</a
+                    >{{ item.name }}</router-link
                   >
                 </li>
               </ul>
