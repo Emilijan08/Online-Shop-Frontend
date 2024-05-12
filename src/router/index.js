@@ -7,7 +7,7 @@ import WishListView from "../views/WishListView.vue";
 import OrderSummaryView from "../views/OrderSummaryView.vue";
 import AboutUsView from "../views/AboutUsView.vue";
 import FAQView from "../views/FAQView.vue";
-import LoginSignInView from "../views/LoginSignInView.vue";
+import SignInView from "../views/SignInView.vue";
 import PageNotFoundView from "../views/PageNotFoundView.vue";
 
 const router = createRouter({
@@ -16,7 +16,7 @@ const router = createRouter({
     {
       path: "/login",
       name: "Login",
-      component: LoginSignInView,
+      component: SignInView,
     },
     {
       path: "/register",
