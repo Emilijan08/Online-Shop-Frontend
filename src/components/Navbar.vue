@@ -3,6 +3,8 @@ import { computed, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { useAuthStore } from '../stores/AuthStore'
 import { useProductStore } from '../stores/ProductsStore'
+import { UserCircleIcon } from '@heroicons/vue/20/solid'
+import { MenuButton, MenuItem, MenuItems, Menu } from '@headlessui/vue'
 
 const auth = useAuthStore()
 const store = useProductStore()
@@ -106,11 +108,44 @@ let mobileMenu = ref(false)
             </svg>
           </RouterLink>
 
-          <li
-            @click="auth.logout()"
-            class="text-sm font-bold text-white hover:text-blue-400 cursor-pointer"
-          >
-            Logout
+          <!-- Profile dropdown -->
+          <li v-if="auth.user.username" class="flex items-center">
+            {{ auth.user.username }}
+            <Menu as="div" class="relative ml-3">
+              <div>
+                <MenuButton
+                  class="relative flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  <span class="absolute -inset-1.5" />
+                  <span class="sr-only">Open user menu</span>
+                  <UserCircleIcon class="h-8 w-8" aria-hidden="true" />
+                </MenuButton>
+              </div>
+              <transition
+                enter-active-class="transition ease-out duration-200"
+                enter-from-class="transform opacity-0 scale-95"
+                enter-to-class="transform opacity-100 scale-100"
+                leave-active-class="transition ease-in duration-75"
+                leave-from-class="transform opacity-100 scale-100"
+                leave-to-class="transform opacity-0 scale-95"
+              >
+                <MenuItems
+                  class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                >
+                  <MenuItem v-slot="{ active }">
+                    <div
+                      @click="auth.logout()"
+                      :class="[
+                        active ? 'bg-gray-100' : '',
+                        'block px-4 py-2 text-sm text-gray-700'
+                      ]"
+                    >
+                      Sign out
+                    </div>
+                  </MenuItem>
+                </MenuItems>
+              </transition>
+            </Menu>
           </li>
         </ul>
       </nav>
