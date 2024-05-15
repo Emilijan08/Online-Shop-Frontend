@@ -16,7 +16,7 @@ export const useProductStore = defineStore("product", {
 
   actions: {
     async getProducts() {
-      const URL = "https://marketserver.onrender.com/products";
+      const URL = "http://localhost:3000/products";
       this.loading = true;
       const response = await axios.get(URL);
       this.products = await response.data;
@@ -33,7 +33,7 @@ export const useProductStore = defineStore("product", {
     },
     async addComment(_productId, _comment, _username) {
       try {
-        const URL = `https://marketserver.onrender.com/products/${_productId}/comments`;
+        const URL = `http://localhost:3000/products/${_productId}/comments`;
         const response = await axios.post(URL, {
           text: _comment,
           user: _username,
@@ -45,7 +45,7 @@ export const useProductStore = defineStore("product", {
       }
     },
     async getComments(productId) {
-      const URL = `https://marketserver.onrender.com/products/${productId}/comments`;
+      const URL = `http://localhost:3000/products/${productId}/comments`;
       const response = await axios.get(URL);
       this.comments = await response.data.comments;
       console.log(this.comments);

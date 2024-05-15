@@ -1,48 +1,48 @@
 <script setup>
-import axios from 'axios'
-import { onMounted, ref } from 'vue'
-import { useRoute } from 'vue-router'
-import Navbar from '../components/Navbar.vue'
-import { useAuthStore } from '../stores/AuthStore'
-import { useProductStore } from '../stores/ProductsStore'
+import axios from "axios";
+import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+import Navbar from "../components/Navbar.vue";
+import { useAuthStore } from "../stores/AuthStore";
+import { useProductStore } from "../stores/ProductsStore";
 
-let addProduct = ref(false)
-let comment = ref('')
+let addProduct = ref(false);
+let comment = ref("");
 
-const store = useProductStore()
-const route = useRoute()
+const store = useProductStore();
+const route = useRoute();
 
-const productId = route.params.productId
+const productId = route.params.productId;
 const selectedProduct = store.products.filter(
-  element => element._id === productId
-)
+  (element) => element._id === productId,
+);
 
-console.log(productId)
-store.getComments(productId)
-const authStore = useAuthStore()
-async function addComment () {
+console.log(productId);
+store.getComments(productId);
+const authStore = useAuthStore();
+async function addComment() {
   try {
-    const URL = `https://marketserver.onrender.com/products/${productId}/comments`
+    const URL = `http://localhost:3000/products/${productId}/comments`;
     const response = await axios.post(URL, {
       comment: comment.value,
-      username: authStore.user.username
-    })
+      username: authStore.user.username,
+    });
 
-    console.log(response)
+    console.log(response);
   } catch (err) {
-    console.log(err)
+    console.log(err);
   } finally {
-    comment.value = ''
-    await store.getComments(productId)
+    comment.value = "";
+    await store.getComments(productId);
   }
 }
 
 onMounted(() => {
   window.scrollTo({
     top: 0,
-    behavior: 'smooth' // This enables smooth scrolling
-  })
-})
+    behavior: "smooth", // This enables smooth scrolling
+  });
+});
 </script>
 <template v-if="selectedProduct">
   <div>
@@ -105,7 +105,7 @@ onMounted(() => {
               />
             </svg>
 
-            {{ addProduct ? 'Added to Cart!' : 'Add to Cart' }}</a
+            {{ addProduct ? "Added to Cart!" : "Add to Cart" }}</a
           >
         </div>
       </div>

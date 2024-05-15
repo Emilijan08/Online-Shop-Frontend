@@ -1,12 +1,12 @@
 <script setup>
-import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import { useAuthStore } from '../stores/AuthStore'
+import { ref } from "vue";
+import { RouterLink } from "vue-router";
+import { useAuthStore } from "../stores/AuthStore";
 
-let username = ref('')
-let password = ref('')
+let username = ref("");
+let password = ref("");
 
-const store = useAuthStore()
+const store = useAuthStore();
 </script>
 
 <template>
@@ -28,7 +28,7 @@ const store = useAuthStore()
           </h2>
           <p class="mt-2 text-sm leading-6 text-gray-500">
             Don't have an account?
-            {{ ' ' }}
+            {{ " " }}
             <RouterLink
               to="/register"
               class="font-semibold text-indigo-600 hover:text-indigo-500"

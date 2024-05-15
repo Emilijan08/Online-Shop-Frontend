@@ -57,29 +57,29 @@
 <script setup>
 const categories = [
   {
-    name: 'iMacs and Laptops Collection',
-    href: '#',
+    name: "iMacs and Laptops Collection",
+    href: "#",
     imageSrc:
-      'https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=800',
+      "https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=800",
     imageAlt:
-      'Close-up of a iMac and a Macbook on a desk with a white mouse and keyboard.',
-    description: 'Discover our latest Collection of iMacs and Laptops.'
+      "Close-up of a iMac and a Macbook on a desk with a white mouse and keyboard.",
+    description: "Discover our latest Collection of iMacs and Laptops.",
   },
   {
-    name: 'Smartphone Collection',
-    href: '#',
+    name: "Smartphone Collection",
+    href: "#",
     imageSrc:
-      'https://cdn.pixabay.com/photo/2014/08/05/10/30/iphone-410324_1280.jpg',
-    imageAlt: 'Close up of a Person on a Bed on their phone.',
-    description: 'Discover our latest Collection of Smartphones.'
+      "https://cdn.pixabay.com/photo/2014/08/05/10/30/iphone-410324_1280.jpg",
+    imageAlt: "Close up of a Person on a Bed on their phone.",
+    description: "Discover our latest Collection of Smartphones.",
   },
   {
-    name: 'Smartwatch Collection',
-    href: '#',
+    name: "Smartwatch Collection",
+    href: "#",
     imageSrc:
-      'https://images.pexels.com/photos/1682821/pexels-photo-1682821.jpeg?auto=compress&cs=tinysrgb&w=800',
-    imageAlt: 'Close up of a Smartwatch on a persons wrist.',
-    description: 'Discover our latest Collection of Smartwatches.'
-  }
-]
+      "https://images.pexels.com/photos/1682821/pexels-photo-1682821.jpeg?auto=compress&cs=tinysrgb&w=800",
+    imageAlt: "Close up of a Smartwatch on a persons wrist.",
+    description: "Discover our latest Collection of Smartwatches.",
+  },
+];
 </script>

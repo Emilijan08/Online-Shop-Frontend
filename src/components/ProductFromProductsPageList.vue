@@ -29,7 +29,7 @@
                   <span
                     :class="[
                       selected ? 'ring-indigo-500' : 'ring-transparent',
-                      'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2'
+                      'pointer-events-none absolute inset-0 rounded-md ring-2 ring-offset-2',
                     ]"
                     aria-hidden="true"
                   />
@@ -73,7 +73,7 @@
                       product.rating > rating
                         ? 'text-indigo-500'
                         : 'text-gray-300',
-                      'h-5 w-5 flex-shrink-0'
+                      'h-5 w-5 flex-shrink-0',
                     ]"
                     aria-hidden="true"
                   />
@@ -113,7 +113,7 @@
                           color.selectedColor,
                           active && checked ? 'ring ring-offset-1' : '',
                           !active && checked ? 'ring-2' : '',
-                          'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
+                          'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none',
                         ]"
                       >
                         <RadioGroupLabel as="span" class="sr-only">{{
@@ -123,7 +123,7 @@
                           aria-hidden="true"
                           :class="[
                             color.bgColor,
-                            'h-8 w-8 rounded-full border border-black border-opacity-10'
+                            'h-8 w-8 rounded-full border border-black border-opacity-10',
                           ]"
                         />
                       </div>
@@ -167,7 +167,7 @@
                       <span
                         :class="[
                           open ? 'text-indigo-600' : 'text-gray-900',
-                          'text-sm font-medium'
+                          'text-sm font-medium',
                         ]"
                         >{{ detail.name }}</span
                       >
@@ -213,70 +213,70 @@ Disclosure,
   TabGroup,
   TabList,
   TabPanel,
-  TabPanels
-import { Dialog } from '@headlessui/vue'
-import { StarIcon } from '@heroicons/vue/20/solid'
-import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
-import { ref } from 'vue'
-import { useProductStore } from '../stores/ProductsStore'
-import { Dialog } from '@headlessui/vue'
+  TabPanels;
+import { Dialog } from "@headlessui/vue";
+import { StarIcon } from "@heroicons/vue/20/solid";
+import { HeartIcon, MinusIcon, PlusIcon } from "@heroicons/vue/24/outline";
+import { ref } from "vue";
+import { useProductStore } from "../stores/ProductsStore";
+import { Dialog } from "@headlessui/vue";
 
-const store = useProductStore()
+const store = useProductStore();
 
 defineProps({
   productName: String,
   productImg: String,
   price: Number,
-  id: String
-})
+  id: String,
+});
 
-let fav = ref(false)
-let addProduct = ref(false)
+let fav = ref(false);
+let addProduct = ref(false);
 
 const product = {
-  name: 'Zip Tote Basket',
-  price: '$140',
+  name: "Zip Tote Basket",
+  price: "$140",
   rating: 4,
   images: [
     {
       id: 1,
-      name: 'Angled view',
-      src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
-      alt: 'Angled front view with bag zipped and handles upright.'
-    }
+      name: "Angled view",
+      src: "https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg",
+      alt: "Angled front view with bag zipped and handles upright.",
+    },
     // More images...
   ],
   colors: [
     {
-      name: 'Washed Black',
-      bgColor: 'bg-gray-700',
-      selectedColor: 'ring-gray-700'
+      name: "Washed Black",
+      bgColor: "bg-gray-700",
+      selectedColor: "ring-gray-700",
     },
-    { name: 'White', bgColor: 'bg-white', selectedColor: 'ring-gray-400' },
+    { name: "White", bgColor: "bg-white", selectedColor: "ring-gray-400" },
     {
-      name: 'Washed Gray',
-      bgColor: 'bg-gray-500',
-      selectedColor: 'ring-gray-500'
-    }
+      name: "Washed Gray",
+      bgColor: "bg-gray-500",
+      selectedColor: "ring-gray-500",
+    },
   ],
   description: `
     <p>The Zip Tote Basket is the perfect midpoint between shopping tote and comfy backpack. With convertible straps, you can hand carry, should sling, or backpack this convenient and spacious bag. The zip top and durable canvas construction keeps your goods protected for all-day use.</p>
   `,
   details: [
     {
-      name: 'Features',
+      name: "Features",
       items: [
-        'Multiple strap configurations',
-        'Spacious interior with top zip',
-        'Leather handle and tabs',
-        'Interior dividers',
-        'Stainless strap loops',
-        'Double stitched construction',
-        'Water-resistant'
-      ]
-    }
+        "Multiple strap configurations",
+        "Spacious interior with top zip",
+        "Leather handle and tabs",
+        "Interior dividers",
+        "Stainless strap loops",
+        "Double stitched construction",
+        "Water-resistant",
+      ],
+    },
     // More sections...
-  ]
-}
-const selectedColor = ref(product.colors[0])
+  ],
+};
+const selectedColor = ref(product.colors[0]);
 </script>

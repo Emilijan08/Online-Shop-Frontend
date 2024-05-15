@@ -18,7 +18,7 @@ export const useAuthStore = defineStore("auth", {
   },
   actions: {
     async login(temp_username, password) {
-      const URL = "https://marketserver.onrender.com/login";
+      const URL = "http://localhost:3000/login";
       try {
         const res = await axios.post(URL, {
           username: temp_username,
@@ -39,7 +39,7 @@ export const useAuthStore = defineStore("auth", {
       }
     },
     async register(temp_username, password, confirmPassword) {
-      const URL = "https://marketserver.onrender.com/register";
+      const URL = "http://localhost:3000/register";
       try {
         const res = await axios.post(URL, {
           username: temp_username,

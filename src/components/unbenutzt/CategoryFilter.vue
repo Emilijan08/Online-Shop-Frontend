@@ -74,7 +74,7 @@
                         <ChevronDownIcon
                           :class="[
                             open ? '-rotate-180' : 'rotate-0',
-                            'h-5 w-5 transform'
+                            'h-5 w-5 transform',
                           ]"
                           aria-hidden="true"
                         />
@@ -164,7 +164,7 @@
                       :href="option.href"
                       :class="[
                         active ? 'bg-gray-100' : '',
-                        'block px-4 py-2 text-sm font-medium text-gray-900'
+                        'block px-4 py-2 text-sm font-medium text-gray-900',
                       ]"
                       >{{ option.name }}</a
                     >
@@ -249,7 +249,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref } from "vue";
 import {
   Dialog,
   DialogPanel,
@@ -265,54 +265,54 @@ import {
   PopoverGroup,
   PopoverPanel,
   TransitionChild,
-  TransitionRoot
-} from '@headlessui/vue'
-import { XMarkIcon } from '@heroicons/vue/24/outline'
-import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+  TransitionRoot,
+} from "@headlessui/vue";
+import { XMarkIcon } from "@heroicons/vue/24/outline";
+import { ChevronDownIcon } from "@heroicons/vue/20/solid";
 
 const sortOptions = [
-  { name: 'Most Popular', href: '#' },
-  { name: 'Best Rating', href: '#' },
-  { name: 'Newest', href: '#' }
-]
+  { name: "Most Popular", href: "#" },
+  { name: "Best Rating", href: "#" },
+  { name: "Newest", href: "#" },
+];
 const filters = [
   {
-    id: 'category',
-    name: 'Category',
+    id: "category",
+    name: "Category",
     options: [
-      { value: 'tees', label: 'Tees' },
-      { value: 'crewnecks', label: 'Crewnecks' },
-      { value: 'hats', label: 'Hats' }
-    ]
+      { value: "tees", label: "Tees" },
+      { value: "crewnecks", label: "Crewnecks" },
+      { value: "hats", label: "Hats" },
+    ],
   },
   {
-    id: 'brand',
-    name: 'Brand',
+    id: "brand",
+    name: "Brand",
     options: [
-      { value: 'clothing-company', label: 'Clothing Company' },
-      { value: 'fashion-inc', label: 'Fashion Inc.' },
-      { value: 'shoes-n-more', label: "Shoes 'n More" }
-    ]
+      { value: "clothing-company", label: "Clothing Company" },
+      { value: "fashion-inc", label: "Fashion Inc." },
+      { value: "shoes-n-more", label: "Shoes 'n More" },
+    ],
   },
   {
-    id: 'color',
-    name: 'Color',
+    id: "color",
+    name: "Color",
     options: [
-      { value: 'white', label: 'White' },
-      { value: 'black', label: 'Black' },
-      { value: 'grey', label: 'Grey' }
-    ]
+      { value: "white", label: "White" },
+      { value: "black", label: "Black" },
+      { value: "grey", label: "Grey" },
+    ],
   },
   {
-    id: 'sizes',
-    name: 'Sizes',
+    id: "sizes",
+    name: "Sizes",
     options: [
-      { value: 's', label: 'S' },
-      { value: 'm', label: 'M' },
-      { value: 'l', label: 'L' }
-    ]
-  }
-]
+      { value: "s", label: "S" },
+      { value: "m", label: "M" },
+      { value: "l", label: "L" },
+    ],
+  },
+];
 
-const open = ref(false)
+const open = ref(false);
 </script>

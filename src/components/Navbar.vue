@@ -1,19 +1,19 @@
 <script setup>
-import { computed, ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import { useAuthStore } from '../stores/AuthStore'
-import { useProductStore } from '../stores/ProductsStore'
-import { UserCircleIcon } from '@heroicons/vue/20/solid'
-import { MenuButton, MenuItem, MenuItems, Menu } from '@headlessui/vue'
+import { computed, ref } from "vue";
+import { RouterLink } from "vue-router";
+import { useAuthStore } from "../stores/AuthStore";
+import { useProductStore } from "../stores/ProductsStore";
+import { UserCircleIcon } from "@heroicons/vue/20/solid";
+import { MenuButton, MenuItem, MenuItems, Menu } from "@headlessui/vue";
 
-const auth = useAuthStore()
-const store = useProductStore()
+const auth = useAuthStore();
+const store = useProductStore();
 
 const cartItem = computed(() => {
-  return store.productsOnCart.length > 0 ? true : false
-})
+  return store.productsOnCart.length > 0 ? true : false;
+});
 
-let mobileMenu = ref(false)
+let mobileMenu = ref(false);
 </script>
 
 <template>
@@ -137,7 +137,7 @@ let mobileMenu = ref(false)
                       @click="auth.logout()"
                       :class="[
                         active ? 'bg-gray-100' : '',
-                        'block px-4 py-2 text-sm text-gray-700'
+                        'block px-4 py-2 text-sm text-gray-700',
                       ]"
                     >
                       Sign out

@@ -1,40 +1,40 @@
 <script setup>
-import { ref } from 'vue'
-import Navbar from '../components/Navbar.vue'
-import { useProductStore } from '../stores/ProductsStore'
+import { ref } from "vue";
+import Navbar from "../components/Navbar.vue";
+import { useProductStore } from "../stores/ProductsStore";
 
-const store = useProductStore()
+const store = useProductStore();
 
-let total = ref(0)
-let checkout = ref(false)
+let total = ref(0);
+let checkout = ref(false);
 
 for (let i = 0; i < store.productsOnCart.length; i++) {
-  store.productsOnCart[i].quantity = 1
+  store.productsOnCart[i].quantity = 1;
 }
 
-async function increase (id) {
-  const item = store.productsOnCart.find(element => element._id === id)
-  item.quantity++
-  const price = await item.price
-  total.value += await price
+async function increase(id) {
+  const item = store.productsOnCart.find((element) => element._id === id);
+  item.quantity++;
+  const price = await item.price;
+  total.value += await price;
 }
-async function removeItem (id) {
+async function removeItem(id) {
   store.productsOnCart = store.productsOnCart.filter(
-    product => product._id != id
-  )
+    (product) => product._id != id,
+  );
 }
-async function decrease (id) {
-  const item = store.productsOnCart.find(element => element._id === id)
+async function decrease(id) {
+  const item = store.productsOnCart.find((element) => element._id === id);
   if (item.quantity > 1) {
-    item.quantity--
-    const price = await item.price
-    total.value -= await price
+    item.quantity--;
+    const price = await item.price;
+    total.value -= await price;
   }
 }
 
-store.productsOnCart.forEach(element => {
-  total.value += element.price
-})
+store.productsOnCart.forEach((element) => {
+  total.value += element.price;
+});
 </script>
 <template>
   <div>
@@ -147,7 +147,7 @@ store.productsOnCart.forEach(element => {
                         <div class="text-sm text-gray-900">
                           ${{
                             Math.round(
-                              product.quantity * product.price * 1e12
+                              product.quantity * product.price * 1e12,
                             ) / 1e12
                           }}
                         </div>
