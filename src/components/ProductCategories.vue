@@ -57,29 +57,29 @@
 <script setup>
 const categories = [
   {
-    name: "iMacs and Laptops Collection",
-    href: "#",
+    name: 'iMacs and Laptops Collection',
+    href: '#',
     imageSrc:
-      "https://images.pexels.com/photos/39284/macbook-apple-imac-computer-39284.jpeg?auto=compress&cs=tinysrgb&w=800",
+      'https://images.unsplash.com/photo-1523968984674-42be380a916f?q=80&w=3950&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAlt:
-      "Close-up of a iMac and a Macbook on a desk with a white mouse and keyboard.",
-    description: "Discover our latest Collection of iMacs and Laptops.",
+      'Close-up of a iMac and a Macbook on a desk with a white mouse and keyboard.',
+    description: 'Discover our latest Collection of iMacs and Laptops.'
   },
   {
-    name: "Smartphone Collection",
-    href: "#",
+    name: 'Smartphone Collection',
+    href: '#',
     imageSrc:
-      "https://cdn.pixabay.com/photo/2014/08/05/10/30/iphone-410324_1280.jpg",
-    imageAlt: "Close up of a Person on a Bed on their phone.",
-    description: "Discover our latest Collection of Smartphones.",
+      'https://images.unsplash.com/photo-1608386390658-86cf60bcf61a?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Close up of a Person on a Bed on their phone.',
+    description: 'Discover our latest Collection of Smartphones.'
   },
   {
-    name: "Smartwatch Collection",
-    href: "#",
+    name: 'Smartwatch Collection',
+    href: '#',
     imageSrc:
-      "https://images.pexels.com/photos/1682821/pexels-photo-1682821.jpeg?auto=compress&cs=tinysrgb&w=800",
-    imageAlt: "Close up of a Smartwatch on a persons wrist.",
-    description: "Discover our latest Collection of Smartwatches.",
-  },
-];
+      'https://images.unsplash.com/photo-1520895653685-c739b6db8fce?q=80&w=3850&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D   ',
+    imageAlt: 'Close up of a Smartwatch on a persons wrist.',
+    description: 'Discover our latest Collection of Smartwatches.'
+  }
+]
 </script>
