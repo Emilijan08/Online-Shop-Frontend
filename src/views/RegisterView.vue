@@ -1,48 +1,26 @@
 <script setup>
-import { ref } from "vue";
-import { RouterLink } from "vue-router";
+import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
-import { useAuthStore } from "../stores/AuthStore";
+import { useAuthStore } from '../stores/AuthStore'
 
-const store = useAuthStore();
+const store = useAuthStore()
 
-let username = ref("");
-let password = ref("");
-let confirmPassword = ref("");
-
-const register = () => {
-  if (arePasswordsEqual()) {
-    // Benutzerobjekt erstellen
-    const newUser = {
-      username: username.value,
-      password: password.value,
-      confirmPassword: confirmPassword.value,
-      userId: Math.floor(Math.random() * 1000000), // Generiere eine zufällige userId
-    };
-    // Benutzer zum users-Array hinzufügen
-    users.push(newUser);
-    console.log("User added:", newUser);
-    // Weitere Logik hier ...
-    // Optional: Formularfelder zurücksetzen
-    username.value = "";
-    password.value = "";
-    confirmPassword.value = "";
-  }
-};
-
-let users = [];
+let username = ref('')
+let password = ref('')
+let confirmPassword = ref('')
 
 const arePasswordsEqual = () => {
   if (password === confirmPassword) {
-    console.log("Passwords are equal");
+    console.log('Passwords are equal')
 
-    return true;
+    return true
   } else {
-    console.log("Passwords are not equal");
+    console.log('Passwords are not equal')
 
-    return false;
+    return false
   }
-};
+}
 </script>
 
 <template>
@@ -77,7 +55,7 @@ const arePasswordsEqual = () => {
               username,
               password,
               confirmPassword,
-              arePasswordsEqual,
+              arePasswordsEqual
             )
           "
         >
@@ -172,7 +150,7 @@ const arePasswordsEqual = () => {
 
 <style scoped>
 .background {
-  background-image: url("https://images.pexels.com/photos/1036808/pexels-photo-1036808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-image: url('https://images.pexels.com/photos/1036808/pexels-photo-1036808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
   background-size: cover; /* Bild wird proportioniert skaliert, um den gesamten sichtbaren Bereich des Bildschirms zu bedecken */
   background-position: center; /* Bild wird zentriert positioniert */
   width: 100%;

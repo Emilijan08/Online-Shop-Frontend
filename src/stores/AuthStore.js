@@ -53,8 +53,12 @@ export const useAuthStore = defineStore("auth", {
         localStorage.setItem("token", this.token);
         router.push("/");
       } catch (err) {
-        this.error = true;
-        this.message = err.response.data.message;
+        if (err.response && err.response.status === 409) {
+          throw new Error("Username already exists");
+        } else {
+          this.error = true;
+          this.message = err.response.data.message;
+        }
       }
     },
     async logout() {
