@@ -1,24 +1,22 @@
 <script setup>
-import { useRoute } from "vue-router";
-
 const footerNavigation = {
   products: [
-    { name: "Smartwatches", href: "#" },
-    { name: "iMacs", href: "#" },
-    { name: "Laptops", href: "#" },
-    { name: "Smartphones", href: "#" },
-    { name: "Accessories", href: "#" },
+    { name: 'Smartwatches', href: '#' },
+    { name: 'iMacs', href: '#' },
+    { name: 'Laptops', href: '#' },
+    { name: 'Smartphones', href: '#' },
+    { name: 'Accessories', href: '#' }
   ],
-  company: [{ name: "About us", to: "/aboutus" }],
+  company: [{ name: 'About us', to: '/aboutus' }],
   customerService: [
-    { name: "Contact", to: "/faq" },
-    { name: "Shipping", to: "/faq" },
-    { name: "Returns", to: "/faq" },
-    { name: "Warranty", to: "/faq" },
-    { name: "Secure Payments", to: "/faq" },
-    { name: "FAQ", to: "/faq" },
-  ],
-};
+    { name: 'Contact', to: '/faq' },
+    { name: 'Shipping', to: '/faq' },
+    { name: 'Returns', to: '/faq' },
+    { name: 'Warranty', to: '/faq' },
+    { name: 'Secure Payments', to: '/faq' },
+    { name: 'FAQ', to: '/faq' }
+  ]
+}
 </script>
 
 <template>

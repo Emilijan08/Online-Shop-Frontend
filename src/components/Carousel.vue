@@ -1,36 +1,36 @@
 <script setup>
-import Splide from "@splidejs/splide";
-import "@splidejs/splide/css/skyblue";
-import { onMounted } from "vue";
+import Splide from '@splidejs/splide'
+import '@splidejs/splide/css/skyblue'
+import { onMounted } from 'vue'
 
 const images = [
-  "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80",
-  "https://media.istockphoto.com/id/1337191336/photo/black-fashion-sport-shoe-on-white-background.jpg?b=1&s=170667a&w=0&k=20&c=DAsn_Qj_gjJ42BDr33CU10QO3ckCMD93KFyuP7qrvN8=",
-  "https://media.istockphoto.com/id/1320501530/photo/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?b=1&s=170667a&w=0&k=20&c=-iiKNaFkLHe1WClYWJa7d7wR85HEhEpA2tsRYknnX4E=",
-];
+  'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80',
+  'https://media.istockphoto.com/id/1337191336/photo/black-fashion-sport-shoe-on-white-background.jpg?b=1&s=170667a&w=0&k=20&c=DAsn_Qj_gjJ42BDr33CU10QO3ckCMD93KFyuP7qrvN8=',
+  'https://media.istockphoto.com/id/1320501530/photo/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?b=1&s=170667a&w=0&k=20&c=-iiKNaFkLHe1WClYWJa7d7wR85HEhEpA2tsRYknnX4E='
+]
 
 onMounted(() => {
-  new Splide(".splide", {
-    type: "loop",
+  new Splide('.splide', {
+    type: 'loop',
     perPage: 1,
-    gap: "1rem",
+    gap: '1rem',
     arrows: false,
     autoplay: true,
     interval: 2500,
     pagination: false,
     breakpoints: {
       640: {
-        perPage: 1,
+        perPage: 1
       },
       768: {
-        perPage: 2,
+        perPage: 2
       },
       1024: {
-        perPage: 3,
-      },
-    },
-  }).mount();
-});
+        perPage: 3
+      }
+    }
+  }).mount()
+})
 </script>
 
 <template>

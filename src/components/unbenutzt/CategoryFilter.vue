@@ -249,7 +249,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import {
   Dialog,
   DialogPanel,
@@ -267,8 +266,9 @@ import {
   TransitionChild,
   TransitionRoot
 } from '@headlessui/vue'
-import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon } from '@heroicons/vue/20/solid'
+import { XMarkIcon } from '@heroicons/vue/24/outline'
+import { ref } from 'vue'
 
 const sortOptions = [
   { name: 'Most Popular', href: '#' },

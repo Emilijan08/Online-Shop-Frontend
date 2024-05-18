@@ -1,7 +1,7 @@
 <script setup>
-import { useProductStore } from "../stores/ProductsStore";
+import { useProductStore } from '../stores/ProductsStore'
 
-const store = useProductStore();
+const store = useProductStore()
 </script>
 
 <template>

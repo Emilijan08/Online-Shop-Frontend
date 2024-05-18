@@ -1,10 +1,4 @@
 <script setup>
-import { computed, ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import { useAuthStore } from '../stores/AuthStore'
-import { useProductStore } from '../stores/ProductsStore'
-import { UserCircleIcon } from '@heroicons/vue/20/solid'
-import { MenuButton, MenuItem, MenuItems, Menu } from '@headlessui/vue'
 import {
   Disclosure,
   DisclosureButton,
@@ -15,6 +9,9 @@ import {
   MenuItems
 } from '@headlessui/vue'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { computed, ref } from 'vue'
+import { useAuthStore } from '../stores/AuthStore'
+import { useProductStore } from '../stores/ProductsStore'
 
 const auth = useAuthStore()
 const store = useProductStore()
