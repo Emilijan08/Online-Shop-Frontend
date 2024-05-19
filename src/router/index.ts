@@ -14,12 +14,12 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     {
-      path: '/login',
+      path: '/auth/login',
       name: 'Login',
       component: SignInView
     },
     {
-      path: '/register',
+      path: '/auth/register',
       name: 'Register',
       component: RegisterView
     },

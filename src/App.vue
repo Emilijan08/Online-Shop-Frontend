@@ -19,7 +19,7 @@ const store = useProductStore()
 store.getProducts()
 
 const showFooter = computed(() => {
-  return !['/login', '/register', '/:catchall(.*)*'].includes(route.path)
+  return !['/auth/login', '/auth/register', '/:catchall(.*)*'].includes(route.path)
 })
 
 const options = {

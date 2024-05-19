@@ -12,21 +12,23 @@ for (let i = 0; i < store.productsOnCart.length; i++) {
   store.productsOnCart[i].quantity = 1
 }
 
-async function increase(id) {
+async function increase(id: string) {
   const item = store.productsOnCart.find((element) => element._id === id)
-  item.quantity++
-  const price = await item.price
-  total.value += await price
+  if (item) {
+    item.quantity++
+    total.value += item.price
+  }
 }
-async function removeItem(id) {
+
+async function removeItem(id: string) {
   store.productsOnCart = store.productsOnCart.filter((product) => product._id != id)
 }
-async function decrease(id) {
+
+async function decrease(id: string) {
   const item = store.productsOnCart.find((element) => element._id === id)
-  if (item.quantity > 1) {
+  if (item && item.quantity > 1) {
     item.quantity--
-    const price = await item.price
-    total.value -= await price
+    total.value -= item.price
   }
 }
 
@@ -34,6 +36,7 @@ store.productsOnCart.forEach((element) => {
   total.value += element.price
 })
 </script>
+
 <template>
   <div>
     <Navbar></Navbar>
@@ -147,7 +150,6 @@ store.productsOnCart.forEach((element) => {
                         </button>
                       </td>
                     </tr>
-                    <!-- More items... -->
                   </tbody>
                 </table>
               </div>
@@ -184,14 +186,11 @@ store.productsOnCart.forEach((element) => {
     </div>
     <div :class="checkout ? 'scale-100' : ''" class="fixed scale-0 z-10 inset-0 overflow-y-auto">
       <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center">
-        <!-- Overlay background -->
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
-        <!-- Modal content -->
         <div
           :class="checkout ? 'scale-100' : ''"
           class="transform scale-0 transition-transform duration-300 relative z-10 w-full max-w-md p-6 bg-white rounded-lg shadow-lg"
         >
-          <!-- Icon -->
           <div
             class="flex items-center justify-center w-12 h-12 mx-auto mb-4 text-green-500 bg-green-100 rounded-full"
           >
@@ -201,9 +200,7 @@ store.productsOnCart.forEach((element) => {
               ></path>
             </svg>
           </div>
-          <!-- Message -->
           <p class="text-lg font-medium text-gray-800">Payment successful!</p>
-          <!-- Button -->
           <div class="mt-6">
             <button
               class="px-4 py-2 text-sm font-medium text-white bg-green-500 rounded hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-500"

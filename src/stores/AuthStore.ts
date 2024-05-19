@@ -31,7 +31,7 @@ export const useAuthStore = defineStore<
   }),
   actions: {
     async login(temp_username: string, password: string) {
-      const URL = 'http://localhost:3000/login'
+      const URL = `${import.meta.env.VITE_BASE_URL}/auth/login`
       try {
         const res = await axios.post(URL, {
           username: temp_username,
@@ -52,7 +52,7 @@ export const useAuthStore = defineStore<
       }
     },
     async register(temp_username: string, password: string, confirmPassword: string) {
-      const URL = 'http://localhost:3000/register'
+      const URL = `${import.meta.env.VITE_BASE_URL}/auth/register`
       try {
         const res = await axios.post(URL, {
           username: temp_username,
@@ -75,7 +75,7 @@ export const useAuthStore = defineStore<
       }
     },
     async logout() {
-      await router.push('/login')
+      await router.push('/auth/login')
       localStorage.removeItem('auth')
       localStorage.removeItem('token')
     }

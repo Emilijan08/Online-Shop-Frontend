@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-
 import { useAuthStore } from '../stores/AuthStore'
 
 const store = useAuthStore()
@@ -10,14 +9,12 @@ let username = ref('')
 let password = ref('')
 let confirmPassword = ref('')
 
-const arePasswordsEqual = () => {
+const arePasswordsEqual = (): boolean => {
   if (password.value === confirmPassword.value) {
     console.log('Passwords are equal')
-
     return true
   } else {
     console.log('Passwords are not equal')
-
     return false
   }
 }
@@ -31,7 +28,6 @@ const arePasswordsEqual = () => {
       class="flex flex-col justify-center items-center panel shadow-xl w-full sm:w-3/4 md:w-4/6 lg:w-1/2 p-12 md:p-24"
     >
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <!---bg-green-->
         <img
           class="mx-auto h-10 w-auto"
           src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
@@ -41,14 +37,10 @@ const arePasswordsEqual = () => {
           Register your account
         </h2>
       </div>
-      <!---bg-black---->
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <!---bg-red--->
         <form
           class="space-y-6"
-          action="#"
-          method="POST"
-          @submit.prevent="store.register(username, password, confirmPassword, arePasswordsEqual)"
+          @submit.prevent="store.register(username, password, confirmPassword)"
         >
           <div>
             <label for="register-username" class="block text-sm font-medium leading-6 text-gray-900"
@@ -93,14 +85,14 @@ const arePasswordsEqual = () => {
             </div>
             <div class="mt-7">
               <label
-                for="register-confirmpassword"
+                for="register-confirmPassword"
                 class="block text-sm font-medium leading-6 text-gray-900"
                 >Confirm Password</label
               >
 
               <input
                 id="register-confirmPassword"
-                name="confirmpassword"
+                name="confirmPassword"
                 type="password"
                 v-model="confirmPassword"
                 autocomplete="current-password"
@@ -123,7 +115,7 @@ const arePasswordsEqual = () => {
 
       <p class="mt-10 text-center text-sm text-gray-500">
         Already have an account?
-        <RouterLink to="/login">
+        <RouterLink to="/auth/login">
           <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Sign in here</a>
         </RouterLink>
       </p>
@@ -134,18 +126,16 @@ const arePasswordsEqual = () => {
 <style scoped>
 .background {
   background-image: url('https://images.pexels.com/photos/1036808/pexels-photo-1036808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-  background-size: cover; /* Bild wird proportioniert skaliert, um den gesamten sichtbaren Bereich des Bildschirms zu bedecken */
-  background-position: center; /* Bild wird zentriert positioniert */
+  background-size: cover;
+  background-position: center;
   width: 100%;
   height: 100%;
 }
 
 .panel {
   background-color: rgb(255 255 255);
-  border-radius: 0.75rem /* 12px */;
-
-  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-    /* Add the shadow here */ 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  border-radius: 0.75rem;
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color),
     0 8px 10px -6px var(--tw-shadow-color);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),

@@ -1,4 +1,4 @@
-import type { CommentType } from './comment'
+import type { CommentType } from './Comment'
 
 export type ProductType = {
   _id: string
@@ -8,5 +8,6 @@ export type ProductType = {
   brandName: string
   gender: string
   type: string
+  quantity: number
   comments: CommentType[]
 }

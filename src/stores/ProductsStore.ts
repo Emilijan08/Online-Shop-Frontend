@@ -38,7 +38,7 @@ export const useProductStore = defineStore<
   }),
   actions: {
     async getProducts() {
-      const URL = 'http://localhost:3000/products'
+      const URL = `${import.meta.env.VITE_BASE_URL}/products`
       this.loading = true
       const response = await axios.get(URL)
       this.products = await response.data
@@ -53,7 +53,7 @@ export const useProductStore = defineStore<
     },
     async addComment(_productId: string, _comment: string, _username: string) {
       try {
-        const URL = `http://localhost:3000/products/${_productId}/comments`
+        const URL = `${import.meta.env.VITE_BASE_URL}/products/${_productId}/comments`
         const response = await axios.post(URL, {
           text: _comment,
           user: _username
@@ -64,7 +64,7 @@ export const useProductStore = defineStore<
       }
     },
     async getComments(productId: string) {
-      const URL = `http://localhost:3000/products/${productId}/comments`
+      const URL = `${import.meta.env.VITE_BASE_URL}/products/${productId}/comments`
       const response = await axios.get(URL)
       this.comments = await response.data.comments
       console.log(this.comments)
