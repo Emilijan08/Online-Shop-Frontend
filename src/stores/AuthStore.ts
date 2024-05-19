@@ -1,21 +1,34 @@
+import type { UserType } from '@/types/User'
 import axios from 'axios'
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
 import router from '../router'
 
-export const useAuthStore = defineStore('auth', {
-  state: () => ({
+interface AuthState {
+  error: boolean
+  message: string
+  token: string
+  user: Partial<UserType>
+}
+
+export const useAuthStore = defineStore<
+  'auth',
+  AuthState,
+  {},
+  {
+    login: (temp_username: string, password: string) => Promise<void>
+    register: (temp_username: string, password: string, confirmPassword: string) => Promise<void>
+    logout: () => Promise<void>
+  }
+>('auth', {
+  state: (): AuthState => ({
     error: false,
-    message: ref(''),
+    message: '',
     token: '',
     user: {
       username: '',
       role: ''
     }
   }),
-  persist: {
-    paths: ['token', 'user.username', 'user.role']
-  },
   actions: {
     async login(temp_username: string, password: string) {
       const URL = 'http://localhost:3000/login'

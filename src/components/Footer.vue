@@ -88,7 +88,7 @@ const footerNavigation = {
                 id="email-address"
                 type="text"
                 autocomplete="email"
-                required=""
+                required
                 class="w-full min-w-0 appearance-none rounded-md border border-gray-300 bg-white px-4 py-2 text-base text-gray-900 placeholder-gray-500 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500"
               />
               <div class="ml-4 flex-shrink-0">
