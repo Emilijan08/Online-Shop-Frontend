@@ -10,28 +10,26 @@ import {
 } from '@headlessui/vue'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { useAuthStore } from '../stores/AuthStore'
 import { useProductStore } from '../stores/ProductsStore'
 
 const auth = useAuthStore()
 const store = useProductStore()
+const route = useRoute()
 
 const cartItem = computed(() => {
   return store.productsOnCart.length > 0 ? true : false
 })
 
-let mobileMenu = ref(false),
+let mobileMenu = ref(false)
 
-<div class="checkpathsfunction">
-
-methods: {
-    getClass(path) {
-      return this.$route.path === path
-        ? 'border-b-2 border-indigo-500 text-gray-900'
-        : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700';
-    }
-  }
-</div>
+// Define your method
+function getClass (path) {
+  return route.path === path
+    ? 'border-b-2 border-indigo-500 text-gray-900'
+    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+}
 </script>
 
 <template>
