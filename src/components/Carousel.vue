@@ -1,12 +1,25 @@
-<script setup>
+<script setup lang="ts">
+import type { ImageType } from '@/types/Image'
 import Splide from '@splidejs/splide'
 import '@splidejs/splide/css/skyblue'
 import { onMounted } from 'vue'
 
-const images = [
-  'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80',
-  'https://media.istockphoto.com/id/1337191336/photo/black-fashion-sport-shoe-on-white-background.jpg?b=1&s=170667a&w=0&k=20&c=DAsn_Qj_gjJ42BDr33CU10QO3ckCMD93KFyuP7qrvN8=',
-  'https://media.istockphoto.com/id/1320501530/photo/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?b=1&s=170667a&w=0&k=20&c=-iiKNaFkLHe1WClYWJa7d7wR85HEhEpA2tsRYknnX4E='
+const images: ImageType[] = [
+  {
+    id: '1',
+    src: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80',
+    alt: 'Shoe 1'
+  },
+  {
+    id: '2',
+    src: 'https://media.istockphoto.com/id/1337191336/photo/black-fashion-sport-shoe-on-white-background.jpg?b=1&s=170667a&w=0&k=20&c=DAsn_Qj_gjJ42BDr33CU10QO3ckCMD93KFyuP7qrvN8=',
+    alt: 'Shoe 2'
+  },
+  {
+    id: '3',
+    src: 'https://media.istockphoto.com/id/1320501530/photo/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?b=1&s=170667a&w=0&k=20&c=-iiKNaFkLHe1WClYWJa7d7wR85HEhEpA2tsRYknnX4E=',
+    alt: 'Shoe 3'
+  }
 ]
 
 onMounted(() => {
@@ -40,19 +53,14 @@ onMounted(() => {
         <div class="splide w-full md:w-1/3">
           <div class="splide__track">
             <div class="splide__list">
-              <div
-                v-for="image in images"
-                :key="image.id"
-                class="splide__slide"
-              >
-                <img class="object-cover" :src="image" :alt="image.alt" />
+              <div v-for="image in images" :key="image.id" class="splide__slide">
+                <img class="object-cover" :src="image.src" :alt="image.alt" />
               </div>
             </div>
           </div>
           <h1 class="text-4xl font-bold mb-6">Find your perfect shoes here</h1>
           <p class="text-lg mb-10">
-            Discover our latest collection of shoes that combines comfort and
-            style
+            Discover our latest collection of shoes that combines comfort and style
           </p>
           <a
             href="#"

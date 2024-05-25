@@ -1,48 +1,47 @@
-<script setup>
-import axios from "axios";
-import { onMounted, ref } from "vue";
-import { useRoute } from "vue-router";
-import Navbar from "../components/Navbar.vue";
-import { useAuthStore } from "../stores/AuthStore";
-import { useProductStore } from "../stores/ProductsStore";
+<script setup lang="ts">
+import axios from 'axios'
+import { computed, onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import Navbar from '../components/Navbar.vue'
+import { useAuthStore } from '../stores/AuthStore'
+import { useProductStore } from '../stores/ProductsStore'
 
-let addProduct = ref(false);
-let comment = ref("");
+let addProduct = ref(false)
+let comment = ref('')
 
-const store = useProductStore();
-const route = useRoute();
+const store = useProductStore()
+const route = useRoute()
 
-const productId = route.params.productId;
-const selectedProduct = store.products.filter(
-  (element) => element._id === productId,
-);
+const productId = route.params.productId as string
+const selectedProduct = computed(() => store.products.find((element) => element._id === productId))
 
-console.log(productId);
-store.getComments(productId);
-const authStore = useAuthStore();
+console.log(productId)
+store.getComments(productId)
+const authStore = useAuthStore()
+
 async function addComment() {
   try {
-    const URL = `http://localhost:3000/products/${productId}/comments`;
+    const URL = `${import.meta.env.VITE_BASE_URL}/products/${productId}/comments`
     const response = await axios.post(URL, {
-      comment: comment.value,
-      username: authStore.user.username,
-    });
+      text: comment.value,
+      user: authStore.user.username
+    })
 
-    console.log(response);
+    console.log(response)
   } catch (err) {
-    console.log(err);
+    console.log(err)
   } finally {
-    comment.value = "";
-    await store.getComments(productId);
+    comment.value = ''
+    await store.getComments(productId)
   }
 }
 
 onMounted(() => {
   window.scrollTo({
     top: 0,
-    behavior: "smooth", // This enables smooth scrolling
-  });
-});
+    behavior: 'smooth'
+  })
+})
 </script>
 <template v-if="selectedProduct">
   <div>
@@ -52,7 +51,7 @@ onMounted(() => {
         <!-- Shoe Image -->
         <div class="lg:w-1/2">
           <img
-            :src="selectedProduct[0].productImage"
+            :src="selectedProduct?.productImage"
             alt="Shoe"
             class="w-full h-auto object-contain"
           />
@@ -61,7 +60,7 @@ onMounted(() => {
         <!-- Shoe Details -->
         <div class="lg:w-1/2 lg:pl-8">
           <h1 class="text-2xl font-bold mb-4">
-            {{ selectedProduct[0].productName }}
+            {{ selectedProduct?.productName }}
           </h1>
 
           <!-- Size Selector -->
@@ -78,15 +77,10 @@ onMounted(() => {
             </select>
           </div>
 
-          <!-- Color -->
-
-          <p class="text-gray-600 mb-4">${{ selectedProduct[0].price }}</p>
+          <p class="text-gray-600 mb-4">${{ selectedProduct?.price }}</p>
 
           <a
-            @click="
-              store.addToCart(selectedProduct[0]._id),
-                (addProduct = !addProduct)
-            "
+            @click="store.addToCart(selectedProduct?._id!), (addProduct = !addProduct)"
             :class="addProduct ? 'bg-green-600 disabled-link' : ''"
             class="cursor-pointer flex items-center justify-center md:w-[412px] rounded-md bg-gray-900 px-5 py-2.5 text-center text-sm font-medium text-white focus:outline-none focus:ring-4 focus:ring-blue-300"
           >
@@ -105,7 +99,7 @@ onMounted(() => {
               />
             </svg>
 
-            {{ addProduct ? "Added to Cart!" : "Add to Cart" }}</a
+            {{ addProduct ? 'Added to Cart!' : 'Add to Cart' }}</a
           >
         </div>
       </div>
@@ -118,16 +112,10 @@ onMounted(() => {
 
           <!-- Add Comment Form -->
           <form class="mt-4" @submit.prevent="addComment">
-            <div
-              v-for="comment in store.comments"
-              :key="comment.id"
-              class="mb-4"
-            >
+            <div v-for="comment in store.comments" :key="comment.id" class="mb-4">
               <h3 class="text-lg font-medium">{{ comment.user }}</h3>
               <p class="text-gray-600 mb-2">{{ comment.text }}</p>
-              <p class="text-gray-500 text-sm">
-                Posted on {{ comment.createdAt }}
-              </p>
+              <p class="text-gray-500 text-sm">Posted on {{ comment.createdAt }}</p>
             </div>
             <h3 class="text-lg font-medium mb-2">Leave a Comment</h3>
             <textarea

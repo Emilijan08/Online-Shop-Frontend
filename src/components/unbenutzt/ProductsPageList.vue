@@ -1,47 +1,38 @@
-<script setup>
+<script setup lang="ts">
+import { useAuthStore } from '@/stores/AuthStore'
+import { useProductStore } from '@/stores/ProductsStore'
+import type { ProductType } from '@/types/Product'
 import { computed } from 'vue'
-import { useAuthStore } from '../../stores/AuthStore'
-import { useProductStore } from '../../stores/ProductsStore'
 import Product from '../ProductDetails.vue'
 
 const store = useProductStore()
 const userStore = useAuthStore()
 
 const username = userStore.user.username
-const filteredProducts = computed(() => {
+const filteredProducts = computed<ProductType[]>(() => {
   let products = store.products
 
   if (store.selectedBrand && store.selectedBrand !== 'All') {
-    products = products.filter(
-      product => product.brandName === store.selectedBrand
-    )
+    products = products.filter((product) => product.brandName === store.selectedBrand)
   }
 
   if (store.selectedGender && store.selectedGender !== 'All') {
-    products = products.filter(
-      product => product.gender === store.selectedGender
-    )
+    products = products.filter((product) => product.gender === store.selectedGender)
   }
   if (store.selectedType && store.selectedType !== 'All') {
-    products = products.filter(product => product.type === store.selectedType)
+    products = products.filter((product) => product.type === store.selectedType)
   }
   if (store.selectedPrice && store.selectedPrice !== 'All') {
     let price = store.selectedPrice
     switch (price) {
       case '0-50':
-        products = products.filter(
-          product => product.price >= 0 && product.price <= 50
-        )
+        products = products.filter((product) => product.price >= 0 && product.price <= 50)
         break
       case '50-100':
-        products = products.filter(
-          product => product.price >= 50 && product.price <= 100
-        )
+        products = products.filter((product) => product.price >= 50 && product.price <= 100)
         break
       case '100-150':
-        products = products.filter(
-          product => product.price >= 100 && product.price <= 150
-        )
+        products = products.filter((product) => product.price >= 100 && product.price <= 150)
         break
       default:
         break
@@ -65,9 +56,7 @@ const filteredProducts = computed(() => {
           :productImg="product.productImage"
           :id="product._id"
         ></Product>
-        <h1 v-show="filteredProducts.length === 0">
-          There are no products in this category..
-        </h1>
+        <h1 v-show="filteredProducts.length === 0">There are no products in this category..</h1>
       </div>
     </div>
   </section>

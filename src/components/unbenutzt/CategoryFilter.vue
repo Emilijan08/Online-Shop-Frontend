@@ -1,17 +1,3 @@
-<!--
-  This example requires some changes to your config:
-  
-  ```
-  // tailwind.config.js
-  module.exports = {
-    // ...
-    plugins: [
-      // ...
-      require('@tailwindcss/forms'),
-    ],
-  }
-  ```
--->
 <template>
   <div class="bg-gray-50">
     <!-- Mobile filter dialog -->
@@ -67,15 +53,10 @@
                     <DisclosureButton
                       class="flex w-full items-center justify-between bg-white px-2 py-3 text-sm text-gray-400"
                     >
-                      <span class="font-medium text-gray-900">{{
-                        section.name
-                      }}</span>
+                      <span class="font-medium text-gray-900">{{ section.name }}</span>
                       <span class="ml-6 flex items-center">
                         <ChevronDownIcon
-                          :class="[
-                            open ? '-rotate-180' : 'rotate-0',
-                            'h-5 w-5 transform'
-                          ]"
+                          :class="[open ? '-rotate-180' : 'rotate-0', 'h-5 w-5 transform']"
                           aria-hidden="true"
                         />
                       </span>
@@ -111,22 +92,15 @@
       </Dialog>
     </TransitionRoot>
 
-    <div
-      class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8"
-    >
+    <div class="mx-auto max-w-3xl px-4 text-center sm:px-6 lg:max-w-7xl lg:px-8">
       <div class="py-24">
-        <h1 class="text-4xl font-bold tracking-tight text-gray-900">
-          New Arrivals
-        </h1>
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900">New Arrivals</h1>
         <p class="mx-auto mt-4 max-w-3xl text-base text-gray-500">
           Thoughtfully designed objects for the workspace, home, and travel.
         </p>
       </div>
 
-      <section
-        aria-labelledby="filter-heading"
-        class="border-t border-gray-200 py-6"
-      >
+      <section aria-labelledby="filter-heading" class="border-t border-gray-200 py-6">
         <h2 id="filter-heading" class="sr-only">Product filters</h2>
 
         <div class="flex items-center justify-between">
@@ -155,11 +129,7 @@
                 class="absolute left-0 z-10 mt-2 w-40 origin-top-left rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
                 <div class="py-1">
-                  <MenuItem
-                    v-for="option in sortOptions"
-                    :key="option"
-                    v-slot="{ active }"
-                  >
+                  <MenuItem v-for="option in sortOptions" :key="option.name" v-slot="{ active }">
                     <a
                       :href="option.href"
                       :class="[
@@ -248,7 +218,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {
   Dialog,
   DialogPanel,

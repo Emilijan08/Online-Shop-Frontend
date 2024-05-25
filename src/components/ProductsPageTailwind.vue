@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {
   Dialog,
   DialogPanel,
@@ -21,16 +21,13 @@ const navigation = {
         {
           name: 'New Arrivals',
           href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
-          imageAlt:
-            'Models sitting back to back, wearing Basic Tee in black and bone.'
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-01.jpg',
+          imageAlt: 'Models sitting back to back, wearing Basic Tee in black and bone.'
         },
         {
           name: 'Basic Tees',
           href: '#',
-          imageSrc:
-            'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
+          imageSrc: 'https://tailwindui.com/img/ecommerce-images/mega-menu-category-02.jpg',
           imageAlt:
             'Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.'
         }
@@ -85,8 +82,7 @@ const navigation = {
           href: '#',
           imageSrc:
             'https://tailwindui.com/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg',
-          imageAlt:
-            'Drawstring top with elastic loop closure and textured interior padding.'
+          imageAlt: 'Drawstring top with elastic loop closure and textured interior padding.'
         },
         {
           name: 'Artwork Tees',
@@ -188,8 +184,7 @@ const products = [
     description:
       'Get the full lineup of our Basic Tees. Have a fresh shirt all week, and an extra for laundry day.',
     options: '8 colors',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-01.jpg',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-01.jpg',
     imageAlt:
       'Eight shirts arranged on table in black, olive, grey, blue, white, red, mustard, and green.'
   },
@@ -198,14 +193,11 @@ const products = [
     name: 'Basic Tee',
     href: '#',
     price: '$32',
-    description:
-      'Look like a visionary CEO and wear the same black t-shirt every day.',
+    description: 'Look like a visionary CEO and wear the same black t-shirt every day.',
     options: 'Black',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-02.jpg',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/category-page-02-image-card-02.jpg',
     imageAlt: 'Front of plain black t-shirt.'
   }
-  // More products...
 ]
 
 const mobileMenuOpen = ref(false)
@@ -217,11 +209,7 @@ const mobileFiltersOpen = ref(false)
     <div>
       <!-- Mobile filter dialog -->
       <TransitionRoot as="template" :show="mobileFiltersOpen">
-        <Dialog
-          as="div"
-          class="relative z-40 lg:hidden"
-          @close="mobileFiltersOpen = false"
-        >
+        <Dialog as="div" class="relative z-40 lg:hidden" @close="mobileFiltersOpen = false">
           <TransitionChild
             as="template"
             enter="transition-opacity ease-linear duration-300"
@@ -274,15 +262,10 @@ const mobileFiltersOpen = ref(false)
                         <DisclosureButton
                           class="flex w-full items-center justify-between p-2 text-gray-400 hover:text-gray-500"
                         >
-                          <span class="text-sm font-medium text-gray-900">{{
-                            section.name
-                          }}</span>
+                          <span class="text-sm font-medium text-gray-900">{{ section.name }}</span>
                           <span class="ml-6 flex h-7 items-center">
                             <ChevronDownIcon
-                              :class="[
-                                open ? '-rotate-180' : 'rotate-0',
-                                'h-5 w-5 transform'
-                              ]"
+                              :class="[open ? '-rotate-180' : 'rotate-0', 'h-5 w-5 transform']"
                               aria-hidden="true"
                             />
                           </span>
@@ -321,18 +304,13 @@ const mobileFiltersOpen = ref(false)
 
       <main class="mx-auto max-w-2xl px-4 lg:max-w-7xl lg:px-8">
         <div class="border-b border-gray-200 pb-10 pt-24">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900">
-            New Arrivals
-          </h1>
+          <h1 class="text-4xl font-bold tracking-tight text-gray-900">New Arrivals</h1>
           <p class="mt-4 text-base text-gray-500">
-            Checkout out the latest release of Basic Tees, new and improved with
-            four openings!
+            Checkout out the latest release of Basic Tees, new and improved with four openings!
           </p>
         </div>
 
-        <div
-          class="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4"
-        >
+        <div class="pb-24 pt-12 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:grid-cols-4">
           <aside>
             <h2 class="sr-only">Filters</h2>
 
@@ -342,10 +320,7 @@ const mobileFiltersOpen = ref(false)
               @click="mobileFiltersOpen = true"
             >
               <span class="text-sm font-medium text-gray-700">Filters</span>
-              <PlusIcon
-                class="ml-1 h-5 w-5 flex-shrink-0 text-gray-400"
-                aria-hidden="true"
-              />
+              <PlusIcon class="ml-1 h-5 w-5 flex-shrink-0 text-gray-400" aria-hidden="true" />
             </button>
 
             <div class="hidden lg:block">

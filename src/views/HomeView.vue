@@ -1,7 +1,7 @@
-<script setup>
-import Carousel from "../components/Carousel.vue";
-import ProductCategories from "../components/ProductCategories.vue";
-import ProductsPageTailwind from "../components/ProductsPageTailwind.vue";
+<script setup lang="ts">
+import Carousel from '../components/Carousel.vue'
+import ProductCategories from '../components/ProductCategories.vue'
+import ProductsPageTailwind from '../components/ProductsPageTailwind.vue'
 </script>
 
 <template>

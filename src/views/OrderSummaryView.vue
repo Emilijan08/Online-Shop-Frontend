@@ -10,9 +10,7 @@
   -->
 
     <main class="relative lg:min-h-full">
-      <div
-        class="h-80 overflow-hidden lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-12"
-      >
+      <div class="h-80 overflow-hidden lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-12">
         <img
           src="https://tailwindui.com/img/ecommerce-images/confirmation-page-06-hero.jpg"
           alt="TODO"
@@ -25,17 +23,13 @@
           class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8 lg:py-32 xl:gap-x-24"
         >
           <div class="lg:col-start-2">
-            <h1 class="text-sm font-medium text-indigo-600">
-              Payment successful
-            </h1>
-            <p
-              class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl"
-            >
+            <h1 class="text-sm font-medium text-indigo-600">Payment successful</h1>
+            <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
               Thanks for ordering
             </p>
             <p class="mt-2 text-base text-gray-500">
-              We appreciate your order, we’re currently processing it. So hang
-              tight and we’ll send you confirmation very soon!
+              We appreciate your order, we’re currently processing it. So hang tight and we’ll send
+              you confirmation very soon!
             </p>
 
             <dl class="mt-16 text-sm font-medium">
@@ -47,11 +41,7 @@
               role="list"
               class="mt-6 divide-y divide-gray-200 border-t border-gray-200 text-sm font-medium text-gray-500"
             >
-              <li
-                v-for="product in products"
-                :key="product.id"
-                class="flex space-x-6 py-6"
-              >
+              <li v-for="product in products" :key="product.id" class="flex space-x-6 py-6">
                 <img
                   :src="product.imageSrc"
                   :alt="product.imageAlt"
@@ -70,9 +60,7 @@
               </li>
             </ul>
 
-            <dl
-              class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500"
-            >
+            <dl class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500">
               <div class="flex justify-between">
                 <dt>Subtotal</dt>
                 <dd class="text-gray-900">$72.00</dd>
@@ -135,10 +123,7 @@
             </dl>
 
             <div class="mt-16 border-t border-gray-200 py-6 text-right">
-              <a
-                href="#"
-                class="text-sm font-medium text-indigo-600 hover:text-indigo-500"
-              >
+              <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                 Continue Shopping
                 <span aria-hidden="true"> &rarr;</span>
               </a>
@@ -150,19 +135,17 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const products = [
   {
     id: 1,
-    name: "Basic Tee",
-    href: "#",
-    price: "$36.00",
-    color: "Charcoal",
-    size: "L",
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/confirmation-page-06-product-01.jpg",
-    imageAlt: "Model wearing men's charcoal basic tee in large.",
-  },
-  // More products...
-];
+    name: 'Basic Tee',
+    href: '#',
+    price: '$36.00',
+    color: 'Charcoal',
+    size: 'L',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/confirmation-page-06-product-01.jpg',
+    imageAlt: "Model wearing men's charcoal basic tee in large."
+  }
+]
 </script>

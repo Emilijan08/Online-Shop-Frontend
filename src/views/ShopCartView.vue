@@ -1,41 +1,42 @@
-<script setup>
-import { ref } from "vue";
-import Navbar from "../components/Navbar.vue";
-import { useProductStore } from "../stores/ProductsStore";
+<script setup lang="ts">
+import { ref } from 'vue'
+import Navbar from '../components/Navbar.vue'
+import { useProductStore } from '../stores/ProductsStore'
 
-const store = useProductStore();
+const store = useProductStore()
 
-let total = ref(0);
-let checkout = ref(false);
+let total = ref(0)
+let checkout = ref(false)
 
 for (let i = 0; i < store.productsOnCart.length; i++) {
-  store.productsOnCart[i].quantity = 1;
+  store.productsOnCart[i].quantity = 1
 }
 
-async function increase(id) {
-  const item = store.productsOnCart.find((element) => element._id === id);
-  item.quantity++;
-  const price = await item.price;
-  total.value += await price;
+async function increase(id: string) {
+  const item = store.productsOnCart.find((element) => element._id === id)
+  if (item) {
+    item.quantity++
+    total.value += item.price
+  }
 }
-async function removeItem(id) {
-  store.productsOnCart = store.productsOnCart.filter(
-    (product) => product._id != id,
-  );
+
+async function removeItem(id: string) {
+  store.productsOnCart = store.productsOnCart.filter((product) => product._id != id)
 }
-async function decrease(id) {
-  const item = store.productsOnCart.find((element) => element._id === id);
-  if (item.quantity > 1) {
-    item.quantity--;
-    const price = await item.price;
-    total.value -= await price;
+
+async function decrease(id: string) {
+  const item = store.productsOnCart.find((element) => element._id === id)
+  if (item && item.quantity > 1) {
+    item.quantity--
+    total.value -= item.price
   }
 }
 
 store.productsOnCart.forEach((element) => {
-  total.value += element.price;
-});
+  total.value += element.price
+})
 </script>
+
 <template>
   <div>
     <Navbar></Navbar>
@@ -44,9 +45,7 @@ store.productsOnCart.forEach((element) => {
         <div class="w-full lg:w-2/3">
           <div class="flex flex-col mt-8">
             <div class="flex-1">
-              <h2 class="text-lg font-medium leading-6 text-gray-900">
-                Shopping Cart
-              </h2>
+              <h2 class="text-lg font-medium leading-6 text-gray-900">Shopping Cart</h2>
             </div>
             <div class="flex-1 mt-4">
               <div class="overflow-x-auto">
@@ -83,10 +82,7 @@ store.productsOnCart.forEach((element) => {
                     </tr>
                   </thead>
                   <tbody class="bg-white divide-y divide-gray-200">
-                    <tr
-                      v-for="(product, index) in store.productsOnCart"
-                      :key="index"
-                    >
+                    <tr v-for="(product, index) in store.productsOnCart" :key="index">
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
                           <div class="flex-shrink-0 w-10 h-10">
@@ -118,25 +114,17 @@ store.productsOnCart.forEach((element) => {
                             @click="decrease(product._id)"
                             aria-label="Decrease quantity"
                           >
-                            <svg
-                              class="w-4 h-4 fill-current"
-                              viewBox="0 0 20 20"
-                            >
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
                               <path d="M5 10h10v1H5z"></path>
                             </svg>
                           </button>
-                          <span class="text-gray-700">{{
-                            product.quantity
-                          }}</span>
+                          <span class="text-gray-700">{{ product.quantity }}</span>
                           <button
                             class="text-gray-500 hover:text-gray-700"
                             @click="increase(product._id)"
                             aria-label="Increase quantity"
                           >
-                            <svg
-                              class="w-4 h-4 fill-current"
-                              viewBox="0 0 20 20"
-                            >
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 20 20">
                               <path d="M10 5v10h1V5z"></path>
                               <path d="M5 10h10v1H5z"></path>
                             </svg>
@@ -145,11 +133,7 @@ store.productsOnCart.forEach((element) => {
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
                         <div class="text-sm text-gray-900">
-                          ${{
-                            Math.round(
-                              product.quantity * product.price * 1e12,
-                            ) / 1e12
-                          }}
+                          ${{ Math.round(product.quantity * product.price * 1e12) / 1e12 }}
                         </div>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap">
@@ -166,7 +150,6 @@ store.productsOnCart.forEach((element) => {
                         </button>
                       </td>
                     </tr>
-                    <!-- More items... -->
                   </tbody>
                 </table>
               </div>
@@ -177,22 +160,16 @@ store.productsOnCart.forEach((element) => {
           <div class="bg-white p-4 rounded-md shadow-md">
             <h3 class="text-lg font-medium leading-6 text-gray-900">Summary</h3>
             <div class="mt-4">
-              <div
-                class="flex justify-between text-sm font-medium text-gray-600"
-              >
+              <div class="flex justify-between text-sm font-medium text-gray-600">
                 <span>Subtotal:</span>
                 <span>${{ Math.round(total * 1e11) / 1e11 }}</span>
               </div>
-              <div
-                class="flex justify-between mt-2 text-sm font-medium text-gray-600"
-              >
+              <div class="flex justify-between mt-2 text-sm font-medium text-gray-600">
                 <span>Shipping:</span>
                 <span>$0.00</span>
               </div>
               <hr class="mt-2 mb-4" />
-              <div
-                class="flex justify-between text-lg font-medium text-gray-900"
-              >
+              <div class="flex justify-between text-lg font-medium text-gray-900">
                 <span>Total:</span>
                 <span>${{ Math.round(total * 1e11) / 1e11 }}</span>
               </div>
@@ -207,21 +184,13 @@ store.productsOnCart.forEach((element) => {
         </div>
       </div>
     </div>
-    <div
-      :class="checkout ? 'scale-100' : ''"
-      class="fixed scale-0 z-10 inset-0 overflow-y-auto"
-    >
-      <div
-        class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center"
-      >
-        <!-- Overlay background -->
+    <div :class="checkout ? 'scale-100' : ''" class="fixed scale-0 z-10 inset-0 overflow-y-auto">
+      <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75"></div>
-        <!-- Modal content -->
         <div
           :class="checkout ? 'scale-100' : ''"
           class="transform scale-0 transition-transform duration-300 relative z-10 w-full max-w-md p-6 bg-white rounded-lg shadow-lg"
         >
-          <!-- Icon -->
           <div
             class="flex items-center justify-center w-12 h-12 mx-auto mb-4 text-green-500 bg-green-100 rounded-full"
           >
@@ -231,16 +200,12 @@ store.productsOnCart.forEach((element) => {
               ></path>
             </svg>
           </div>
-          <!-- Message -->
           <p class="text-lg font-medium text-gray-800">Payment successful!</p>
-          <!-- Button -->
           <div class="mt-6">
             <button
               class="px-4 py-2 text-sm font-medium text-white bg-green-500 rounded hover:bg-green-600 focus:outline-none focus:ring focus:ring-green-500"
             >
-              <RouterLink @click="store.clearCart" to="/"
-                >Go Back to shopping</RouterLink
-              >
+              <RouterLink @click="store.clearCart" to="/">Go Back to shopping</RouterLink>
             </button>
           </div>
         </div>

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import {
   Disclosure,
   DisclosureButton,
@@ -10,28 +10,18 @@ import {
 } from '@headlessui/vue'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
 import { useAuthStore } from '../stores/AuthStore'
 import { useProductStore } from '../stores/ProductsStore'
 
 const auth = useAuthStore()
 const store = useProductStore()
-const route = useRoute()
 
 const cartItem = computed(() => {
   return store.productsOnCart.length > 0 ? true : false
 })
 
 let mobileMenu = ref(false)
-
-// Define your method
-function getClass (path) {
-  return route.path === path
-    ? 'border-b-2 border-indigo-500 text-gray-900'
-    : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
-}
 </script>
-
 <template>
   <Disclosure as="nav" class="bg-white shadow" v-slot="{ open }">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -46,44 +36,25 @@ function getClass (path) {
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
             <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-            <router-link
-              class="border-b-2 border-indigo-500 inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900"
-              :to="{ path: '/home' }"
-              :class="getClass('/home')"
+            <a
+              href="#"
+              class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
+              >Dashboard</a
             >
-              Home</router-link
+            <a
+              href="#"
+              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+              >Team</a
             >
-
-            <router-link
-              :to="{ path: '/about-us' }"
+            <a
+              href="#"
               class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              :class="getClass('/aboutus')"
-              >About us</router-link
+              >Projects</a
             >
-            <router-link
-              :to="{ path: '/wishlist' }"
-              :class="getClass('/wishlist')"
+            <a
+              href="#"
               class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-6 h-6"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
-                />
-              </svg>
-            </router-link>
-            <router-link
-              :to="{ path: '/faq' }"
-              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              :class="getClass('/faq')"
-              >FAQ</router-link
+              >Calendar</a
             >
           </div>
         </div>
@@ -126,30 +97,21 @@ function getClass (path) {
                 <MenuItem v-slot="{ active }">
                   <a
                     href="#"
-                    :class="[
-                      active ? 'bg-gray-100' : '',
-                      'block px-4 py-2 text-sm text-gray-700'
-                    ]"
+                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
                     >Your Profile</a
                   >
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <a
                     href="#"
-                    :class="[
-                      active ? 'bg-gray-100' : '',
-                      'block px-4 py-2 text-sm text-gray-700'
-                    ]"
+                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
                     >Settings</a
                   >
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
                   <a
                     href="#"
-                    :class="[
-                      active ? 'bg-gray-100' : '',
-                      'block px-4 py-2 text-sm text-gray-700'
-                    ]"
+                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
                     >Sign out</a
                   >
                 </MenuItem>

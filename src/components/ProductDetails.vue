@@ -1,15 +1,11 @@
 <template>
   <div class="bg-white">
-    <div
-      class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8"
-    >
+    <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
       <div class="lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8">
         <!-- Image gallery -->
         <TabGroup as="div" class="flex flex-col-reverse">
           <!-- Image selector -->
-          <div
-            class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none"
-          >
+          <div class="mx-auto mt-6 hidden w-full max-w-2xl sm:block lg:max-w-none">
             <TabList class="grid grid-cols-4 gap-6">
               <Tab
                 v-for="image in product.images"
@@ -19,11 +15,7 @@
               >
                 <span class="sr-only">{{ image.name }}</span>
                 <span class="absolute inset-0 overflow-hidden rounded-md">
-                  <img
-                    :src="image.src"
-                    alt=""
-                    class="h-full w-full object-cover object-center"
-                  />
+                  <img :src="image.src" alt="" class="h-full w-full object-cover object-center" />
                 </span>
                 <span
                   :class="[
@@ -69,9 +61,7 @@
                   v-for="rating in [0, 1, 2, 3, 4]"
                   :key="rating"
                   :class="[
-                    product.rating > rating
-                      ? 'text-indigo-500'
-                      : 'text-gray-300',
+                    product.rating > rating ? 'text-indigo-500' : 'text-gray-300',
                     'h-5 w-5 flex-shrink-0'
                   ]"
                   aria-hidden="true"
@@ -84,10 +74,7 @@
           <div class="mt-6">
             <h3 class="sr-only">Description</h3>
 
-            <div
-              class="space-y-6 text-base text-gray-700"
-              v-html="product.description"
-            />
+            <div class="space-y-6 text-base text-gray-700" v-html="product.description" />
           </div>
 
           <form class="mt-6">
@@ -96,9 +83,7 @@
               <h3 class="text-sm text-gray-600">Color</h3>
 
               <RadioGroup v-model="selectedColor" class="mt-2">
-                <RadioGroupLabel class="sr-only"
-                  >Choose a color</RadioGroupLabel
-                >
+                <RadioGroupLabel class="sr-only">Choose a color</RadioGroupLabel>
                 <span class="flex items-center space-x-3">
                   <RadioGroupOption
                     as="template"
@@ -115,9 +100,7 @@
                         'relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none'
                       ]"
                     >
-                      <RadioGroupLabel as="span" class="sr-only">{{
-                        color.name
-                      }}</RadioGroupLabel>
+                      <RadioGroupLabel as="span" class="sr-only">{{ color.name }}</RadioGroupLabel>
                       <span
                         aria-hidden="true"
                         :class="[
@@ -164,10 +147,7 @@
                     class="group relative flex w-full items-center justify-between py-6 text-left"
                   >
                     <span
-                      :class="[
-                        open ? 'text-indigo-600' : 'text-gray-900',
-                        'text-sm font-medium'
-                      ]"
+                      :class="[open ? 'text-indigo-600' : 'text-gray-900', 'text-sm font-medium']"
                       >{{ detail.name }}</span
                     >
                     <span class="ml-6 flex items-center">
@@ -198,7 +178,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {
   Disclosure,
   DisclosureButton,
@@ -240,7 +220,6 @@ const product = {
       src: 'https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg',
       alt: 'Angled front view with bag zipped and handles upright.'
     }
-    // More images...
   ],
   colors: [
     {
@@ -271,7 +250,6 @@ const product = {
         'Water-resistant'
       ]
     }
-    // More sections...
   ]
 }
 const selectedColor = ref(product.colors[0])

@@ -2,9 +2,7 @@
   <div class="bg-white">
     <div class="py-16 sm:py-24 lg:mx-auto lg:max-w-7xl lg:px-8">
       <div class="flex items-center justify-between px-4 sm:px-6 lg:px-0">
-        <h2 class="text-2xl font-bold tracking-tight text-gray-900">
-          Trending products
-        </h2>
+        <h2 class="text-2xl font-bold tracking-tight text-gray-900">Trending products</h2>
         <a
           href="#"
           class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
@@ -26,9 +24,7 @@
               class="inline-flex w-64 flex-col text-center lg:w-auto"
             >
               <div class="group relative">
-                <div
-                  class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200"
-                >
+                <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200">
                   <img
                     :src="product.imageSrc"
                     :alt="product.imageAlt"
@@ -48,10 +44,7 @@
               </div>
 
               <h4 class="sr-only">Available colors</h4>
-              <ul
-                role="list"
-                class="mt-auto flex items-center justify-center space-x-3 pt-6"
-              >
+              <ul role="list" class="mt-auto flex items-center justify-center space-x-3 pt-6">
                 <li
                   v-for="color in product.availableColors"
                   :key="color.name"
@@ -67,10 +60,7 @@
       </div>
 
       <div class="mt-12 flex px-4 sm:hidden">
-        <a
-          href="#"
-          class="text-sm font-semibold text-indigo-600 hover:text-indigo-500"
-        >
+        <a href="#" class="text-sm font-semibold text-indigo-600 hover:text-indigo-500">
           See everything
           <span aria-hidden="true"> &rarr;</span>
         </a>
@@ -79,7 +69,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const products = [
   {
     id: 1,
@@ -87,16 +77,13 @@ const products = [
     color: 'Black',
     price: '$35',
     href: '#',
-    imageSrc:
-      'https://tailwindui.com/img/ecommerce-images/home-page-02-product-01.jpg',
-    imageAlt:
-      'Black machined steel pen with hexagonal grip and small white logo at top.',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-product-01.jpg',
+    imageAlt: 'Black machined steel pen with hexagonal grip and small white logo at top.',
     availableColors: [
       { name: 'Black', colorBg: '#111827' },
       { name: 'Brass', colorBg: '#FDE68A' },
       { name: 'Chrome', colorBg: '#E5E7EB' }
     ]
   }
-  // More products...
 ]
 </script>
