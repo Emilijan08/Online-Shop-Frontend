@@ -1,40 +1,40 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Navbar from '../components/Navbar.vue'
-import { useProductStore } from '../stores/ProductsStore'
-
+<script setup>
+import { ref } from 'vue';
+import Navbar from '../components/Navbar.vue';
+import { useProductStore } from '../stores/ProductsStore';
 const store = useProductStore()
-
-let total = ref(0)
+let total = ref(0);
 let checkout = ref(false)
-
 for (let i = 0; i < store.productsOnCart.length; i++) {
-  store.productsOnCart[i].quantity = 1
+  store.productsOnCart[i].quantity = 1;
 }
 
-async function increase(id: string) {
-  const item = store.productsOnCart.find((element) => element._id === id)
-  if (item) {
-    item.quantity++
-    total.value += item.price
+
+async function increase(id){
+  const item = store.productsOnCart.find(element => element._id === id)
+   item.quantity++
+   const price = await item.price
+   total.value += await price
+   
+
+  }
+  async function removeItem(id){
+    store.productsOnCart = store.productsOnCart.filter(product => product._id != id)
+  }
+  async function decrease(id){
+  const item = store.productsOnCart.find(element => element._id === id)
+  if(item.quantity > 1){
+   item.quantity--
+   const price = await item.price
+   total.value -= await price
   }
 }
 
-async function removeItem(id: string) {
-  store.productsOnCart = store.productsOnCart.filter((product) => product._id != id)
-}
-
-async function decrease(id: string) {
-  const item = store.productsOnCart.find((element) => element._id === id)
-  if (item && item.quantity > 1) {
-    item.quantity--
-    total.value -= item.price
-  }
-}
-
-store.productsOnCart.forEach((element) => {
+store.productsOnCart.forEach(element =>{
   total.value += element.price
 })
+
 </script>
 
 <template>

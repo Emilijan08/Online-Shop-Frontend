@@ -11,7 +11,16 @@ import {
 import { ChevronDownIcon, PlusIcon } from '@heroicons/vue/20/solid'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'
+import { useProductStore } from '../stores/ProductsStore'
+import { useRouter } from 'vue-router'
 
+const store = useProductStore()
+
+const mobileMenuOpen = ref(false)
+const mobileFiltersOpen = ref(false)
+
+
+/*
 const navigation = {
   categories: [
     {
@@ -137,43 +146,37 @@ const navigation = {
     { name: 'Stores', href: '#' }
   ]
 }
+*/
 const breadcrumbs = [{ id: 1, name: 'Men', href: '#' }]
 const filters = [
-  {
-    id: 'color',
-    name: 'Color',
-    options: [
-      { value: 'white', label: 'White' },
-      { value: 'beige', label: 'Beige' },
-      { value: 'blue', label: 'Blue' },
-      { value: 'brown', label: 'Brown' },
-      { value: 'green', label: 'Green' },
-      { value: 'purple', label: 'Purple' }
-    ]
-  },
+
   {
     id: 'category',
     name: 'Category',
     options: [
-      { value: 'new-arrivals', label: 'All New Arrivals' },
-      { value: 'tees', label: 'Tees' },
-      { value: 'crewnecks', label: 'Crewnecks' },
-      { value: 'sweatshirts', label: 'Sweatshirts' },
-      { value: 'pants-shorts', label: 'Pants & Shorts' }
+      { value: 'Laptopsandcomputers', label: 'Laptops and Computers' },
+      { value: 'smartphonesvalue', label: 'Smartphones' },
+      { value: 'smartwatchvalue', label: 'Smartwatches' },
     ]
   },
   {
-    id: 'sizes',
-    name: 'Sizes',
+    id: 'Brands',
+    name: 'Brands',
     options: [
-      { value: 'xs', label: 'XS' },
-      { value: 's', label: 'S' },
-      { value: 'm', label: 'M' },
-      { value: 'l', label: 'L' },
-      { value: 'xl', label: 'XL' },
-      { value: '2xl', label: '2XL' }
+      { value: 'apple', label: 'Apple' },
+      { value: 'xiaomi', label: 'Xiaomi' },
+      { value: 'samsung', label: 'Samsung' },
+      { value: 'google', label: 'Google' },
+      { value: 'microsoft', label: 'Microsoft' },
+      { value: 'lenovo', label: 'Lenovo' },
+      { value: 'huawei', label: 'Huawei' },
+      { value: 'dell', label: 'Dell' },
+      { value: 'hp', label: 'HP' },
+      { value: 'asus', label: 'Asus' },
+      { value: 'oneplus', label: 'Oneplus' }
     ]
   }
+  /*
 ]
 const products = [
   {
@@ -199,9 +202,9 @@ const products = [
     imageAlt: 'Front of plain black t-shirt.'
   }
 ]
+*/
+]
 
-const mobileMenuOpen = ref(false)
-const mobileFiltersOpen = ref(false)
 </script>
 
 <template>
@@ -370,27 +373,28 @@ const mobileFiltersOpen = ref(false)
               class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3"
             >
               <div
-                v-for="product in products"
-                :key="product.id"
-                class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+                v-for="(product, productidx) in store.products"
+                :key="product._id"
+                id="productcard"
+                class=" group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
               >
                 <div
                   class="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96"
                 >
                   <img
-                    :src="product.imageSrc"
-                    :alt="product.imageAlt"
+                    :src="product.productImage"
+                    :alt="product.productName"
                     class="h-full w-full object-cover object-center sm:h-full sm:w-full"
                   />
                 </div>
                 <div class="flex flex-1 flex-col space-y-2 p-4">
                   <h3 class="text-sm font-medium text-gray-900">
-                    <a :href="product.href">
+                    <router-link to="//productdetails/:productId" >
                       <span aria-hidden="true" class="absolute inset-0" />
-                      {{ product.name }}
-                    </a>
+                      {{ product.productName }}
+                    </router-link>
                   </h3>
-                  <p class="text-sm text-gray-500">{{ product.description }}</p>
+                  <p class="text-sm text-gray-500">{{ product.productDescription}}</p>
                   <div class="flex flex-1 flex-col justify-end">
                     <p class="text-sm italic text-gray-500">
                       {{ product.options }}

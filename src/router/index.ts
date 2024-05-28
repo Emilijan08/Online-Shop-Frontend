@@ -9,9 +9,13 @@ import RegisterView from '../views/RegisterView.vue'
 import ShopCartNewView from '../views/ShopCartNewView.vue'
 import SignInView from '../views/SignInView.vue'
 import WishListView from '../views/WishListView.vue'
+import ProductDetails from '../components/ProductDetails.vue'
 
 const router = createRouter({
   history: createWebHistory(),
+  scrollBehavior(to, from, savedPosition) {
+    return { top: 0 }
+  },
   routes: [
     {
       path: '/auth/login',
@@ -66,6 +70,16 @@ const router = createRouter({
       path: '/faq',
       name: 'FAQ',
       component: FAQView
+    },
+    {
+      path: '/productdetails',
+      name: 'ProductDetails',
+      component: ProductDetails
+    },
+    {
+      path: '/productdetails/:productId',
+      name: 'ProductDetails',
+      component: ProductDetails
     },
     {
       path: '/:catchall(.*)*',

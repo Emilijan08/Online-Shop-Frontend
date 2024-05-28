@@ -1,3 +1,81 @@
+<script setup lang="ts">
+import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid'
+import { ref } from 'vue';
+import Navbar from '../components/Navbar.vue';
+import { useProductStore } from '../stores/ProductsStore';
+const store = useProductStore()
+
+let total = ref(0);
+let checkout = ref(false)
+for (let i = 0; i < store.productsOnCart.length; i++) {
+  store.productsOnCart[i].quantity = 1;
+}
+
+
+async function increase(id){
+  const item = store.productsOnCart.find(element => element._id === id)
+   item.quantity++
+   const price = await item.price
+   total.value += await price
+   
+
+  }
+  async function removeItem(id){
+    store.productsOnCart = store.productsOnCart.filter(product => product._id != id)
+  }
+  async function decrease(id){
+  const item = store.productsOnCart.find(element => element._id === id)
+  if(item.quantity > 1){
+   item.quantity--
+   const price = await item.price
+   total.value -= await price
+  }
+}
+
+store.productsOnCart.forEach(element =>{
+  total.value += element.price
+}) 
+
+/*const products = [
+  {
+    id: 1,
+    name: 'Basic Tee',
+    href: '#',
+    price: '$32.00',
+    color: 'Sienna',
+    inStock: true,
+    size: 'Large',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg',
+    imageAlt: "Front of men's Basic Tee in sienna."
+  },
+  {
+    id: 2,
+    name: 'Basic Tee',
+    href: '#',
+    price: '$32.00',
+    color: 'Black',
+    inStock: false,
+    leadTime: '3–4 weeks',
+    size: 'Large',
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-02.jpg',
+    imageAlt: "Front of men's Basic Tee in black."
+  },
+  {
+    id: 3,
+    name: 'Nomad Tumbler',
+    href: '#',
+    price: '$35.00',
+    color: 'White',
+    inStock: true,
+    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-03.jpg',
+    imageAlt: 'Insulated bottle with white base and black snap lid.'
+  }
+]
+*/
+
+
+</script>
+
 <template>
   <div class="bg-white">
     <div class="mx-auto max-w-2xl px-4 pb-24 pt-16 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -8,14 +86,14 @@
 
           <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
             <li
-              v-for="(product, productIdx) in products"
-              :key="product.id"
+              v-for="(product, productIdx) in store.products"
+              :key="product._id"
               class="flex py-6 sm:py-10"
             >
               <div class="flex-shrink-0">
                 <img
-                  :src="product.imageSrc"
-                  :alt="product.imageAlt"
+                  :src="product.productImage"
+                  :alt="product.productName"
                   class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
                 />
               </div>
@@ -26,9 +104,9 @@
                     <div class="flex justify-between">
                       <h3 class="text-sm">
                         <a
-                          :href="product.href"
+                          :href="product.productImage"
                           class="font-medium text-gray-700 hover:text-gray-800"
-                          >{{ product.name }}</a
+                          >{{ product.productName }}</a
                         >
                       </h3>
                     </div>
@@ -149,42 +227,4 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid'
 
-const products = [
-  {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Sienna',
-    inStock: true,
-    size: 'Large',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in sienna."
-  },
-  {
-    id: 2,
-    name: 'Basic Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Black',
-    inStock: false,
-    leadTime: '3–4 weeks',
-    size: 'Large',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-02.jpg',
-    imageAlt: "Front of men's Basic Tee in black."
-  },
-  {
-    id: 3,
-    name: 'Nomad Tumbler',
-    href: '#',
-    price: '$35.00',
-    color: 'White',
-    inStock: true,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-03.jpg',
-    imageAlt: 'Insulated bottle with white base and black snap lid.'
-  }
-]
-</script>

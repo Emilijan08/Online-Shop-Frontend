@@ -17,6 +17,7 @@
           <div
             aria-hidden="true"
             class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg lg:aspect-h-6 lg:aspect-w-5 group-hover:opacity-75"
+            id="Card"
           >
             <img
               :src="category.imageSrc"
@@ -37,28 +38,56 @@
 <script setup lang="ts">
 const categories = [
   {
+    class: 'iMacsandLaptopsCollection',
     name: 'iMacs and Laptops Collection',
     href: '#',
     imageSrc:
-      'https://images.unsplash.com/photo-1523968984674-42be380a916f?q=80&w=3950&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1549399905-5d1bad747576?q=80&w=2992&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAlt: 'Close-up of a iMac and a Macbook on a desk with a white mouse and keyboard.',
     description: 'Discover our latest Collection of iMacs and Laptops.'
   },
   {
+    class: 'SmartphoneCollection',
     name: 'Smartphone Collection',
     href: '#',
     imageSrc:
-      'https://images.unsplash.com/photo-1608386390658-86cf60bcf61a?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      'https://images.unsplash.com/photo-1587212559341-1fe6a88023b6?q=80&w=3640&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAlt: 'Close up of a Person on a Bed on their phone.',
     description: 'Discover our latest Collection of Smartphones.'
   },
   {
+    class: 'SmartwatchCollection',
     name: 'Smartwatch Collection',
     href: '#',
     imageSrc:
-      'https://images.unsplash.com/photo-1520895653685-c739b6db8fce?q=80&w=3850&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D   ',
+      'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=3376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D  ',
     imageAlt: 'Close up of a Smartwatch on a persons wrist.',
     description: 'Discover our latest Collection of Smartwatches.'
   }
 ]
 </script>
+
+<style scoped>
+#Card {
+  height: 415.87px;
+}
+.iMacsandLaptopsCollection {
+  background-color: #f7f7f7;
+}
+.SmartphoneCollection {
+  background-color: #f7f7f7;
+}
+.SmartwatchCollection {
+  background-color: #f7f7f7;
+}
+
+/* Zuschneiden von unten */
+.bottom-clip {
+  clip-path: inset(auto 0 0 0); /* Von unten zuschneiden */
+}
+
+/* Zuschneiden von oben */
+.top-clip {
+  clip-path: inset(0 0 auto 0); /* Von oben zuschneiden */
+}
+</style>
