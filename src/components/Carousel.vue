@@ -7,19 +7,44 @@ import { onMounted } from 'vue'
 const images: ImageType[] = [
   {
     id: '1',
-    src: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvZXN8ZW58MHx8MHx8&w=1000&q=80',
-    alt: 'Shoe 1'
+    src: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=3820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    alt: 'Macbook in the Dark'
   },
   {
     id: '2',
-    src: 'https://media.istockphoto.com/id/1337191336/photo/black-fashion-sport-shoe-on-white-background.jpg?b=1&s=170667a&w=0&k=20&c=DAsn_Qj_gjJ42BDr33CU10QO3ckCMD93KFyuP7qrvN8=',
-    alt: 'Shoe 2'
+    src: 'https://images.unsplash.com/photo-1471897488648-5eae4ac6686b?q=80&w=3560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    alt: 'Macbook on Desk'
   },
   {
     id: '3',
-    src: 'https://media.istockphoto.com/id/1320501530/photo/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?b=1&s=170667a&w=0&k=20&c=-iiKNaFkLHe1WClYWJa7d7wR85HEhEpA2tsRYknnX4E=',
-    alt: 'Shoe 3'
-  }
+    src: 'https://images.unsplash.com/photo-1542541864-4abf21a55761?q=80&w=2577&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    alt: 'Smartwatch Inside'
+  },
+  {
+    id: '5',
+    src: 'https://images.unsplash.com/photo-1517502474097-f9b30659dadb?q=80&w=3376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    alt: 'Smartwatch Outside'
+  },
+  {
+    id: '6',
+    src: 'https://images.unsplash.com/photo-1550029402-226115b7c579?q=80&w=3013&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    alt: 'Products Inside'
+  },
+  {
+    id: '7',
+    src: 'https://images.unsplash.com/photo-1537589376225-5405c60a5bd8?q=80&w=3928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    alt: 'Smartphone Inside'
+  },
+   {
+    id: '8',
+    src: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?q=80&w=2913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dx',
+    alt: 'Smartphone Outside'
+  },
+   {
+    id: '9',
+    src: 'https://images.unsplash.com/photo-1605457212378-968478b57218?q=80&w=3649&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    alt: 'Smartphone Inside with a Laptop and Airpods'
+  },
 ]
 
 onMounted(() => {
@@ -58,9 +83,9 @@ onMounted(() => {
               </div>
             </div>
           </div>
-          <h1 class="text-4xl font-bold mb-6">Find your perfect shoes here</h1>
+          <h1 class="text-4xl font-bold mb-6">Find your perfect Device here</h1>
           <p class="text-lg mb-10">
-            Discover our latest collection of shoes that combines comfort and style
+            Discover our latest collection of Tech Products that combine usefulness, style and quality
           </p>
           <a
             href="#"
