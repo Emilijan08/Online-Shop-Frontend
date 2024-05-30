@@ -3,6 +3,7 @@ import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroic
 import { ref } from 'vue';
 import Navbar from '../components/Navbar.vue';
 import { useProductStore } from '../stores/ProductsStore';
+import CustomersAlsoPurchased from '@/components/CustomersAlsoPurchased.vue';
 const store = useProductStore()
 
 let total = ref(0);
@@ -213,7 +214,7 @@ store.productsOnCart.forEach(element =>{
 
           <div class="mt-6">
             <Routerlink to="/order-summary">
-              <button
+              <button 
                 type="submit"
                 class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
               >
@@ -224,6 +225,7 @@ store.productsOnCart.forEach(element =>{
         </section>
       </form>
     </div>
+  <CustomersAlsoPurchased/>
   </div>
 </template>
 

@@ -2,12 +2,13 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
 
+
 const faqs = [
   {
     question: 'How long does shipping normally take?',
     answer:
       'Shipping times may vary depending on factors such as your location, shipping method selected, and any potential customs processes. Typically, orders are processed and shipped within 5-20 days, and standard shipping times range from 4-14 days. For expedited shipping options or specific inquiries about your orders shipping status, please reach out to our customer service team for personalized assistance.',
-    Qid: 1
+    id: 1
   },
   {
     question: 'Where do we ship?',
@@ -45,6 +46,15 @@ const faqs = [
     Qid: 7
   }
 ]
+
+// Scroll-Logik hinzufügen, um die Frage zu markieren
+const scrollToQuestion = (id) => {
+  const element = document.getElementById(id);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
 </script>
 
 <template>
@@ -60,12 +70,14 @@ const faqs = [
               as="div"
               v-for="faq in faqs"
               :key="faq.question"
+              :id="faq.id"
               class="pt-6"
               v-slot="{ open }"
             >
               <dt>
                 <DisclosureButton
                   class="flex w-full items-start justify-between text-left text-gray-900"
+                  @click="scrollToQuestion(faq.id)"
                 >
                   <span class="text-base font-semibold leading-7">{{ faq.question }}</span>
                   <span class="ml-6 flex h-7 items-center">

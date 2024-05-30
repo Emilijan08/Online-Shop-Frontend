@@ -9,11 +9,11 @@ const footerNavigation = {
   ],
   company: [{ name: 'About us', to: '/aboutus' }],
   customerService: [
-    { name: 'Contact', to: '/faq' },
-    { name: 'Shipping', to: '/faq' },
-    { name: 'Returns', to: '/faq' },
-    { name: 'Warranty', to: '/faq' },
-    { name: 'Secure Payments', to: '/faq' },
+    { name: 'Contact', to: '/faq#How-long-does-shipping-normally-take' },
+    { name: 'Shipping', to: '/faq#Where-do-we-ship' },
+    { name: 'Returns', to: '/faq#Is-there-a-return-guarantee-and-how-does-it-work' },
+    { name: 'Warranty', to: '/faq#Why-is-this-E-Commerce-Store-so-great' },
+    { name: 'Secure Payments', to: '/faq#are-your-Payment-methods-secure' },
     { name: 'FAQ', to: '/faq' }
   ]
 }

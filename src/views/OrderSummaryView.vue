@@ -123,10 +123,10 @@
             </dl>
 
             <div class="mt-16 border-t border-gray-200 py-6 text-right">
-              <a href="#" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
+              <RouterLink to="/" class="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                 Continue Shopping
                 <span aria-hidden="true"> &rarr;</span>
-              </a>
+              </RouterLink>
             </div>
           </div>
         </div>

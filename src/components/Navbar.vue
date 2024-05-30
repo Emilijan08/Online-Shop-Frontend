@@ -12,6 +12,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { computed, ref } from 'vue'
 import { useAuthStore } from '../stores/AuthStore'
 import { useProductStore } from '../stores/ProductsStore'
+import { onMounted } from 'vue'
 
 const auth = useAuthStore()
 const store = useProductStore()
@@ -21,6 +22,20 @@ const cartItem = computed(() => {
 })
 
 let mobileMenu = ref(false)
+
+
+let Homeclicked = ref(false)
+let Aboutusclicked = ref(false)
+let FAQclicked = ref(false)
+let Whishlistclicked = ref(false)
+let Cartclicked = ref(false)
+
+
+let FAQpageRendered   = ref(false)
+
+onMounted(() => {
+  FAQpageRendered.value = true
+})
 </script>
 <template>
   <Disclosure as="nav" class="bg-white shadow" v-slot="{ open }">
@@ -36,38 +51,43 @@ let mobileMenu = ref(false)
           </div>
           <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
             <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
-            <a
-              href="#"
-              class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
-              >Dashboard</a
+            <RouterLink @click="Homeclicked = true ; Aboutusclicked = false ; FAQclicked = false ; Whishlistclicked = false ; Cartclicked = false" to="/" class="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900"> 
+              Home <div v-if="Homeclicked" class="border-b-2 border-indigo-500"></div></RouterLink
+             
             >
-            <a
-              href="#"
+            <RouterLink @click="Homeclicked = false ; Aboutusclicked = true ; FAQclicked = false ; Whishlistclicked = false ; Cartclicked = false"
+              to="/aboutus"
               class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >Team</a
+              >About Us <div v-if="Aboutusclicked" class="border-b-2 border-indigo-500"></div></RouterLink
             >
-            <a
-              href="#"
+             <RouterLink @click="Homeclicked = false ; Aboutusclicked = false ; FAQclicked = true ; Whishlistclicked = false ; Cartclicked = false"
+            to="/faq"
+             class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700" >
+            <div v-if="FAQclicked" class="border-b-2 border-indigo-500" >FAQ</div>FAQ</RouterLink>
+            <RouterLink @click="Homeclicked = false ; Aboutusclicked = false ; FAQclicked = false ; Whishlistclicked = true ; Cartclicked = false"
+              to="/whishlist"
               class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >Projects</a
+              > <div v-if="Whishlistclicked" class="border-b-2 border-indigo-500"></div>
+              
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+               <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+              </svg>
+
+              </RouterLink
             >
-            <a
-              href="#"
+            <RouterLink @click="Homeclicked = false ; Aboutusclicked = false ; FAQclicked = false ; Whishlistclicked = false ; Cartclicked = true"
+              to="/cart"
               class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >Calendar</a
+              > <div v-if="Cartclicked" class="border-b-2 border-indigo-500"></div>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+              </svg>
+
+              </RouterLink
             >
           </div>
         </div>
         <div class="hidden sm:ml-6 sm:flex sm:items-center">
-          <button
-            type="button"
-            class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          >
-            <span class="absolute -inset-1.5" />
-            <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
-
           <!-- Profile dropdown -->
           <Menu as="div" class="relative ml-3">
             <div>
@@ -79,7 +99,7 @@ let mobileMenu = ref(false)
                 <img
                   class="h-8 w-8 rounded-full"
                   src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
+                  alt="User profile image"
                 />
               </MenuButton>
             </div>
@@ -109,10 +129,10 @@ let mobileMenu = ref(false)
                   >
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <a
-                    href="#"
+                  <RouterLink
+                    to="/auth/login"
                     :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
-                    >Sign out</a
+                    >Sign out</RouterLink
                   >
                 </MenuItem>
               </MenuItems>
@@ -167,21 +187,14 @@ let mobileMenu = ref(false)
             <img
               class="h-10 w-10 rounded-full"
               src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-              alt=""
+              alt="User profile image"
             />
           </div>
           <div class="ml-3">
             <div class="text-base font-medium text-gray-800">Tom Cook</div>
             <div class="text-sm font-medium text-gray-500">tom@example.com</div>
           </div>
-          <button
-            type="button"
-            class="relative ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          >
-            <span class="absolute -inset-1.5" />
-            <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6" aria-hidden="true" />
-          </button>
+      
         </div>
         <div class="mt-3 space-y-1">
           <DisclosureButton

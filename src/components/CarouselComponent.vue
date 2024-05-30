@@ -18,7 +18,7 @@ const images: ImageType[] = [
   {
     id: '3',
     src: 'https://images.unsplash.com/photo-1542541864-4abf21a55761?q=80&w=2577&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Smartwatch Inside'
+    alt: 'Smartwatch Inside on Desk'
   },
   {
     id: '5',
@@ -38,19 +38,19 @@ const images: ImageType[] = [
    {
     id: '8',
     src: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?q=80&w=2913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dx',
-    alt: 'Smartphone Outside'
+    alt: 'Smartphone and Airpods Inside on wooden table'
   },
    {
     id: '9',
     src: 'https://images.unsplash.com/photo-1605457212378-968478b57218?q=80&w=3649&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    alt: 'Smartphone Inside with a Laptop and Airpods'
+    alt: 'Smartphone Inside with a Laptop and Airpods on wooden table'
   },
 ]
 
 onMounted(() => {
   new Splide('.splide', {
     type: 'loop',
-    perPage: 1,
+    perPage: 2,
     gap: '1rem',
     arrows: false,
     autoplay: true,
