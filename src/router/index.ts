@@ -20,12 +20,18 @@ const router = createRouter({
     {
       path: '/auth/login',
       name: 'Login',
-      component: SignInView
+      component: SignInView,
+      meta: {
+        maxFooter: false
+      }
     },
     {
       path: '/auth/register',
       name: 'Register',
-      component: RegisterView
+      component: RegisterView,
+      meta: {
+        maxFooter: false
+      }
     },
     {
       path: '/',
@@ -49,8 +55,8 @@ const router = createRouter({
       component: ProductView
     },
     {
-      path: '/whishlist',
-      name: 'Whishlist',
+      path: '/wishlist',
+      name: 'Wishlist',
       component: WishListView,
       meta: {
         requiresAuth: true
@@ -62,7 +68,7 @@ const router = createRouter({
       component: OrderSummaryView
     },
     {
-      path: '/aboutus',
+      path: '/about',
       name: 'About Us',
       component: AboutView
     },
@@ -80,7 +86,11 @@ const router = createRouter({
     {
       path: '/:catchall(.*)*',
       name: 'Not Found',
-      component: NotFoundView
+      component: NotFoundView,
+      meta: {
+        navbar: false,
+        maxFooter: false
+      }
     }
   ]
 })

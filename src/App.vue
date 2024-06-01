@@ -1,31 +1,37 @@
 <template>
   <header>
-    <Navbar />
+    <Navbar v-if="showNavbar" />
   </header>
 
-  <main>
+  <main class="w-full h-full">
     <RouterView />
   </main>
 
   <footer>
-    <Footer v-if="showFooter" />
+    <MaxFooter v-if="showMaxFooter" />
+    <MinFooter v-else />
   </footer>
 </template>
 
 <script setup lang="ts">
+import MaxFooter from '@/components/MaxFooter.vue'
+import MinFooter from '@/components/MinFooter.vue'
+import Navbar from '@/components/Navbar.vue'
+import { useProductStore } from '@/stores/ProductsStore'
 import axios from 'axios'
 import { computed, onMounted, ref } from 'vue'
 import { RouterView, useRoute } from 'vue-router'
-import Footer from './components/Footer.vue'
-import Navbar from './components/Navbar.vue'
-import { useProductStore } from './stores/ProductsStore'
 
 const route = useRoute()
 const store = useProductStore()
 store.getProducts()
 
-const showFooter = computed(() => {
-  return !['/auth/login', '/auth/register', '/:catchall(.*)*'].includes(route.path)
+const showMaxFooter = computed(() => {
+  return route.meta.maxFooter ?? true
+})
+
+const showNavbar = computed(() => {
+  return route.meta.navbar ?? true
 })
 
 const options = {

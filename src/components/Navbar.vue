@@ -126,8 +126,8 @@ import { reactive, watchEffect } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 
 const navItems = reactive([
-  { name: 'Home', path: '/home', selected: false },
-  { name: 'About us', path: '/aboutus', selected: false },
+  { name: 'Home', path: '/', selected: false },
+  { name: 'About us', path: '/about', selected: false },
   { name: 'Wishlist', path: '/wishlist', selected: false },
   { name: 'FAQ', path: '/faq', selected: false }
 ])
