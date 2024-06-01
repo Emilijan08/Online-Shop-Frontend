@@ -24,25 +24,18 @@
           <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
             <!-- Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" -->
             <RouterLink
-              href="#"
-              class="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
-              >Dashboard</RouterLink
+              v-for="(item, index) in navItems"
+              :key="index"
+              :to="item.path"
+              :class="[
+                'inline-flex items-center border-b-2 px-1 pt-1 text-sm font-medium',
+                item.selected
+                  ? 'border-indigo-500 text-gray-900'
+                  : 'border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700'
+              ]"
             >
-            <RouterLink
-              href="#"
-              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >Team</RouterLink
-            >
-            <RouterLink
-              href="#"
-              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >Projects</RouterLink
-            >
-            <RouterLink
-              href="#"
-              class="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-              >Calendar</RouterLink
-            >
+              {{ item.name }}
+            </RouterLink>
           </div>
         </div>
         <div
@@ -83,26 +76,12 @@
               <MenuItems
                 class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
-                <MenuItem v-slot="{ active }">
+                <MenuItem v-slot="{ active }" v-for="(item, index) in profileItems" :key="index">
                   <RouterLink
-                    href="#"
+                    :to="item.path"
                     :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
-                    >Your Profile</RouterLink
-                  >
-                </MenuItem>
-                <MenuItem v-slot="{ active }">
-                  <RouterLink
-                    href="#"
-                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
-                    >Settings</RouterLink
-                  >
-                </MenuItem>
-                <MenuItem v-slot="{ active }">
-                  <RouterLink
-                    href="#"
-                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
-                    >Sign out</RouterLink
-                  >
+                    >{{ item.name }}
+                  </RouterLink>
                 </MenuItem>
               </MenuItems>
             </transition>
@@ -116,34 +95,23 @@
         <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
         <DisclosureButton
           as="a"
-          href="#"
-          class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
-          >Dashboard</DisclosureButton
-        >
-        <DisclosureButton
-          as="a"
-          href="#"
-          class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-          >Team</DisclosureButton
-        >
-        <DisclosureButton
-          as="a"
-          href="#"
-          class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-          >Projects</DisclosureButton
-        >
-        <DisclosureButton
-          as="a"
-          href="#"
-          class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-          >Calendar</DisclosureButton
+          v-for="(item, index) in navItems"
+          :key="index"
+          :href="item.path"
+          :class="[
+            'block border-l-4 py-2 pl-3 pr-4 text-base font-medium',
+            item.selected
+              ? 'bg-indigo-50 border-indigo-500 text-indigo-700'
+              : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'
+          ]"
+          >{{ item.name }}</DisclosureButton
         >
       </div>
     </DisclosurePanel>
   </Disclosure>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import {
   Disclosure,
   DisclosureButton,
@@ -154,5 +122,27 @@ import {
   MenuItems
 } from '@headlessui/vue'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-import { RouterLink } from 'vue-router'
+import { reactive, watchEffect } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+
+const navItems = reactive([
+  { name: 'Home', path: '/home', selected: false },
+  { name: 'About us', path: '/aboutus', selected: false },
+  { name: 'Wishlist', path: '/wishlist', selected: false },
+  { name: 'FAQ', path: '/faq', selected: false }
+])
+
+const profileItems = [
+  { name: 'Your Profile', path: '/profile' },
+  { name: 'Settings', path: '/settings' },
+  { name: 'Sign out', path: '/signout' }
+]
+
+const route = useRoute()
+
+watchEffect(() => {
+  navItems.forEach((item) => {
+    item.selected = item.path === route.path
+  })
+})
 </script>
