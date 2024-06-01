@@ -3,7 +3,7 @@
     <Navbar v-if="showNavbar" />
   </header>
 
-  <main class="w-full h-full">
+  <main class="w-full min-h-full">
     <RouterView />
   </main>
 
