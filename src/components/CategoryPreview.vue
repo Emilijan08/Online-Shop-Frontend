@@ -12,9 +12,11 @@
         </a>
       </div>
 
-      <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
+      <div
+        class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:grid-cols-3 lg:gap-8"
+      >
         <div
-          class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2"
+          class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2 lg:col-span-2"
         >
           <img
             src="https://tailwindui.com/img/ecommerce-images/home-page-03-featured-category.jpg"
@@ -79,6 +81,38 @@
                 </a>
               </h3>
               <p aria-hidden="true" class="mt-1 text-sm text-white">Shop now</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- extra item -->
+        <div
+          class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full col-span-1 sm:col-span-2 lg:col-span-3"
+        >
+          <div class="relative overflow-hidden rounded-lg lg:h-96">
+            <div class="absolute inset-0">
+              <img
+                src="https://tailwindui.com/img/ecommerce-images/category-page-01-featured-collection.jpg"
+                alt=""
+                class="h-full w-full object-cover object-center"
+              />
+            </div>
+            <div aria-hidden="true" class="relative h-96 w-full lg:hidden" />
+            <div aria-hidden="true" class="relative h-32 w-full lg:hidden" />
+            <div
+              class="absolute inset-x-0 bottom-0 rounded-bl-lg rounded-br-lg bg-black bg-opacity-75 p-6 backdrop-blur backdrop-filter sm:flex sm:items-center sm:justify-between lg:inset-x-auto lg:inset-y-0 lg:w-96 lg:flex-col lg:items-start lg:rounded-br-none lg:rounded-tl-lg"
+            >
+              <div>
+                <h2 class="text-xl font-bold text-white">Workspace Collection</h2>
+                <p class="mt-1 text-sm text-gray-300">
+                  Upgrade your desk with objects that keep you organized and clear-minded.
+                </p>
+              </div>
+              <a
+                href="#"
+                class="mt-6 flex flex-shrink-0 items-center justify-center rounded-md border border-white border-opacity-25 bg-white bg-opacity-0 px-4 py-3 text-base font-medium text-white hover:bg-opacity-10 sm:ml-8 sm:mt-0 lg:ml-0 lg:w-full"
+                >View the collection</a
+              >
             </div>
           </div>
         </div>
