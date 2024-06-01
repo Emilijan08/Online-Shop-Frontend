@@ -1,7 +1,7 @@
+import router from '@/router'
 import type { UserType } from '@/types/User'
 import axios from 'axios'
 import { defineStore } from 'pinia'
-import router from '../router'
 
 interface AuthState {
   error: boolean

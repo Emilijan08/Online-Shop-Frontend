@@ -1,10 +1,10 @@
 <script setup lang="ts">
+import Navbar from '@/components/Navbar.vue'
+import { useAuthStore } from '@/stores/AuthStore'
+import { useProductStore } from '@/stores/ProductsStore'
 import axios from 'axios'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import Navbar from '../components/Navbar.vue'
-import { useAuthStore } from '../stores/AuthStore'
-import { useProductStore } from '../stores/ProductsStore'
 
 let addProduct = ref(false)
 let comment = ref('')

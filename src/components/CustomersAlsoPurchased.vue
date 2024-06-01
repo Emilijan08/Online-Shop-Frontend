@@ -1,6 +1,9 @@
 <template>
   <div class="bg-white">
-    <div class="mx-auto max-w-2xl px-4 py-96 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8  border-y-1 border-y-2 mt-60" id="ContentBox">
+    <div
+      class="mx-auto max-w-2xl px-4 py-96 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8 border-y-1 border-y-2 mt-60"
+      id="ContentBox"
+    >
       <h2 class="text-2xl font-bold tracking-tight text-gray-900">Customers also purchased</h2>
 
       <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
@@ -48,9 +51,6 @@ const products = [
 
 <style scoped>
 #ContentBox {
-  border-color:rgb(rgb(57, 55, 55), rgb(100, 100, 100), rgb(62, 62, 62))
+  border-color: rgb(rgb(57, 55, 55), rgb(100, 100, 100), rgb(62, 62, 62));
 }
-
-
-
 </style>

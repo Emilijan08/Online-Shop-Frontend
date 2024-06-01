@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useProductStore } from '@/stores/ProductsStore'
 import {
   Dialog,
   DialogPanel,
@@ -11,14 +12,11 @@ import {
 import { ChevronDownIcon, PlusIcon } from '@heroicons/vue/20/solid'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'
-import { useProductStore } from '../stores/ProductsStore'
-import { useRouter } from 'vue-router'
 
 const store = useProductStore()
 
 const mobileMenuOpen = ref(false)
 const mobileFiltersOpen = ref(false)
-
 
 /*
 const navigation = {
@@ -149,14 +147,13 @@ const navigation = {
 */
 const breadcrumbs = [{ id: 1, name: 'Men', href: '#' }]
 const filters = [
-
   {
     id: 'category',
     name: 'Category',
     options: [
       { value: 'Laptopsandcomputers', label: 'Laptops and Computers' },
       { value: 'smartphonesvalue', label: 'Smartphones' },
-      { value: 'smartwatchvalue', label: 'Smartwatches' },
+      { value: 'smartwatchvalue', label: 'Smartwatches' }
     ]
   },
   {
@@ -204,7 +201,6 @@ const products = [
 ]
 */
 ]
-
 </script>
 
 <template>
@@ -376,7 +372,7 @@ const products = [
                 v-for="(product, productidx) in store.products"
                 :key="product._id"
                 id="productcard"
-                class=" group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
+                class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
               >
                 <div
                   class="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96"
@@ -389,12 +385,12 @@ const products = [
                 </div>
                 <div class="flex flex-1 flex-col space-y-2 p-4">
                   <h3 class="text-sm font-medium text-gray-900">
-                    <router-link to="//productdetails/:productId" >
+                    <router-link to="//productdetails/:productId">
                       <span aria-hidden="true" class="absolute inset-0" />
                       {{ product.productName }}
                     </router-link>
                   </h3>
-                  <p class="text-sm text-gray-500">{{ product.productDescription}}</p>
+                  <p class="text-sm text-gray-500">{{ product.productDescription }}</p>
                   <div class="flex flex-1 flex-col justify-end">
                     <p class="text-sm italic text-gray-500">
                       {{ product.options }}

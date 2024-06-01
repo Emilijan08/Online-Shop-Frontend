@@ -2,7 +2,6 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { MinusSmallIcon, PlusSmallIcon } from '@heroicons/vue/24/outline'
 
-
 const faqs = [
   {
     question: 'How long does shipping normally take?',
@@ -49,12 +48,11 @@ const faqs = [
 
 // Scroll-Logik hinzufügen, um die Frage zu markieren
 const scrollToQuestion = (id) => {
-  const element = document.getElementById(id);
+  const element = document.getElementById(id)
   if (element) {
-    element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView({ behavior: 'smooth' })
   }
 }
-
 </script>
 
 <template>

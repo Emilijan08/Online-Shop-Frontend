@@ -1,7 +1,7 @@
 <script setup lang="ts">
+import { useAuthStore } from '@/stores/AuthStore'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { useAuthStore } from '../stores/AuthStore'
 
 const store = useAuthStore()
 

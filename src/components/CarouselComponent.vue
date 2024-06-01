@@ -35,16 +35,16 @@ const images: ImageType[] = [
     src: 'https://images.unsplash.com/photo-1537589376225-5405c60a5bd8?q=80&w=3928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     alt: 'Smartphone Inside'
   },
-   {
+  {
     id: '8',
     src: 'https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?q=80&w=2913&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dx',
     alt: 'Smartphone and Airpods Inside on wooden table'
   },
-   {
+  {
     id: '9',
     src: 'https://images.unsplash.com/photo-1605457212378-968478b57218?q=80&w=3649&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     alt: 'Smartphone Inside with a Laptop and Airpods on wooden table'
-  },
+  }
 ]
 
 onMounted(() => {
@@ -85,7 +85,8 @@ onMounted(() => {
           </div>
           <h1 class="text-4xl font-bold mb-6">Find your perfect Device here</h1>
           <p class="text-lg mb-10">
-            Discover our latest collection of Tech Products that combine usefulness, style and quality
+            Discover our latest collection of Tech Products that combine usefulness, style and
+            quality
           </p>
           <a
             href="#"

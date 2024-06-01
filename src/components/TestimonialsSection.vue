@@ -37,22 +37,37 @@ onMounted(() => {
             <div class="splide__slide">
               <div class="TestimonialsBox">
                 <div class="circleimage-container">
-                  <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="John Doe" />
+                  <img
+                    src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                    alt="John Doe"
+                  />
                 </div>
                 <div class="testimonial-content">
                   <h4>John Doe</h4>
-                  <p>“I have been using this service for a few months now and I am very happy with the results. I have seen a significant increase in my website traffic and my sales have also increased. I would highly recommend this service to anyone who is looking to increase their online presence.”</p>
+                  <p>
+                    “I have been using this service for a few months now and I am very happy with
+                    the results. I have seen a significant increase in my website traffic and my
+                    sales have also increased. I would highly recommend this service to anyone who
+                    is looking to increase their online presence.”
+                  </p>
                 </div>
               </div>
             </div>
             <div class="splide__slide">
               <div class="TestimonialsBox">
                 <div class="circleimage-container">
-                  <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt="Jane Doe" />
+                  <img
+                    src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                    alt="Jane Doe"
+                  />
                 </div>
                 <div class="testimonial-content">
                   <h4>Jane Doe</h4>
-                  <p>“This service has transformed my online business. The team is highly professional and the results speak for themselves. My website traffic has doubled and my sales have skyrocketed.”</p>
+                  <p>
+                    “This service has transformed my online business. The team is highly
+                    professional and the results speak for themselves. My website traffic has
+                    doubled and my sales have skyrocketed.”
+                  </p>
                 </div>
               </div>
             </div>
@@ -65,7 +80,6 @@ onMounted(() => {
 </template>
 
 <style scoped>
-
 .h3 {
   font-size: 100px;
   color: #ffffff;
@@ -92,7 +106,10 @@ onMounted(() => {
   height: 100%;
 }
 
-.splide__slide, .splide__list, .splide__track, .splide {
+.splide__slide,
+.splide__list,
+.splide__track,
+.splide {
   display: flex;
   justify-content: center;
   align-items: center;
