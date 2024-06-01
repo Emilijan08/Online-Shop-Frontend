@@ -1,9 +1,9 @@
 import ProductDetails from '@/components/ProductDetails.vue'
-import AboutUsView from '@/views/AboutUsView.vue'
-import FAQView from '@/views/FAQView.vue'
+import AboutView from '@/views/AboutView.vue'
+import FaqView from '@/views/FaqView.vue'
 import HomeView from '@/views/HomeView.vue'
+import NotFoundView from '@/views/NotFoundView.vue'
 import OrderSummaryView from '@/views/OrderSummaryView.vue'
-import PageNotFoundView from '@/views/PageNotFoundView.vue'
 import ProductView from '@/views/ProductView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import ShopCartNewView from '@/views/ShopCartView.vue'
@@ -64,12 +64,12 @@ const router = createRouter({
     {
       path: '/aboutus',
       name: 'About Us',
-      component: AboutUsView
+      component: AboutView
     },
     {
       path: '/faq',
       name: 'FAQ',
-      component: FAQView
+      component: FaqView
     },
 
     {
@@ -80,7 +80,7 @@ const router = createRouter({
     {
       path: '/:catchall(.*)*',
       name: 'Not Found',
-      component: PageNotFoundView
+      component: NotFoundView
     }
   ]
 })

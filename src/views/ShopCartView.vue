@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import CustomersAlsoPurchased from '@/components/CustomersAlsoPurchased.vue'
+import Recommendations from '@/components/Recommendations.vue'
 import { useProductStore } from '@/stores/ProductsStore'
 import { CheckIcon, ClockIcon, QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid'
 import { ref } from 'vue'
@@ -219,6 +219,7 @@ store.productsOnCart.forEach((element) => {
         </section>
       </form>
     </div>
-    <CustomersAlsoPurchased />
+    <Recommendations />
   </div>
 </template>
+@/components/Reco.vue

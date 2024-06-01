@@ -1,9 +1,15 @@
 <template>
-  <div class="w-full h-full">
+  <header>
     <Navbar />
+  </header>
+
+  <main>
     <RouterView />
+  </main>
+
+  <footer>
     <Footer v-if="showFooter" />
-  </div>
+  </footer>
 </template>
 
 <script setup lang="ts">
