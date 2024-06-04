@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import type { ImageType } from '@/types/Image'
-import Splide from '@splidejs/splide'
-import '@splidejs/splide/css/skyblue'
 import { onMounted } from 'vue'
+import Splide from '@splidejs/splide';
 
-const images: ImageType[] = [
+const images = [
   {
     id: '1',
     src: 'https://images.unsplash.com/photo-1531297484001-80022131f5a1?q=80&w=3820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
@@ -72,14 +70,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <section class="text-black py-20 bg-gray-100">
+  <section class="text-black py-20 bg-gray-100 h-auto">
     <div class="container mx-auto px-4">
       <div class="flex justify-center items-center">
         <div class="splide w-full md:w-1/3">
           <div class="splide__track">
             <div class="splide__list">
               <div v-for="image in images" :key="image.id" class="splide__slide">
-                <img class="object-cover" :src="image.src" :alt="image.alt" />
+                <img class="object-cover w-full h-auto" :src="image.src" :alt="image.alt" />
               </div>
             </div>
           </div>
@@ -98,3 +96,4 @@ onMounted(() => {
     </div>
   </section>
 </template>
+
