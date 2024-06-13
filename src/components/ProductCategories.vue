@@ -9,9 +9,9 @@
 
       <div class="mt-10 space-y-12 lg:grid lg:grid-cols-3 lg:gap-x-8 lg:space-y-0">
         <a
-          v-for="category in categories"
-          :key="category.name"
-          :href="category.href"
+          v-for="categoryObject in categoriesArray"
+          :key="categoryObject.name"
+          :href="categoryObject.href"
           class="group block"
         >
           <div
@@ -20,15 +20,15 @@
             id="Card"
           >
             <img
-              :src="category.imageSrc"
-              :alt="category.imageAlt"
+              :src="categoryObject.imageSrc"
+              :alt="categoryObject.imageAlt"
               class="h-full w-full object-cover object-center"
             />
           </div>
           <h3 class="mt-4 text-base font-semibold text-gray-900">
-            {{ category.name }}
+            {{ categoryObject.name }}
           </h3>
-          <p class="mt-2 text-sm text-gray-500">{{ category.description }}</p>
+          <p class="mt-2 text-sm text-gray-500">{{ categoryObject.description }}</p>
         </a>
       </div>
     </div>
@@ -36,7 +36,7 @@
 </template>
 
 <script setup lang="ts">
-const categories = [
+const categoriesArray = [
   {
     class: 'iMacsandLaptopsCollection',
     name: 'iMacs and Laptops Collection',

@@ -52,7 +52,7 @@ const router = createRouter({
     {
       path: '/products/:productId',
       name: 'Product',
-      component: ProductView
+      component: ProductView,
     },
     {
       path: '/wishlist',
@@ -76,12 +76,6 @@ const router = createRouter({
       path: '/faq',
       name: 'FAQ',
       component: FaqView
-    },
-
-    {
-      path: '/productdetails/:productId',
-      name: 'ProductDetails',
-      component: ProductDetails
     },
     {
       path: '/:catchall(.*)*',

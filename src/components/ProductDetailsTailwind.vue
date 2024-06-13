@@ -185,6 +185,10 @@
 </template>
 
 <script setup lang="ts">
+export default {
+  name: 'ProductDetailsTailwind'
+
+
 import { useProductStore } from '@/stores/ProductsStore'
 import { StarIcon } from '@heroicons/vue/20/solid'
 import { HeartIcon, MinusIcon, PlusIcon } from '@heroicons/vue/24/outline'
@@ -246,4 +250,6 @@ const product = {
   ]
 }
 const selectedColor = ref(product.colors[0])
+
+}
 </script>

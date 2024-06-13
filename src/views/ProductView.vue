@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import Navbar from '@/components/Navbar.vue'
-import { useAuthStore } from '@/stores/AuthStore'
-import { useProductStore } from '@/stores/ProductsStore'
+import { useAuthStore } from '../stores/AuthStore'
+import { useProductStore } from '../stores/ProductsStore'
 import axios from 'axios'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import ProductDetailsTailwind from '../components/ProductDetailsTailwind.vue'
 
 let addProduct = ref(false)
 let comment = ref('')
@@ -13,7 +13,7 @@ const store = useProductStore()
 const route = useRoute()
 
 const productId = route.params.productId as string
-const selectedProduct = computed(() => store.products.find((element) => element._id === productId))
+const selectedProduct = computed(() => store.products.find(element => element._id === productId))
 
 console.log(productId)
 store.getComments(productId)
@@ -45,7 +45,6 @@ onMounted(() => {
 </script>
 <template v-if="selectedProduct">
   <div>
-    <Navbar></Navbar>
     <div class="container mx-auto px-4 py-8">
       <div class="lg:flex">
         <!-- Shoe Image -->
@@ -134,5 +133,6 @@ onMounted(() => {
         </div>
       </div>
     </div>
+    <ProductDetailsTailwind />
   </div>
 </template>

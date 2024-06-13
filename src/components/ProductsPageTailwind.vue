@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useProductStore } from '@/stores/ProductsStore'
+import { useProductStore } from '../stores/ProductsStore'
 import {
   Dialog,
   DialogPanel,
@@ -145,10 +145,11 @@ const navigation = {
   ]
 }
 */
-const breadcrumbs = [{ id: 1, name: 'Men', href: '#' }]
 const filters = [
-  {
-    id: 'category',
+  {}
+
+  /*
+],
     name: 'Category',
     options: [
       { value: 'Laptopsandcomputers', label: 'Laptops and Computers' },
@@ -369,12 +370,13 @@ const products = [
               class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3"
             >
               <div
-                v-for="(product, productidx) in store.products"
-                :key="product._id"
+                v-for="(product, index) in store.products"
+                :key="index"
                 id="productcard"
                 class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white"
               >
                 <div
+                  id="Productimagecontainer"
                   class="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96"
                 >
                   <img
@@ -385,7 +387,7 @@ const products = [
                 </div>
                 <div class="flex flex-1 flex-col space-y-2 p-4">
                   <h3 class="text-sm font-medium text-gray-900">
-                    <router-link to="//productdetails/:productId">
+                    <router-link :to="`/products/${product.id}`">
                       <span aria-hidden="true" class="absolute inset-0" />
                       {{ product.productName }}
                     </router-link>
