@@ -14,7 +14,7 @@ import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'
 
 const store = useProductStore()
-
+  
 const mobileMenuOpen = ref(false)
 const mobileFiltersOpen = ref(false)
 

@@ -185,8 +185,6 @@
 </template>
 
 <script setup lang="ts">
-export default {
-  name: 'ProductDetailsTailwind'
 
 
 import { useProductStore } from '@/stores/ProductsStore'
@@ -250,6 +248,4 @@ const product = {
   ]
 }
 const selectedColor = ref(product.colors[0])
-
-}
 </script>

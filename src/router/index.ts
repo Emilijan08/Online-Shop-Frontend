@@ -1,4 +1,4 @@
-import ProductDetails from '@/components/ProductDetails.vue'
+
 import AboutView from '@/views/AboutView.vue'
 import FaqView from '@/views/FaqView.vue'
 import HomeView from '@/views/HomeView.vue'

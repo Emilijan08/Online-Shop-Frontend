@@ -19,7 +19,7 @@
           class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2 lg:col-span-2"
         >
           <img
-            src="https://tailwindui.com/img/ecommerce-images/home-page-03-featured-category.jpg"
+            src="https://images.unsplash.com/photo-1515248137880-45e105b710e0?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8TWFjfGVufDB8fDB8fHww"
             alt="Two models wearing women's black cotton crewneck tee and off-white cotton crewneck tee."
             class="object-cover object-center group-hover:opacity-75"
           />
