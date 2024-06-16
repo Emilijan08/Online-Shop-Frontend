@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import Navbar from '../components/Navbar.vue'
-import { useProductStore } from '../stores/ProductsStore'
+import { ref } from 'vue';
+import { useProductStore } from '../stores/ProductsStore';
 
 const store = useProductStore()
 
@@ -225,4 +224,4 @@ store.productsOnCart.forEach(element => {
     <Recommendations />
   </div>
 </template>
-@/components/Reco.vue
+
