@@ -71,6 +71,11 @@ const router = createRouter({
       component: AboutView
     },
     {
+      path: '/productspage',
+      name: 'ProductsPage',
+      component: ProductsPageView
+    },
+    {
       path: '/:catchall(.*)*',
       name: 'Not Found',
       component: NotFoundView,

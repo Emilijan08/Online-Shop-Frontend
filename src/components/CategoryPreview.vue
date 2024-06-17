@@ -1,3 +1,5 @@
+<script setup lang="ts"></script>
+
 <template>
   <div class="bg-gray-50">
     <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
@@ -23,14 +25,15 @@
             alt="Two models wearing women's black cotton crewneck tee and off-white cotton crewneck tee."
             class="object-cover object-center group-hover:opacity-75"
           />
+
           <div aria-hidden="true" class="bg-gradient-to-b from-transparent to-black opacity-50" />
           <div class="flex items-end p-6">
             <div>
               <h3 class="font-semibold text-white">
-                <a href="#">
+                <router-link to="/productspage">
                   <span class="absolute inset-0" />
                   New Arrivals
-                </a>
+                </router-link>
               </h3>
               <p aria-hidden="true" class="mt-1 text-sm text-white">Shop now</p>
             </div>
