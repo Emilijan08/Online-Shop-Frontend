@@ -39,16 +39,26 @@
           </div>
         </div>
         <div
-          class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+          class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0 gap-2"
         >
+        <div class="flex gap-3">
           <button
             type="button"
             class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           >
             <span class="absolute -inset-1.5" />
-            <span class="sr-only">View notifications</span>
-            <BellIcon class="h-6 w-6" aria-hidden="true" />
+            <span class="sr-only">View wishlist</span>
+            <HeartIcon class="h-6 w-6" aria-hidden="true" />
           </button>
+
+          <button
+            type="button"
+            class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+          >
+            <span class="absolute -inset-1.5" />
+            <span class="sr-only">View cart</span>
+            <ShoppingBagIcon class="h-6 w-6" aria-hidden="true" />
+          </button></div>
 
           <!-- Profile dropdown -->
           <Menu as="div" class="relative ml-3">
@@ -121,7 +131,7 @@ MenuButton,
 MenuItem,
 MenuItems
 } from '@headlessui/vue';
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { Bars3Icon, HeartIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/vue/24/outline';
 import { reactive, watchEffect } from 'vue';
 import { RouterLink, useRoute } from 'vue-router';
 
