@@ -113,23 +113,22 @@
 
 <script setup lang="ts">
 import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems
-} from '@headlessui/vue'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
-import { reactive, watchEffect } from 'vue'
-import { RouterLink, useRoute } from 'vue-router'
+Disclosure,
+DisclosureButton,
+DisclosurePanel,
+Menu,
+MenuButton,
+MenuItem,
+MenuItems
+} from '@headlessui/vue';
+import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline';
+import { reactive, watchEffect } from 'vue';
+import { RouterLink, useRoute } from 'vue-router';
 
 const navItems = reactive([
   { name: 'Home', path: '/', selected: false },
   { name: 'About us', path: '/about', selected: false },
   { name: 'Wishlist', path: '/wishlist', selected: false },
-  { name: 'FAQ', path: '/faq', selected: false }
 ])
 
 const profileItems = [

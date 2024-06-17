@@ -1,6 +1,5 @@
 
 import AboutView from '@/views/AboutView.vue'
-import FaqView from '@/views/FaqView.vue'
 import HomeView from '@/views/HomeView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import OrderSummaryView from '@/views/OrderSummaryView.vue'
@@ -71,11 +70,6 @@ const router = createRouter({
       path: '/about',
       name: 'About Us',
       component: AboutView
-    },
-    {
-      path: '/faq',
-      name: 'FAQ',
-      component: FaqView
     },
     {
       path: '/:catchall(.*)*',
