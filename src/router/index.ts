@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import OrderSummaryView from '@/views/OrderSummaryView.vue'
 import ProductDetailsView from '@/views/ProductDetailsView.vue'
+import ProductsView from '@/views/ProductsView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import ShopCartNewView from '@/views/ShopCartView.vue'
 import SignInView from '@/views/SignInView.vue'
@@ -71,9 +72,9 @@ const router = createRouter({
       component: AboutView
     },
     {
-      path: '/productspage',
-      name: 'ProductsPage',
-      component: ProductsPageView
+      path: '/products',
+      name: 'Products',
+      component: ProductsView
     },
     {
       path: '/:catchall(.*)*',

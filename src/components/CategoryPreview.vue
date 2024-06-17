@@ -30,7 +30,7 @@
           <div class="flex items-end p-6">
             <div>
               <h3 class="font-semibold text-white">
-                <router-link to="/productspage">
+                <router-link to="/products">
                   <span class="absolute inset-0" />
                   New Arrivals
                 </router-link>
