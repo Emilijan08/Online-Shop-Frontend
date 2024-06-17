@@ -3,11 +3,6 @@
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
       <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-        <img
-          class="h-7"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-          alt="Company name"
-        />
         <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
           <div class="md:grid md:grid-cols-2 md:gap-8">
             <div>
@@ -114,7 +109,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, h } from 'vue';
+import { defineComponent, h } from 'vue'
 
 const navigation = {
   solutions: [
@@ -130,7 +125,7 @@ const navigation = {
     { name: 'API Status', href: '#' }
   ],
   company: [
-    { name: 'About', href: '#' },
+    { name: 'About us', href: '/about' },
     { name: 'Blog', href: '#' },
     { name: 'Jobs', href: '#' },
     { name: 'Press', href: '#' },
@@ -198,7 +193,7 @@ const navigation = {
     },
     {
       name: 'YouTube',
-      href: '#',
+      href: 'https://www.youtube.com/',
       icon: defineComponent({
         render: () =>
           h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [

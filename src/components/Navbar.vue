@@ -83,7 +83,7 @@
               >
                 <MenuItem v-slot="{ active }" v-for="(item, index) in profileItems" :key="index">
                   <RouterLink
-                    :to="item.path"
+                    to="/auth/login"
                     :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
                     >{{ item.name }}
                   </RouterLink>

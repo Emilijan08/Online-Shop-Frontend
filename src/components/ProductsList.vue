@@ -27,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import { useProductStore } from '@/stores/ProductStore.ts'
+import { useProductStore } from '@/stores/ProductsStore'
 
 const store = useProductStore()
 const products = [

@@ -46,7 +46,7 @@ const testimonials = ref([
   {
     id: 1,
     quote:
-      '“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”',
+      '“I was amazed by the extensive selection of smartphones, laptops, and smartwatches available at this online store. Whether youre a tech enthusiast or just looking for reliable gadgets, they have everything you need. The websites user-friendly interface made my shopping experience seamless, and their customer service was exceptional. Highly recommended!”',
     name: 'Judith Black',
     position: 'CEO of Workcation',
     image:
@@ -54,6 +54,24 @@ const testimonials = ref([
   },
   {
     id: 2,
+    quote:
+      '“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”',
+    name: 'Judith Black',
+    position: 'CEO of Workcation',
+    image:
+      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80'
+  },
+  {
+    id: 3,
+    quote:
+      '“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”',
+    name: 'Judith Black',
+    position: 'CEO of Workcation',
+    image:
+      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80'
+  },
+  {
+    id: 4,
     quote:
       '“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”',
     name: 'Judith Black',

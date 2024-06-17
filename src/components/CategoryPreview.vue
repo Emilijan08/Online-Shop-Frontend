@@ -21,8 +21,8 @@
           class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-h-1 sm:aspect-w-1 sm:row-span-2 lg:col-span-2"
         >
           <img
-            src="https://images.unsplash.com/photo-1515248137880-45e105b710e0?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8TWFjfGVufDB8fDB8fHww"
-            alt="Two models wearing women's black cotton crewneck tee and off-white cotton crewneck tee."
+            src="https://images.unsplash.com/photo-1515248137880-45e105b710e0?q=80&w=3894&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="A mac standing on a Desk next to a Smartphone and a mug on a table."
             class="object-cover object-center group-hover:opacity-75"
           />
 
