@@ -28,11 +28,6 @@ const arePasswordsEqual = (): boolean => {
       class="flex flex-col justify-center items-center panel shadow-xl w-full sm:w-3/4 md:w-4/6 lg:w-1/2 p-12 md:p-24"
     >
       <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img
-          class="mx-auto h-10 w-auto"
-          src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-          alt="Your Company"
-        />
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
           Register your account
         </h2>

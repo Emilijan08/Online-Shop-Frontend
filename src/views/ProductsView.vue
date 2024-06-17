@@ -181,26 +181,28 @@ import { ref } from 'vue'
 
 const filters = [
   {
-    id: 'color',
-    name: 'Color',
+    id: 'brands',
+    name: 'Brands',
     options: [
-      { value: 'white', label: 'White' },
-      { value: 'beige', label: 'Beige' },
-      { value: 'blue', label: 'Blue' },
-      { value: 'brown', label: 'Brown' },
-      { value: 'green', label: 'Green' },
-      { value: 'purple', label: 'Purple' }
+      { value: 'apple', label: 'Apple' },
+      { value: 'samsung', label: 'Samsung' },
+      { value: 'xiaomi', label: 'Xiaomi' },
+      { value: 'google', label: 'Google' },
+      { value: 'huawei', label: 'Huawei' },
+      { value: 'lenovo', label: 'Lenovo' },
+      { value: 'microsoft', label: 'Microsoft' },
+      { value: 'other', label: 'Other' }
     ]
   },
   {
     id: 'category',
     name: 'Category',
     options: [
-      { value: 'new-arrivals', label: 'All New Arrivals' },
-      { value: 'tees', label: 'Tees' },
-      { value: 'crewnecks', label: 'Crewnecks' },
-      { value: 'sweatshirts', label: 'Sweatshirts' },
-      { value: 'pants-shorts', label: 'Pants & Shorts' }
+      { value: 'laptops', label: 'Laptops' },
+      { value: 'smartwatches', label: 'Smartwatches' },
+      { value: 'computers', label: 'Computers' },
+      { value: 'smartphones', label: 'Smartphones' },
+      { value: 'other', label: 'Other' }
     ]
   },
   {
