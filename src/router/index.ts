@@ -1,9 +1,8 @@
-
 import AboutView from '@/views/AboutView.vue'
 import HomeView from '@/views/HomeView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
 import OrderSummaryView from '@/views/OrderSummaryView.vue'
-import ProductView from '@/views/ProductView.vue'
+import ProductDetailsView from '@/views/ProductDetailsView.vue'
 import RegisterView from '@/views/RegisterView.vue'
 import ShopCartNewView from '@/views/ShopCartView.vue'
 import SignInView from '@/views/SignInView.vue'
@@ -51,7 +50,7 @@ const router = createRouter({
     {
       path: '/products/:productId',
       name: 'Product',
-      component: ProductView,
+      component: ProductDetailsView
     },
     {
       path: '/wishlist',
