@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useProductStore } from '../stores/ProductsStore';
+import { ref } from 'vue'
+import { useProductStore } from '@/stores/ProductsStore'
 
 const store = useProductStore()
 
@@ -11,19 +11,17 @@ for (let i = 0; i < store.productsOnCart.length; i++) {
   store.productsOnCart[i].quantity = 1
 }
 
-async function increase (id) {
-  const item = store.productsOnCart.find(element => element._id === id)
+async function increase(id) {
+  const item = store.productsOnCart.find((element) => element._id === id)
   item.quantity++
   const price = await item.price
   total.value += await price
 }
-async function removeItem (id) {
-  store.productsOnCart = store.productsOnCart.filter(
-    product => product._id != id
-  )
+async function removeItem(id) {
+  store.productsOnCart = store.productsOnCart.filter((product) => product._id != id)
 }
-async function decrease (id) {
-  const item = store.productsOnCart.find(element => element._id === id)
+async function decrease(id) {
+  const item = store.productsOnCart.find((element) => element._id === id)
   if (item.quantity > 1) {
     item.quantity--
     const price = await item.price
@@ -31,7 +29,7 @@ async function decrease (id) {
   }
 }
 
-store.productsOnCart.forEach(element => {
+store.productsOnCart.forEach((element) => {
   total.value += element.price
 })
 
@@ -224,4 +222,3 @@ store.productsOnCart.forEach(element => {
     <Recommendations />
   </div>
 </template>
-

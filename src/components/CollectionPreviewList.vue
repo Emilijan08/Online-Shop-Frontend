@@ -29,7 +29,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 const callouts = [
   {
     name: 'Desk and Office',
