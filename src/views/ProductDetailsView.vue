@@ -250,6 +250,131 @@
 </template>
 
 <script setup lang="ts">
+import axios from 'axios'
+import { onMounted, ref } from 'vue'
+import { useRoute } from 'vue-router'
+import Navbar from '../components/Navbar.vue'
+import { useAuthStore } from '../stores/AuthStore'
+import { useProductStore } from '../stores/ProductsStore'
+import {
+  RadioGroup,
+  RadioGroupOption,
+  Tab,
+  TabGroup,
+  TabList,
+  TabPanel,
+  TabPanels
+} from '@headlessui/vue'
+import { CheckIcon, QuestionMarkCircleIcon, StarIcon } from '@heroicons/vue/20/solid'
+
+// Reactive variables and setup
+let addProduct = ref(false)
+let comment = ref('')
+
+const store = useProductStore()
+const route = useRoute()
+const productId = route.params.productId
+const authStore = useAuthStore()
+
+// Filter to find the selected product
+const selectedProduct = store.products.filter(
+  element => element._id === productId
+)
+
+// Fetch comments for the selected product
+store.getComments(productId)
+
+// Function to add a comment
+async function addComment() {
+  try {
+    const URL = `https://marketserver.onrender.com/products/${productId}/comments`
+    const response = await axios.post(URL, {
+      comment: comment.value,
+      username: authStore.user.username
+    })
+    console.log(response)
+  } catch (err) {
+    console.log(err)
+  } finally {
+    comment.value = ''
+    await store.getComments(productId)
+  }
+}
+
+// Scroll to top on mount
+onMounted(() => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+})
+
+// Product and review data
+const product = {
+  name: 'Everyday Ruck Snack',
+  href: '#',
+  price: '$220',
+  description:
+    "Don't compromise on snack-carrying capacity with this lightweight and spacious bag. The drawstring top keeps all your favorite chips, crisps, fries, biscuits, crackers, and cookies secure.",
+  imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-04-featured-product-shot.jpg',
+  imageAlt: 'Model wearing light green backpack with black canvas straps and front zipper pouch.',
+  breadcrumbs: [
+    { id: 1, name: 'Travel', href: '#' },
+    { id: 2, name: 'Bags', href: '#' }
+  ],
+  sizes: [
+    { name: '18L', description: 'Perfect for a reasonable amount of snacks.' },
+    { name: '20L', description: 'Enough room for a serious amount of snacks.' }
+  ]
+}
+const selectedSize = ref(product.sizes[0])
+
+const reviews = {
+  average: 4,
+  featured: [
+    {
+      id: 1,
+      rating: 5,
+      content: `
+        <p>This icon pack is just what I need for my latest project. There's an icon for just about anything I could ever need. Love the playful look!</p>
+      `,
+      date: 'July 16, 2021',
+      datetime: '2021-07-16',
+      author: 'Emily Selman',
+      avatarSrc:
+        'https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80'
+    },
+    {
+      id: 2,
+      rating: 5,
+      content: `
+        <p>Blown away by how polished this icon pack is. Everything looks so consistent and each SVG is optimized out of the box so I can use it directly with confidence. It would take me several hours to create a single icon this good, so it's a steal at this price.</p>
+      `,
+      date: 'July 12, 2021',
+      datetime: '2021-07-12',
+      author: 'Hector Gibbons',
+      avatarSrc:
+        'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=256&h=256&q=80'
+    }
+  ]
+}
+
+const faqs = [
+  {
+    question: 'What format are these icons?',
+    answer:
+      'The icons are in SVG (Scalable Vector Graphic) format. They can be imported into your design tool of choice and used directly in code.'
+  },
+  {
+    question: 'Can I use the icons at different sizes?',
+    answer:
+      "Yes. The icons are drawn on a 24 x 24 pixel grid, but the icons can be scaled to different sizes as needed. We don't recommend going smaller than 20 x 20 or larger than 64 x 64 to retain legibility and visual balance."
+  }
+]
+
+const license = {}
+</script>
+
 import { useProductStore } from '@/stores/ProductsStore'
 import {
   RadioGroup,
