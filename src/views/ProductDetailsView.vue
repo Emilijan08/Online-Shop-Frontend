@@ -5,7 +5,7 @@
     >
       <!-- Product details -->
       <div class="lg:max-w-lg lg:self-end">
-        <nav aria-label="Breadcrumb">
+        <!-- <nav aria-label="Breadcrumb">
           <ol role="list" class="flex items-center space-x-2">
             <li v-for="(breadcrumb, breadcrumbIdx) in product.breadcrumbs" :key="breadcrumb.id">
               <div class="flex items-center text-sm">
@@ -24,11 +24,11 @@
               </div>
             </li>
           </ol>
-        </nav>
+        </nav> -->
 
         <div class="mt-4">
           <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            {{ product.name }}
+            {{ product[0].productName }}
           </h1>
         </div>
 
@@ -36,7 +36,7 @@
           <h2 id="information-heading" class="sr-only">Product information</h2>
 
           <div class="flex items-center">
-            <p class="text-lg text-gray-900 sm:text-xl">{{ product.price }}</p>
+            <p class="text-lg text-gray-900 sm:text-xl">{{ product[0].price }}</p>
 
             <div class="ml-4 border-l border-gray-300 pl-4">
               <h2 class="sr-only">Reviews</h2>
@@ -61,7 +61,7 @@
           </div>
 
           <div class="mt-4 space-y-6">
-            <p class="text-base text-gray-500">{{ product.description }}</p>
+            <p class="text-base text-gray-500">{{ product[0].productDescription }}</p>
           </div>
 
           <div class="mt-6 flex items-center">
@@ -75,8 +75,8 @@
       <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
         <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
           <img
-            :src="product.imageSrc"
-            :alt="product.imageAlt"
+            :src="product[0].productImage"
+            :alt="product[0].productName"
             class="h-full w-full object-cover object-center"
           />
         </div>
@@ -90,7 +90,7 @@
           <form>
             <div class="sm:flex sm:justify-between">
               <!-- Size selector -->
-              <fieldset>
+              <!-- <fieldset>
                 <legend class="block text-sm font-medium text-gray-700">Size</legend>
                 <RadioGroup
                   v-model="selectedSize"
@@ -124,7 +124,7 @@
                     </div>
                   </RadioGroupOption>
                 </RadioGroup>
-              </fieldset>
+              </fieldset> -->
             </div>
             <div class="mt-4">
               <a href="#" class="group inline-flex text-sm text-gray-500 hover:text-gray-700">
@@ -160,13 +160,45 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useAuthStore } from '@/stores/AuthStore'
+import { useProductStore } from '@/stores/ProductsStore'
 import { CheckIcon, QuestionMarkCircleIcon, StarIcon } from '@heroicons/vue/20/solid'
-import { RadioGroup, RadioGroupOption } from '@headlessui/vue'
 import { ShieldCheckIcon } from '@heroicons/vue/24/outline'
-import { ProductType } from '@/types/Product'
+import axios from 'axios'
+import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+
+const store = useProductStore()
+const authStore = useAuthStore()
+const route = useRoute()
+
+const addProduct = ref(false)
+const comment = ref('')
+
+const productId = route.params.productId
+const product = store.products.filter((element) => element._id === productId)
+
+console.log(productId)
+store.getComments(productId as string)
+
+async function addComment() {
+  try {
+    const URL = `https://marketserver.onrender.com/products/${productId}/comments`
+    const response = await axios.post(URL, {
+      comment: comment.value,
+      username: authStore.user.username
+    })
+
+    console.log(response)
+  } catch (err) {
+    console.log(err)
+  } finally {
+    comment.value = ''
+    await store.getComments(productId as string)
+  }
+}
 
 const reviews = { average: 4, totalCount: 1624 }
 
-const selectedSize = ref(product.sizes[0])
+// const selectedSize = ref(product.sizes[0])
 </script>
