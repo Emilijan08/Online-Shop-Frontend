@@ -50,7 +50,7 @@
           <h2 id="information-heading" class="sr-only">Product information</h2>
 
           <div class="flex items-center">
-            <p class="text-lg text-gray-900 sm:text-xl">{{ product.price }}</p>
+            <p class="text-lg text-gray-900 sm:text-xl">{{ store.products.price }}</p>
 
             <div class="ml-4 border-l border-gray-300 pl-4">
               <h2 class="sr-only">Reviews</h2>
@@ -89,8 +89,10 @@
       <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
         <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
           <img
-            :src="product.imageSrc"
-            :alt="product.imageAlt"
+            v-for="(products, index) in store.products"
+            :key="index"
+            :src="store.products.productImage"
+            :alt="store.products.productName"
             class="h-full w-full object-cover object-center"
           />
         </div>
@@ -157,56 +159,23 @@
                 Add to bag
               </button>
             </div>
-            <div class="mt-6 text-center">
-              <a href="#" class="group inline-flex text-base font-medium">
-                <ShieldCheckIcon
-                  class="mr-2 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                  aria-hidden="true"
-                />
-                <span class="text-gray-500 hover:text-gray-700">Lifetime Guarantee</span>
-              </a>
-            </div>
           </form>
 
           <div class="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none">
             <TabGroup as="div">
               <div class="border-b border-gray-200">
-                <TabList class="-mb-px flex space-x-8">
+                <TabList class="-mb-px flex justify-center">
                   <Tab as="template" v-slot="{ selected }">
-                    <button
+                    <div
                       :class="[
                         selected
-                          ? 'border-indigo-600 text-indigo-600'
+                          ? ' text-indigo-600'
                           : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800',
                         'whitespace-nowrap border-b-2 py-6 text-sm font-medium'
                       ]"
                     >
                       Customer Reviews
-                    </button>
-                  </Tab>
-                  <Tab as="template" v-slot="{ selected }">
-                    <button
-                      :class="[
-                        selected
-                          ? 'border-indigo-600 text-indigo-600'
-                          : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800',
-                        'whitespace-nowrap border-b-2 py-6 text-sm font-medium'
-                      ]"
-                    >
-                      FAQ
-                    </button>
-                  </Tab>
-                  <Tab as="template" v-slot="{ selected }">
-                    <button
-                      :class="[
-                        selected
-                          ? 'border-indigo-600 text-indigo-600'
-                          : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800',
-                        'whitespace-nowrap border-b-2 py-6 text-sm font-medium'
-                      ]"
-                    >
-                      License
-                    </button>
+                    </div>
                   </Tab>
                 </TabList>
               </div>
@@ -281,6 +250,7 @@
 </template>
 
 <script setup lang="ts">
+import { useProductStore } from '@/stores/ProductsStore'
 import {
   RadioGroup,
   RadioGroupOption,
@@ -291,8 +261,8 @@ import {
   TabPanels
 } from '@headlessui/vue'
 import { CheckIcon, QuestionMarkCircleIcon, StarIcon } from '@heroicons/vue/20/solid'
-import { ShieldCheckIcon } from '@heroicons/vue/24/outline'
 import { ref } from 'vue'
+const store = useProductStore()
 
 const product = {
   name: 'Everyday Ruck Snack',
