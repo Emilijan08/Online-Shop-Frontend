@@ -1,21 +1,39 @@
 <template>
   <div class="md:flex md:items-center md:justify-between m-6 md:m-10">
     <div class="min-w-0 flex-1">
-      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight">Whishlist</h2>
+      <h2
+        class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl sm:tracking-tight"
+      >
+        Wishlist
+      </h2>
     </div>
     <div class="mt-4 flex md:ml-4 md:mt-0">
-      <button type="button"
-        class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">Edit</button>
-      <button type="button"
-        class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Publish</button>
+      <button
+        type="button"
+        class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+      >
+        Edit
+      </button>
+      <button
+        type="button"
+        class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+      >
+        Publish
+      </button>
     </div>
   </div>
 
-
-  <ul role="list" class="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl m-6 md:m-10">
-    <li v-for="person in people" :key="person.email" class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6">
+  <ul
+    role="list"
+    class="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl m-6 md:m-10"
+  >
+    <li
+      v-for="(product, index) in store.products"
+      :key="index"
+      class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6"
+    >
       <div class="flex min-w-0 gap-x-4">
-        <img class="h-12 w-12 flex-none rounded-full bg-gray-50" :src="person.imageUrl" alt="" />
+        <img class="h-12 w-12 flex-none rounded-full bg-gray-50" :src="productImage" alt="" />
         <div class="min-w-0 flex-auto">
           <p class="text-sm font-semibold leading-6 text-gray-900">
             <a :href="person.href">
@@ -24,7 +42,9 @@
             </a>
           </p>
           <p class="mt-1 flex text-xs leading-5 text-gray-500">
-            <a :href="`mailto:${person.email}`" class="relative truncate hover:underline">{{ person.email }}</a>
+            <a :href="`mailto:${person.email}`" class="relative truncate hover:underline">{{
+              person.email
+            }}</a>
           </p>
         </div>
       </div>
@@ -48,7 +68,19 @@
 </template>
 
 <script setup lang="ts">
-import { ChevronRightIcon } from '@heroicons/vue/20/solid';
+import { useProductStore } from '@/stores/ProductsStore'
+import { ChevronRightIcon } from '@heroicons/vue/20/solid'
+import { useRoute } from 'vue-router'
+
+const store = useProductStore()
+const route = useRoute()
+
+const productId = route.params.productId
+
+const productImage = product.productImage
+const productName = product.productName
+
+const product = store.products.filter((element) => element._id === productId)
 
 const people = [
   {
@@ -59,7 +91,7 @@ const people = [
       'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     href: '#',
     lastSeen: '3h ago',
-    lastSeenDateTime: '2023-01-23T13:23Z',
+    lastSeenDateTime: '2023-01-23T13:23Z'
   },
   {
     name: 'Michael Foster',
@@ -69,7 +101,7 @@ const people = [
       'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     href: '#',
     lastSeen: '3h ago',
-    lastSeenDateTime: '2023-01-23T13:23Z',
+    lastSeenDateTime: '2023-01-23T13:23Z'
   },
   {
     name: 'Dries Vincent',
@@ -78,7 +110,7 @@ const people = [
     imageUrl:
       'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     href: '#',
-    lastSeen: null,
+    lastSeen: null
   },
   {
     name: 'Lindsay Walton',
@@ -88,7 +120,7 @@ const people = [
       'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     href: '#',
     lastSeen: '3h ago',
-    lastSeenDateTime: '2023-01-23T13:23Z',
+    lastSeenDateTime: '2023-01-23T13:23Z'
   },
   {
     name: 'Courtney Henry',
@@ -98,7 +130,7 @@ const people = [
       'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     href: '#',
     lastSeen: '3h ago',
-    lastSeenDateTime: '2023-01-23T13:23Z',
+    lastSeenDateTime: '2023-01-23T13:23Z'
   },
   {
     name: 'Tom Cook',
@@ -107,7 +139,7 @@ const people = [
     imageUrl:
       'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     href: '#',
-    lastSeen: null,
-  },
+    lastSeen: null
+  }
 ]
 </script>
