@@ -28,21 +28,23 @@
     class="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl m-6 md:m-10"
   >
     <li
-      v-for="(product, index) in store.products"
+      v-for="(productOnWishlist, index) in store.products.ProductsOnWishlist"
       :key="index"
       class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6"
     >
       <div class="flex min-w-0 gap-x-4">
-        <img class="h-12 w-12 flex-none bg-gray-50" :src="product.productImage" alt="" />
+        <img class="h-12 w-12 flex-none bg-gray-50" :src="productOnWishlist.productImage" alt="" />
         <div class="min-w-0 flex-auto">
           <p class="text-sm font-semibold leading-6 text-gray-900">
-            <router-link :to="`/products/${product._id}`">
+            <router-link :to="`/products/${productOnWishlist._id}`">
               <span class="absolute inset-x-0 -top-px bottom-0" />
-              {{ product.productName }}
+              {{ productOnWishlist.productName }}
             </router-link>
           </p>
           <p class="mt-1 flex text-xs leading-5 text-gray-500"></p>
-          <p class="relative truncate hover:underline">{{ product.productDescription }}</p>
+          <p class="relative truncate hover:underline">
+            {{ productOnWishlist.productDescription }}
+          </p>
         </div>
       </div>
       <!-- <div class="flex shrink-0 items-center gap-x-4">

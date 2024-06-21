@@ -239,6 +239,7 @@ function toggleWishlistAction(productId) {
   }
   ClickedOnAddToWishlist.value = !ClickedOnAddToWishlist.value
 }
+
 async function addComment() {
   try {
     const URL = `https://marketserver.onrender.com/products/${productId}/comments`
