@@ -1,8 +1,22 @@
 <template>
-  <div class="bg-white">
+  <div class="bg-white flex">
     <div
       class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
     >
+      <!---- <div class="flex items-start justify-start" id="goBackArrow">
+        <RouterLink to="/products">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="size-6"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+          </svg>
+        </RouterLink>
+      </div>-->
       <!-- Product details -->
       <div class="lg:max-w-lg lg:self-end">
         <!-- <nav aria-label="Breadcrumb">
@@ -27,6 +41,13 @@
         </nav> -->
 
         <div class="mt-4">
+          <div
+            class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 flex justify-end items-start"
+          >
+            <span class="absolute -inset-1.5" />
+            <span class="sr-only">View wishlist</span>
+            <HeartIcon class="h-6 w-6" aria-hidden="true" />
+          </div>
           <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             {{ product[0].productName }}
           </h1>
@@ -163,7 +184,7 @@
 import { useAuthStore } from '@/stores/AuthStore'
 import { useProductStore } from '@/stores/ProductsStore'
 import { CheckIcon, QuestionMarkCircleIcon, StarIcon } from '@heroicons/vue/20/solid'
-import { ShieldCheckIcon } from '@heroicons/vue/24/outline'
+import { HeartIcon, ShieldCheckIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
