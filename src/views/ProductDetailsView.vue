@@ -1,22 +1,23 @@
 <template>
-  <div class="bg-white flex">
+  <div class="bg-white">
+    <!--go-back-Arrow-->
+    <div class="flex justify-start items-start ml-7" id="goBackArrow">
+      <RouterLink to="/products">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="size-6"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+        </svg>
+      </RouterLink>
+    </div>
     <div
       class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:grid lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8"
     >
-      <!---- <div class="flex items-start justify-start" id="goBackArrow">
-        <RouterLink to="/products">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="1.5"
-            stroke="currentColor"
-            class="size-6"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-          </svg>
-        </RouterLink>
-      </div>-->
       <!-- Product details -->
       <div class="lg:max-w-lg lg:self-end">
         <!-- <nav aria-label="Breadcrumb">
@@ -41,12 +42,28 @@
         </nav> -->
 
         <div class="mt-4">
+          <!--HeartIcon-->
           <div
             class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 flex justify-end items-start"
+            id="Heart"
+            @click="toggleWishlistAction(productId)"
           >
             <span class="absolute -inset-1.5" />
             <span class="sr-only">View wishlist</span>
-            <HeartIcon class="h-6 w-6" aria-hidden="true" />
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              :fill="ClickedOnAddToWishlist ? 'red' : 'none'"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+              />
+            </svg>
           </div>
           <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
             {{ product[0].productName }}
@@ -184,7 +201,7 @@
 import { useAuthStore } from '@/stores/AuthStore'
 import { useProductStore } from '@/stores/ProductsStore'
 import { CheckIcon, QuestionMarkCircleIcon, StarIcon } from '@heroicons/vue/20/solid'
-import { HeartIcon, ShieldCheckIcon } from '@heroicons/vue/24/outline'
+import { ShieldCheckIcon } from '@heroicons/vue/24/outline'
 import axios from 'axios'
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
@@ -202,6 +219,26 @@ const product = store.products.filter((element) => element._id === productId)
 console.log(productId)
 store.getComments(productId as string)
 
+const ClickedOnAddToWishlist = ref(false)
+
+function addProductToWishlist() {
+  store.products.ProductsOnWishlist.push(product)
+}
+
+function removeProductFromWishlist(productId) {
+  store.products.ProductsOnWishlist = store.products.ProductsOnWishlist.filter(
+    (product) => product.id !== productId
+  )
+}
+
+function toggleWishlistAction(productId) {
+  if (ClickedOnAddToWishlist.value) {
+    removeProductFromWishlist(productId)
+  } else {
+    addProductToWishlist(productId)
+  }
+  ClickedOnAddToWishlist.value = !ClickedOnAddToWishlist.value
+}
 async function addComment() {
   try {
     const URL = `https://marketserver.onrender.com/products/${productId}/comments`
