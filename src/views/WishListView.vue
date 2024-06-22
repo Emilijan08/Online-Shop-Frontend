@@ -11,14 +11,9 @@
       <button
         type="button"
         class="inline-flex items-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50"
+        @click="clearWishlist"
       >
-        Edit
-      </button>
-      <button
-        type="button"
-        class="ml-3 inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-      >
-        Publish
+        Clear Wishlist
       </button>
     </div>
   </div>
@@ -27,49 +22,57 @@
     role="list"
     class="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl m-6 md:m-10"
   >
-    <!-- <li
-      v-for="(productOnWishlist, index) in store.products.ProductsOnWishlist"
+    <li
+      v-for="(wishlistItem, index) in wishlistStore.wishlist"
       :key="index"
       class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6"
     >
       <div class="flex min-w-0 gap-x-4">
-        <img class="h-12 w-12 flex-none bg-gray-50" :src="productOnWishlist.productImage" alt="" />
+        <img
+          class="h-12 w-12 flex-none bg-gray-50"
+          :src="wishlistItem.product.productImage"
+          alt=""
+        />
         <div class="min-w-0 flex-auto">
           <p class="text-sm font-semibold leading-6 text-gray-900">
-            <router-link :to="`/products/${productOnWishlist._id}`">
+            <router-link :to="`/products/${wishlistItem.productId}`">
               <span class="absolute inset-x-0 -top-px bottom-0" />
-              {{ productOnWishlist.productName }}
+              {{ wishlistItem.product.productName }}
             </router-link>
           </p>
-          <p class="mt-1 flex text-xs leading-5 text-gray-500"></p>
           <p class="relative truncate hover:underline">
-            {{ productOnWishlist.productDescription }}
+            {{ wishlistItem.product.productDescription }}
           </p>
         </div>
-      </div> -->
-    <!-- <div class="flex shrink-0 items-center gap-x-4">
-        <div class="hidden sm:flex sm:flex-col sm:items-end">
-          <p class="text-sm leading-6 text-gray-900">{{ person.role }}</p>
-          <p v-if="person.lastSeen" class="mt-1 text-xs leading-5 text-gray-500">
-            Last seen <time :datetime="person.lastSeenDateTime">{{ person.lastSeen }}</time>
-          </p>
-          <div v-else class="mt-1 flex items-center gap-x-1.5">
-            <div class="flex-none rounded-full bg-emerald-500/20 p-1">
-              <div class="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-            </div>
-            <p class="text-xs leading-5 text-gray-500">Online</p>
-          </div>
-        </div>
-        <ChevronRightIcon class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-      </div> -->
-    <!-- </li> -->
+      </div>
+      <div class="flex shrink-0 items-center gap-x-4">
+        <button
+          type="button"
+          class="inline-flex items-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+          @click="removeFromWishlist(wishlistItem.productId)"
+        >
+          Remove
+        </button>
+      </div>
+    </li>
   </ul>
 </template>
 
 <script setup lang="ts">
-import { useProductStore } from '@/stores/ProductsStore'
-import { useRoute } from 'vue-router'
+import { useWishlistStore } from '@/stores/WishlistStore'
+import { onMounted } from 'vue'
 
-const store = useProductStore()
-const route = useRoute()
+const wishlistStore = useWishlistStore()
+
+onMounted(() => {
+  wishlistStore.getWishlist()
+})
+
+const removeFromWishlist = (productId: string) => {
+  wishlistStore.removeFromWishlist(productId)
+}
+
+const clearWishlist = () => {
+  wishlistStore.clearWishlist()
+}
 </script>
