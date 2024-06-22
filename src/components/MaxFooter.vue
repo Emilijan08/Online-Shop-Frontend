@@ -8,7 +8,7 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Products & Categories</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="category in navigation.categories" :key="category.name">
+                <li v-for="category in FooterNavigation.categories" :key="category.name">
                   <a
                     :href="category.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -20,7 +20,7 @@
             <div class="mt-10 md:mt-0">
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Popular Brands</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="brand in navigation.brands" :key="brand.name">
+                <li v-for="brand in FooterNavigation.brands" :key="brand.name">
                   <a
                     :href="brand.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -34,7 +34,7 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Company</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in navigation.company" :key="item.name">
+                <li v-for="item in FooterNavigation.company" :key="item.name">
                   <a
                     :href="item.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -95,7 +95,7 @@
         >
           <div class="flex space-x-6 md:order-2">
             <a
-              v-for="item in navigation.social"
+              v-for="item in FooterNavigation.social"
               :key="item.name"
               :href="item.href"
               class="text-gray-400 hover:text-gray-500"
@@ -116,9 +116,9 @@
 <script setup lang="ts">
 import { defineComponent, h } from 'vue'
 
-const navigation = {
+const FooterNavigation = {
   categories: [
-    { name: 'Main Categories' },
+    { name: 'Main Categories:' },
     { name: 'Laptops', href: '#' },
     { name: 'Computers', href: '#' },
     { name: 'Phones', href: '#' },
@@ -212,4 +212,6 @@ const navigation = {
     }
   ]
 }
+
+defineExpose({ FooterNavigation })
 </script>
