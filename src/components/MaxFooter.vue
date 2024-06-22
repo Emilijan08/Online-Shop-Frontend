@@ -8,11 +8,11 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Products & Categories</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="productCategory in ProductsAndCategories" :key="productCategory.name">
+                <li v-for="category in navigation.categories" :key="category.name">
                   <a
-                    :href="productCategory.href"
+                    :href="category.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                    >{{ productCategory.name }}</a
+                    >{{ category.name }}</a
                   >
                 </li>
               </ul>
@@ -20,7 +20,7 @@
             <div class="mt-10 md:mt-0">
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Popular Brands</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="brand in PopularBrands" :key="brand.name">
+                <li v-for="brand in navigation.brands" :key="brand.name">
                   <a
                     :href="brand.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -34,7 +34,7 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Company</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in Company" :key="item.name">
+                <li v-for="item in navigation.company" :key="item.name">
                   <a
                     :href="item.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -117,7 +117,7 @@
 import { defineComponent, h } from 'vue'
 
 const navigation = {
-  ProductsAndCategories: [
+  categories: [
     { name: 'Main Categories' },
     { name: 'Laptops', href: '#' },
     { name: 'Computers', href: '#' },
@@ -125,14 +125,14 @@ const navigation = {
     { name: 'Smartwatches', href: '#' },
     { name: 'Others', href: '#' }
   ],
-  PopularBrands: [
+  brands: [
     { name: 'Apple', href: '#' },
     { name: 'Samsung', href: '#' },
     { name: 'Dell', href: '#' },
     { name: 'HP', href: '#' },
     { name: 'Others', href: '#' }
   ],
-  Company: [
+  company: [
     { name: 'About Us', href: '#' },
     { name: 'Contact', href: '#' }
   ],
