@@ -27,7 +27,7 @@
     role="list"
     class="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl m-6 md:m-10"
   >
-    <li
+    <!-- <li
       v-for="(productOnWishlist, index) in store.products.ProductsOnWishlist"
       :key="index"
       class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6"
@@ -46,8 +46,8 @@
             {{ productOnWishlist.productDescription }}
           </p>
         </div>
-      </div>
-      <!-- <div class="flex shrink-0 items-center gap-x-4">
+      </div> -->
+    <!-- <div class="flex shrink-0 items-center gap-x-4">
         <div class="hidden sm:flex sm:flex-col sm:items-end">
           <p class="text-sm leading-6 text-gray-900">{{ person.role }}</p>
           <p v-if="person.lastSeen" class="mt-1 text-xs leading-5 text-gray-500">
@@ -62,13 +62,13 @@
         </div>
         <ChevronRightIcon class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
       </div> -->
-    </li>
+    <!-- </li> -->
   </ul>
 </template>
 
 <script setup lang="ts">
 import { useProductStore } from '@/stores/ProductsStore'
-import { RouterLink, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 
 const store = useProductStore()
 const route = useRoute()

@@ -75,7 +75,7 @@ const scrollToQuestionInFAQ = (id: number) => {
         </h2>
         <dl class="mt-10 space-y-6 divide-y divide-gray-900/10">
           <div v-for="faq in faqs" :key="faq.id" :id="faq.id.toString()" class="pt-6">
-            <Disclosure :default-open="faq.id === openFAQId.value">
+            <Disclosure :default-open="faq.id === openFAQId">
               <dt>
                 <DisclosureButton
                   class="flex w-full items-start justify-between text-left text-gray-900"

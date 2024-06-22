@@ -13,10 +13,14 @@
       <div class="lg:max-w-lg lg:self-end">
         <div class="mt-4">
           <!--HeartIcon-->
-          <div
+          <!-- <div
             class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 flex justify-end items-start"
             id="Heart"
             @click="toggleWishlistAction(productId)"
+          > -->
+          <div
+            class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 flex justify-end items-start"
+            id="Heart"
           >
             <span class="absolute -inset-1.5" />
             <span class="sr-only">View wishlist</span>
@@ -183,24 +187,24 @@ store.getComments(productId as string)
 
 const ClickedOnAddToWishlist = ref(false)
 
-function addProductToWishlist() {
-  store.products.ProductsOnWishlist.push(product)
-}
+// function addProductToWishlist() {
+//   store.products.ProductsOnWishlist.push(product)
+// }
 
-function removeProductFromWishlist(productId) {
-  store.products.ProductsOnWishlist = store.products.ProductsOnWishlist.filter(
-    (product) => product.id !== productId
-  )
-}
+// function removeProductFromWishlist(productId: string | string[]) {
+//   store.products.ProductsOnWishlist = store.products.ProductsOnWishlist.filter(
+//     (product:string | string[]) => product.id !== productId
+//   )
+// }
 
-function toggleWishlistAction(productId: string | string[]) {
-  if (ClickedOnAddToWishlist.value) {
-    removeProductFromWishlist(productId)
-  } else {
-    addProductToWishlist(productId)
-  }
-  ClickedOnAddToWishlist.value = !ClickedOnAddToWishlist.value
-}
+// function toggleWishlistAction(productId: string | string[]) {
+//   if (ClickedOnAddToWishlist.value) {
+//     removeProductFromWishlist(productId)
+//   } else {
+//     addProductToWishlist(productId: string | string[])
+//   }
+//   ClickedOnAddToWishlist.value = !ClickedOnAddToWishlist.value
+// }
 
 async function addComment() {
   try {
