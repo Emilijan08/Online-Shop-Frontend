@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { useProductStore } from '@/stores/ProductsStore'
+import { ref } from 'vue'
 
 const store = useProductStore()
 
