@@ -6,25 +6,25 @@
         <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
           <div class="md:grid md:grid-cols-2 md:gap-8">
             <div>
-              <h3 class="text-sm font-semibold leading-6 text-gray-900">Solutions</h3>
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Products & Categories</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in navigation.solutions" :key="item.name">
+                <li v-for="productCategory in ProductsAndCategories" :key="productCategory.name">
                   <a
-                    :href="item.href"
+                    :href="productCategory.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                    >{{ item.name }}</a
+                    >{{ productCategory.name }}</a
                   >
                 </li>
               </ul>
             </div>
             <div class="mt-10 md:mt-0">
-              <h3 class="text-sm font-semibold leading-6 text-gray-900">Support</h3>
+              <h3 class="text-sm font-semibold leading-6 text-gray-900">Popular Brands</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in navigation.support" :key="item.name">
+                <li v-for="brand in PopularBrands" :key="brand.name">
                   <a
-                    :href="item.href"
+                    :href="brand.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
-                    >{{ item.name }}</a
+                    >{{ brand.name }}</a
                   >
                 </li>
               </ul>
@@ -34,7 +34,7 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Company</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in navigation.company" :key="item.name">
+                <li v-for="item in Company" :key="item.name">
                   <a
                     :href="item.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -42,7 +42,7 @@
                   >
                 </li>
               </ul>
-            </div>
+              <!--</div>
             <div class="mt-10 md:mt-0">
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
               <ul role="list" class="mt-6 space-y-4">
@@ -54,55 +54,60 @@
                   >
                 </li>
               </ul>
+            </div>-->
             </div>
           </div>
         </div>
-      </div>
-      <div
-        class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between"
-      >
-        <div>
-          <h3 class="text-sm font-semibold leading-6 text-gray-900">Subscribe to our newsletter</h3>
-          <p class="mt-2 text-sm leading-6 text-gray-600">
-            The latest news, articles, and resources, sent to your inbox weekly.
+        <div
+          class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between"
+        >
+          <div>
+            <h3 class="text-sm font-semibold leading-6 text-gray-900">
+              Subscribe to our newsletter
+            </h3>
+            <p class="mt-2 text-sm leading-6 text-gray-600">
+              The latest news, articles, and resources, sent to your inbox weekly.
+            </p>
+          </div>
+          <form class="mt-6 sm:flex sm:max-w-md lg:mt-0">
+            <label for="email-address" class="sr-only">Email address</label>
+            <input
+              type="email"
+              name="email-address"
+              id="email-address"
+              autocomplete="email"
+              required
+              class="w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
+              placeholder="Enter your email"
+            />
+            <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
+              <button
+                type="submit"
+                class="flex w-full items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Subscribe
+              </button>
+            </div>
+          </form>
+        </div>
+        <div
+          class="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between"
+        >
+          <div class="flex space-x-6 md:order-2">
+            <a
+              v-for="item in navigation.social"
+              :key="item.name"
+              :href="item.href"
+              class="text-gray-400 hover:text-gray-500"
+            >
+              <span class="sr-only">{{ item.name }}</span>
+              <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+            </a>
+          </div>
+          <p class="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
+            &copy; 2020 Your Company, Inc. All rights reserved.
           </p>
         </div>
-        <form class="mt-6 sm:flex sm:max-w-md lg:mt-0">
-          <label for="email-address" class="sr-only">Email address</label>
-          <input
-            type="email"
-            name="email-address"
-            id="email-address"
-            autocomplete="email"
-            required
-            class="w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
-            placeholder="Enter your email"
-          />
-          <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-            <button
-              type="submit"
-              class="flex w-full items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Subscribe
-            </button>
-          </div>
-        </form>
-      </div>
-      <div class="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
-        <div class="flex space-x-6 md:order-2">
-          <a
-            v-for="item in navigation.social"
-            :key="item.name"
-            :href="item.href"
-            class="text-gray-400 hover:text-gray-500"
-          >
-            <span class="sr-only">{{ item.name }}</span>
-            <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
-          </a>
-        </div>
-        <p class="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
-          &copy; 2020 Your Company, Inc. All rights reserved.
-        </p>
       </div>
     </div>
   </footer>
@@ -112,24 +117,24 @@
 import { defineComponent, h } from 'vue'
 
 const navigation = {
-  solutions: [
-    { name: 'Marketing', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' }
+  ProductsAndCategories: [
+    { name: 'Main Categories' },
+    { name: 'Laptops', href: '#' },
+    { name: 'Computers', href: '#' },
+    { name: 'Phones', href: '#' },
+    { name: 'Smartwatches', href: '#' },
+    { name: 'Others', href: '#' }
   ],
-  support: [
-    { name: 'Pricing', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Guides', href: '#' },
-    { name: 'API Status', href: '#' }
+  PopularBrands: [
+    { name: 'Apple', href: '#' },
+    { name: 'Samsung', href: '#' },
+    { name: 'Dell', href: '#' },
+    { name: 'HP', href: '#' },
+    { name: 'Others', href: '#' }
   ],
-  company: [
-    { name: 'About us', href: '/about' },
-    { name: 'Blog', href: '#' },
-    { name: 'Jobs', href: '#' },
-    { name: 'Press', href: '#' },
-    { name: 'Partners', href: '#' }
+  Company: [
+    { name: 'About Us', href: '#' },
+    { name: 'Contact', href: '#' }
   ],
   legal: [
     { name: 'Claim', href: '#' },
