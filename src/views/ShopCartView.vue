@@ -11,17 +11,23 @@ for (let i = 0; i < store.productsOnCart.length; i++) {
   store.productsOnCart[i].quantity = 1
 }
 
-async function increase(id) {
+async function increase(id: string) {
   const item = store.productsOnCart.find((element) => element._id === id)
+  if (!item) return
+
   item.quantity++
   const price = await item.price
   total.value += await price
 }
-async function removeItem(id) {
+
+async function removeItem(id: string) {
   store.productsOnCart = store.productsOnCart.filter((product) => product._id != id)
 }
-async function decrease(id) {
+
+async function decrease(id: string) {
   const item = store.productsOnCart.find((element) => element._id === id)
+  if (!item) return
+
   if (item.quantity > 1) {
     item.quantity--
     const price = await item.price
@@ -32,43 +38,6 @@ async function decrease(id) {
 store.productsOnCart.forEach((element) => {
   total.value += element.price
 })
-
-/*const products = [
-  {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Sienna',
-    inStock: true,
-    size: 'Large',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-01.jpg',
-    imageAlt: "Front of men's Basic Tee in sienna."
-  },
-  {
-    id: 2,
-    name: 'Basic Tee',
-    href: '#',
-    price: '$32.00',
-    color: 'Black',
-    inStock: false,
-    leadTime: '3–4 weeks',
-    size: 'Large',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-02.jpg',
-    imageAlt: "Front of men's Basic Tee in black."
-  },
-  {
-    id: 3,
-    name: 'Nomad Tumbler',
-    href: '#',
-    price: '$35.00',
-    color: 'White',
-    inStock: true,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-01-product-03.jpg',
-    imageAlt: 'Insulated bottle with white base and black snap lid.'
-  }
-]
-*/
 </script>
 
 <template>
@@ -105,7 +74,7 @@ store.productsOnCart.forEach((element) => {
                         >
                       </h3>
                     </div>
-                    <div class="mt-1 flex text-sm">
+                    <!-- <div class="mt-1 flex text-sm">
                       <p class="text-gray-500">{{ product.color }}</p>
                       <p
                         v-if="product.size"
@@ -113,7 +82,7 @@ store.productsOnCart.forEach((element) => {
                       >
                         {{ product.size }}
                       </p>
-                    </div>
+                    </div> -->
                     <p class="mt-1 text-sm font-medium text-gray-900">
                       {{ product.price }}
                     </p>
@@ -121,7 +90,7 @@ store.productsOnCart.forEach((element) => {
 
                   <div class="mt-4 sm:mt-0 sm:pr-9">
                     <label :for="`quantity-${productIdx}`" class="sr-only"
-                      >Quantity, {{ product.name }}</label
+                      >Quantity, {{ product.productName }}</label
                     >
                     <select
                       :id="`quantity-${productIdx}`"
@@ -150,7 +119,7 @@ store.productsOnCart.forEach((element) => {
                   </div>
                 </div>
 
-                <p class="mt-4 flex space-x-2 text-sm text-gray-700">
+                <!-- <p class="mt-4 flex space-x-2 text-sm text-gray-700">
                   <CheckIcon
                     v-if="product.inStock"
                     class="h-5 w-5 flex-shrink-0 text-green-500"
@@ -162,7 +131,7 @@ store.productsOnCart.forEach((element) => {
                     aria-hidden="true"
                   />
                   <span>{{ product.inStock ? 'In stock' : `Ships in ${product.leadTime}` }}</span>
-                </p>
+                </p> -->
               </div>
             </li>
           </ul>
