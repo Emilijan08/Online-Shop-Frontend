@@ -59,15 +59,15 @@
           <Menu as="div" class="relative ml-3">
             <div>
               <MenuButton
-                class="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                class="relative rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-1"
               >
                 <span class="absolute -inset-1.5" />
                 <span class="sr-only">Open user menu</span>
-                <img
-                  class="h-8 w-8 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                  alt=""
-                />
+                <div class="flex items-center gap-2">
+                  <UserCircleIcon class="h-8 w-8 rounded-full" aria-hidden="true" />
+                  <!-- Show username here -->
+                  <span v-if="auth.user.username">{{ auth.user.username }}</span>
+                </div>
               </MenuButton>
             </div>
             <transition
@@ -81,6 +81,11 @@
               <MenuItems
                 class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
+                <MenuItem v-if="auth.user.username">
+                  <div class="bg-gray-100 block px-4 py-2 text-sm text-gray-700">
+                    Signed in as <strong>{{ auth.user.username }}</strong>
+                  </div>
+                </MenuItem>
                 <MenuItem>
                   <div
                     class="bg-gray-100 block px-4 py-2 text-sm text-gray-700"
@@ -129,6 +134,7 @@ import {
   MenuItems
 } from '@headlessui/vue'
 import { Bars3Icon, HeartIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/vue/24/outline'
+import { UserCircleIcon } from '@heroicons/vue/24/solid'
 import { reactive, watchEffect } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 
