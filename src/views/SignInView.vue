@@ -1,25 +1,12 @@
 <script setup lang="ts">
-import LoginErrorModelDialog from '@/components/LoginErrorModelDialog.vue'
 import { useAuthStore } from '@/stores/AuthStore'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 let username = ref('')
 let password = ref('')
-let LoginErrorDialogModelRef = ref()
 
 const store = useAuthStore()
-
-const handleLogin = async () => {
-  try {
-    await store.login(username.value, password.value)
-    // Weiterleiten oder andere Aktionen bei erfolgreichem Login
-  } catch (error) {
-    if (LoginErrorDialogModelRef.value) {
-      LoginErrorDialogModelRef.value.showLoginErrorModelDialog()
-    }
-  }
-}
 </script>
 
 <template>
@@ -29,6 +16,7 @@ const handleLogin = async () => {
     >
       <div class="mx-auto w-full max-w-sm lg:w-96">
         <div>
+          
           <h2 class="mt-8 text-2xl font-bold leading-9 tracking-tight text-gray-900">
             Sign in to your account
           </h2>
@@ -46,7 +34,7 @@ const handleLogin = async () => {
 
         <div class="mt-10">
           <div>
-            <form @submit.prevent="handleLogin" class="space-y-6">
+            <form @submit.prevent="store.login(username, password)" class="space-y-6">
               <div>
                 <label for="username" class="block text-sm font-medium leading-6 text-gray-900"
                   >Username</label
@@ -101,7 +89,5 @@ const handleLogin = async () => {
         alt=""
       />
     </div>
-    <LoginErrorModelDialog ref="LoginErrorModelDialogRef" />
-    <!-- Füge das Popup in die View ein -->
   </div>
 </template>
