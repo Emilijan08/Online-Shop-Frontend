@@ -70,7 +70,7 @@
                 />
               </MenuButton>
             </div>
-            <transition
+            <TransitionRoot
               enter-active-class="transition ease-out duration-200"
               enter-from-class="transform opacity-0 scale-95"
               enter-to-class="transform opacity-100 scale-100"
@@ -81,15 +81,16 @@
               <MenuItems
                 class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
-                <MenuItem v-slot="{ active }" v-for="(item, index) in profileItems" :key="index">
-                  <RouterLink
-                    to="/auth/login"
-                    :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
-                    >{{ item.name }}
-                  </RouterLink>
+                <MenuItem>
+                  <div
+                    class="bg-gray-100 block px-4 py-2 text-sm text-gray-700"
+                    @click="auth.logout()"
+                  >
+                    Sign out
+                  </div>
                 </MenuItem>
               </MenuItems>
-            </transition>
+            </TransitionRoot>
           </Menu>
         </div>
       </div>
@@ -117,6 +118,7 @@
 </template>
 
 <script setup lang="ts">
+import { useAuthStore } from '@/stores/AuthStore'
 import {
   Disclosure,
   DisclosureButton,
@@ -135,8 +137,7 @@ const navItems = reactive([
   { name: 'About us', path: '/about', selected: false }
 ])
 
-const profileItems = [{ name: 'Sign out', path: '/signout' }]
-
+const auth = useAuthStore()
 const route = useRoute()
 
 watchEffect(() => {
