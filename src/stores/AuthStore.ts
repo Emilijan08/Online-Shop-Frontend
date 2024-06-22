@@ -48,7 +48,7 @@ export const useAuthStore = defineStore<
 
         router.push('/')
       } catch (err) {
-        this.error = true
+        throw new Error('Username or password is incorrect.')
       }
     },
     async register(temp_username: string, password: string, confirmPassword: string) {
@@ -69,8 +69,7 @@ export const useAuthStore = defineStore<
         if (err.response && err.response.status === 409) {
           throw new Error('Username already exists')
         } else {
-          this.error = true
-          this.message = err.response.data.message
+          throw new Error('Registration failed.')
         }
       }
     },

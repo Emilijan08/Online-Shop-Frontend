@@ -70,7 +70,7 @@
                 />
               </MenuButton>
             </div>
-            <TransitionRoot
+            <transition
               enter-active-class="transition ease-out duration-200"
               enter-from-class="transform opacity-0 scale-95"
               enter-to-class="transform opacity-100 scale-100"
@@ -90,7 +90,7 @@
                   </div>
                 </MenuItem>
               </MenuItems>
-            </TransitionRoot>
+            </transition>
           </Menu>
         </div>
       </div>

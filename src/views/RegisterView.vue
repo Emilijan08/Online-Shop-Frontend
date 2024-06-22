@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/AuthStore'
+import { ExclamationCircleIcon } from '@heroicons/vue/20/solid'
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
@@ -8,14 +9,41 @@ const store = useAuthStore()
 let username = ref('')
 let password = ref('')
 let confirmPassword = ref('')
+let errors = ref({
+  username: '',
+  password: '',
+  confirmPassword: '',
+  general: ''
+})
 
-const arePasswordsEqual = (): boolean => {
-  if (password.value === confirmPassword.value) {
-    console.log('Passwords are equal')
-    return true
-  } else {
-    console.log('Passwords are not equal')
-    return false
+const validateRegister = async () => {
+  errors.value = {
+    username: '',
+    password: '',
+    confirmPassword: '',
+    general: ''
+  }
+
+  if (!username.value) errors.value.username = 'Username is required.'
+  if (!password.value) errors.value.password = 'Password is required.'
+  if (!confirmPassword.value) errors.value.confirmPassword = 'Confirm Password is required.'
+
+  if (password.value && confirmPassword.value && password.value !== confirmPassword.value) {
+    errors.value.confirmPassword = 'Passwords do not match.'
+  }
+
+  if (errors.value.username || errors.value.password || errors.value.confirmPassword) {
+    return
+  }
+
+  try {
+    await store.register(username.value, password.value, confirmPassword.value)
+  } catch (err: any) {
+    if (err.message.includes('Username')) {
+      errors.value.username = 'Username already exists'
+    } else {
+      errors.value.general = err.message || 'Registration failed.'
+    }
   }
 }
 </script>
@@ -33,25 +61,37 @@ const arePasswordsEqual = (): boolean => {
         </h2>
       </div>
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form
-          class="space-y-6"
-          @submit.prevent="store.register(username, password, confirmPassword)"
-        >
+        <form class="space-y-6" @submit.prevent="validateRegister">
           <div>
             <label for="register-username" class="block text-sm font-medium leading-6 text-gray-900"
               >Username</label
             >
-            <div class="mt-2">
+            <div class="relative mt-2 rounded-md shadow-sm">
               <input
                 id="register-username"
                 name="username"
                 type="text"
                 v-model="username"
                 autocomplete="username"
+                :class="{
+                  'text-red-900 ring-red-300 placeholder-red-300 focus:ring-red-500 focus:border-red-500 pr-10':
+                    errors.username
+                }"
                 required
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                aria-invalid="true"
+                aria-describedby="username-error"
               />
+              <div
+                v-if="errors.username"
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+              >
+                <ExclamationCircleIcon class="h-5 w-5 text-red-500" aria-hidden="true" />
+              </div>
             </div>
+            <p v-if="errors.username" class="mt-2 text-sm text-red-600" id="username-error">
+              {{ errors.username }}
+            </p>
           </div>
 
           <div>
@@ -67,34 +107,74 @@ const arePasswordsEqual = (): boolean => {
                 >
               </div>
             </div>
-            <div class="mt-2">
+            <div class="relative mt-2 rounded-md shadow-sm">
               <input
                 id="register-Password"
                 name="password"
                 type="password"
                 v-model="password"
                 autocomplete="current-password"
+                :class="{
+                  'text-red-900 ring-red-300 placeholder-red-300 focus:ring-red-500 focus:border-red-500 pr-10':
+                    errors.password
+                }"
                 required
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                aria-invalid="true"
+                aria-describedby="password-error"
               />
-            </div>
-            <div class="mt-7">
-              <label
-                for="register-confirmPassword"
-                class="block text-sm font-medium leading-6 text-gray-900"
-                >Confirm Password</label
+              <div
+                v-if="errors.password"
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
               >
+                <ExclamationCircleIcon class="h-5 w-5 text-red-500" aria-hidden="true" />
+              </div>
+            </div>
+            <p v-if="errors.password" class="mt-2 text-sm text-red-600" id="password-error">
+              {{ errors.password }}
+            </p>
+          </div>
 
+          <div>
+            <label
+              for="register-confirmPassword"
+              class="block text-sm font-medium leading-6 text-gray-900"
+              >Confirm Password</label
+            >
+            <div class="relative mt-2 rounded-md shadow-sm">
               <input
                 id="register-confirmPassword"
                 name="confirmPassword"
                 type="password"
                 v-model="confirmPassword"
                 autocomplete="current-password"
+                :class="{
+                  'text-red-900 ring-red-300 placeholder-red-300 focus:ring-red-500 focus:border-red-500 pr-10':
+                    errors.confirmPassword
+                }"
                 required
-                class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                class="block w-full rounded-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                aria-invalid="true"
+                aria-describedby="confirmPassword-error"
               />
+              <div
+                v-if="errors.confirmPassword"
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3"
+              >
+                <ExclamationCircleIcon class="h-5 w-5 text-red-500" aria-hidden="true" />
+              </div>
             </div>
+            <p
+              v-if="errors.confirmPassword"
+              class="mt-2 text-sm text-red-600"
+              id="confirmPassword-error"
+            >
+              {{ errors.confirmPassword }}
+            </p>
+          </div>
+
+          <div v-if="errors.general" class="text-red-600 text-sm">
+            {{ errors.general }}
           </div>
 
           <div>
