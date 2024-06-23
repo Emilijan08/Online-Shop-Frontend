@@ -3,4 +3,5 @@ export type CommentType = {
   text: string
   user: string
   createdAt: Date
+  rating: number
 }

@@ -80,15 +80,17 @@
               <button
                 type="submit"
                 :class="[
-                  'flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50',
-                  addProduct ? 'bg-green-600 disabled-link' : ''
+                  'flex w-full items-center justify-center rounded-md border border-transparent px-8 py-3 text-base font-medium text-white  focus:outline-none focus:ring-2  focus:ring-offset-2 focus:ring-offset-gray-50',
+                  addProduct
+                    ? 'bg-green-600 hover:bg-green-700 focus:ring-green-500 disabled-link'
+                    : 'bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500'
                 ]"
                 @click="productStore.addToCart(productId), (addProduct = !addProduct)"
               >
-                Add to bag
+                {{ addProduct ? 'Added to Cart!' : 'Add to Cart' }}
               </button>
             </div>
-            <div class="mt-6 text-center">
+            <!-- <div class="mt-6 text-center">
               <a href="#" class="group inline-flex text-base font-medium">
                 <ShieldCheckIcon
                   class="mr-2 h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
@@ -96,7 +98,72 @@
                 />
                 <span class="text-gray-500 hover:text-gray-700">Lifetime Guarantee</span>
               </a>
-            </div>
+            </div> -->
+          </div>
+
+          <div class="mx-auto mt-16 w-full max-w-2xl lg:col-span-4 lg:mt-0 lg:max-w-none">
+            <TabGroup as="div">
+              <div class="border-b border-gray-200">
+                <TabList class="-mb-px flex space-x-8">
+                  <Tab as="template" v-slot="{ selected }">
+                    <button
+                      :class="[
+                        selected
+                          ? 'border-indigo-600 text-indigo-600'
+                          : 'border-transparent text-gray-700 hover:border-gray-300 hover:text-gray-800',
+                        'whitespace-nowrap border-b-2 py-6 text-sm font-medium'
+                      ]"
+                    >
+                      Customer Reviews
+                    </button>
+                  </Tab>
+                </TabList>
+              </div>
+              <TabPanels as="template">
+                <TabPanel class="-mb-10">
+                  <h3 class="sr-only">Customer Reviews</h3>
+
+                  <div
+                    v-for="(comment, index) in productStore.comments"
+                    :key="comment.id"
+                    class="flex space-x-4 text-sm text-gray-500"
+                  >
+                    <div class="flex-none py-10">
+                      <UserCircleIcon
+                        class="h-10 w-10 rounded-full bg-gray-100"
+                        aria-hidden="true"
+                      />
+                    </div>
+                    <div :class="[index === 0 ? '' : 'border-t border-gray-200', 'py-10']">
+                      <h3 class="font-medium text-gray-900">{{ comment.user }}</h3>
+                      <p>
+                        <time :datetime="comment.createdAt.toString()">{{
+                          new Date(comment.createdAt).toLocaleDateString('de-CH')
+                        }}</time>
+                      </p>
+
+                      <div class="mt-4 flex items-center">
+                        <StarIcon
+                          v-for="rating in [0, 1, 2, 3, 4]"
+                          :key="rating"
+                          :class="[
+                            comment.rating > rating ? 'text-yellow-400' : 'text-gray-300',
+                            'h-5 w-5 flex-shrink-0'
+                          ]"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <p class="sr-only">{{ comment.rating }} out of 5 stars</p>
+
+                      <div
+                        class="prose prose-sm mt-4 max-w-none text-gray-500"
+                        v-html="comment.text"
+                      />
+                    </div>
+                  </div>
+                </TabPanel>
+              </TabPanels>
+            </TabGroup>
           </div>
         </section>
       </div>
@@ -109,8 +176,14 @@ import { useAuthStore } from '@/stores/AuthStore'
 import { useProductStore } from '@/stores/ProductsStore'
 import { useWishlistStore } from '@/stores/WishlistStore'
 import type { ProductType } from '@/types/Product'
-import { CheckIcon, ChevronLeftIcon, HeartIcon, StarIcon } from '@heroicons/vue/20/solid'
-import { ShieldCheckIcon } from '@heroicons/vue/24/outline'
+import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
+import {
+  CheckIcon,
+  ChevronLeftIcon,
+  HeartIcon,
+  StarIcon,
+  UserCircleIcon
+} from '@heroicons/vue/20/solid'
 import axios from 'axios'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
@@ -125,9 +198,9 @@ const wishlistStore = useWishlistStore()
 const product = ref<ProductType | null>(null)
 const addProduct = ref(false)
 const comment = ref('')
-const reviews = { average: 4, totalCount: 1624 }
 
 onMounted(async () => {
+  console.log(productStore.comments)
   if (!product.value) {
     await productStore.getProducts()
     product.value = productStore.products.find((element) => element._id === productId) || null
@@ -154,6 +227,7 @@ const wishlistButtonClass = computed(() => [
   isInWishlist.value ? 'text-red-500' : 'text-gray-400 hover:text-gray-500'
 ])
 
+productStore.getComments(productId)
 async function addComment() {
   try {
     if (product.value) {
@@ -172,5 +246,10 @@ async function addComment() {
       await productStore.getComments(product.value._id)
     }
   }
+}
+
+const reviews = {
+  average: 4,
+  totalCount: 1624
 }
 </script>
