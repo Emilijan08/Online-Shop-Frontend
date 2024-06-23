@@ -9,7 +9,7 @@ interface ProductsState {
   comments: CommentType[]
   productsOnCart: ProductType[]
   selectedBrand: string
-  selectedGender: string
+  selectedCategory: string
   selectedPrice: string
   selectedType: string
 }
@@ -32,7 +32,7 @@ export const useProductStore = defineStore<
     comments: [],
     productsOnCart: [],
     selectedBrand: 'All',
-    selectedGender: 'All',
+    selectedCategory: 'All',
     selectedPrice: 'All',
     selectedType: 'All'
   }),

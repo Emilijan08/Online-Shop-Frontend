@@ -168,10 +168,12 @@
         </section>
       </div>
     </div>
+    <Recommendations />
   </div>
 </template>
 
 <script setup lang="ts">
+import Recommendations from '@/components/Recommendations.vue'
 import { useAuthStore } from '@/stores/AuthStore'
 import { useProductStore } from '@/stores/ProductsStore'
 import { useWishlistStore } from '@/stores/WishlistStore'
@@ -187,7 +189,6 @@ import {
 import axios from 'axios'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-
 const route = useRoute()
 const productId = route.params.productId as string
 
