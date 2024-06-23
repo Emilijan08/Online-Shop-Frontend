@@ -10,6 +10,10 @@
           v-for="(product, index) in store.products"
           :key="index"
           :to="`/products/${product._id}`"
+          :productName="product.productName"
+          :price="product.price"
+          :productImg="product.productImage"
+          :id="product._id"
           class="group"
         >
           <div
@@ -25,12 +29,62 @@
           <p class="mt-1 text-lg font-medium text-gray-900">{{ product.price }}</p>
         </router-link>
       </div>
+      <h1 v-show="filteredProducts.length === 0">
+          There are no products in this category..
+        </h1>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useProductStore } from '@/stores/ProductsStore'
+import { useProductStore } from '@/stores/ProductsStore';
+import { computed } from 'vue';
 
 const store = useProductStore()
+
+
+          
+
+const filteredProducts = computed(() => {
+
+  let products = store.products
+
+  if (store.selectedBrand && store.selectedBrand !== 'All') {
+    products = products.filter(
+      product => product.brandName === store.selectedBrand
+    )
+  }
+
+  if (store.selectedCategory && store.selectedCategory !== 'All') {
+    products = products.filter(
+      product => product.category === store.selectedCategory
+    )
+  }
+  if (store.selectedType && store.selectedType !== 'All') {
+    products = products.filter(product => product.type === store.selectedType)
+  }
+  if (store.selectedPrice && store.selectedPrice !== 'All') {
+    let price = store.selectedPrice
+    switch (price) {
+      case '0-50':
+        products = products.filter(
+          product => product.price >= 0 && product.price <= 50
+        )
+        break
+      case '50-100':
+        products = products.filter(
+          product => product.price >= 50 && product.price <= 100
+        )
+        break
+      case '100-150':
+        products = products.filter(
+          product => product.price >= 100 && product.price <= 150
+        )
+        break
+      default:
+        break
+    }
+  }
+  return products
+})
 </script>
