@@ -75,11 +75,15 @@
         <section aria-labelledby="options-heading">
           <h2 id="options-heading" class="sr-only">Product options</h2>
 
-          <form>
+          <div>
             <div class="mt-10">
               <button
                 type="submit"
-                class="flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                :class="[
+                  'flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50',
+                  addProduct ? 'bg-green-600 disabled-link' : ''
+                ]"
+                @click="productStore.addToCart(productId), (addProduct = !addProduct)"
               >
                 Add to bag
               </button>
@@ -93,7 +97,7 @@
                 <span class="text-gray-500 hover:text-gray-700">Lifetime Guarantee</span>
               </a>
             </div>
-          </form>
+          </div>
         </section>
       </div>
     </div>
