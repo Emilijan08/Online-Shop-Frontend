@@ -5,10 +5,9 @@ export type ProductType = {
   productName: string
   productImage: string
   productDescription: string
+  productCategory: string
   price: number
   brandName: string
-  gender: string
-  type: string
   quantity: number
   comments: CommentType[]
 }
