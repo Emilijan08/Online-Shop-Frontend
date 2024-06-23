@@ -8,7 +8,7 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Products & Categories</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="category in FooterNavigation.categories" :key="category.name">
+                <li v-for="category in footerNavigation.categories" :key="category.name">
                   <a
                     :href="category.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -20,7 +20,7 @@
             <div class="mt-10 md:mt-0">
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Popular Brands</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="brand in FooterNavigation.brands" :key="brand.name">
+                <li v-for="brand in footerNavigation.brands" :key="brand.name">
                   <a
                     :href="brand.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -34,7 +34,7 @@
             <div>
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Company</h3>
               <ul role="list" class="mt-6 space-y-4">
-                <li v-for="item in FooterNavigation.company" :key="item.name">
+                <li v-for="item in footerNavigation.company" :key="item.name">
                   <a
                     :href="item.href"
                     class="text-sm leading-6 text-gray-600 hover:text-gray-900"
@@ -42,8 +42,8 @@
                   >
                 </li>
               </ul>
-              <!--</div>
-            <div class="mt-10 md:mt-0">
+            </div>
+            <!-- <div class="mt-10 md:mt-0">
               <h3 class="text-sm font-semibold leading-6 text-gray-900">Legal</h3>
               <ul role="list" class="mt-6 space-y-4">
                 <li v-for="item in navigation.legal" :key="item.name">
@@ -54,60 +54,55 @@
                   >
                 </li>
               </ul>
-            </div>-->
-            </div>
+            </div> -->
           </div>
         </div>
-        <div
-          class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between"
-        >
-          <div>
-            <h3 class="text-sm font-semibold leading-6 text-gray-900">
-              Subscribe to our newsletter
-            </h3>
-            <p class="mt-2 text-sm leading-6 text-gray-600">
-              The latest news, articles, and resources, sent to your inbox weekly.
-            </p>
-          </div>
-          <form class="mt-6 sm:flex sm:max-w-md lg:mt-0">
-            <label for="email-address" class="sr-only">Email address</label>
-            <input
-              type="email"
-              name="email-address"
-              id="email-address"
-              autocomplete="email"
-              required
-              class="w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
-              placeholder="Enter your email"
-            />
-            <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-              <button
-                type="submit"
-                class="flex w-full items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-              >
-                Subscribe
-              </button>
-            </div>
-          </form>
-        </div>
-        <div
-          class="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between"
-        >
-          <div class="flex space-x-6 md:order-2">
-            <a
-              v-for="item in FooterNavigation.social"
-              :key="item.name"
-              :href="item.href"
-              class="text-gray-400 hover:text-gray-500"
-            >
-              <span class="sr-only">{{ item.name }}</span>
-              <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
-            </a>
-          </div>
-          <p class="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
-            &copy; 2020 Your Company, Inc. All rights reserved.
+      </div>
+      <div
+        class="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between"
+      >
+        <div>
+          <h3 class="text-sm font-semibold leading-6 text-gray-900">Subscribe to our newsletter</h3>
+          <p class="mt-2 text-sm leading-6 text-gray-600">
+            The latest news, articles, and resources, sent to your inbox weekly.
           </p>
         </div>
+        <form class="mt-6 sm:flex sm:max-w-md lg:mt-0">
+          <label for="email-address" class="sr-only">Email address</label>
+          <input
+            type="email"
+            name="email-address"
+            id="email-address"
+            autocomplete="email"
+            required
+            class="w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
+            placeholder="Enter your email"
+          />
+          <div class="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
+            <button
+              type="submit"
+              class="flex w-full items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
+        <div class="flex space-x-6 md:order-2">
+          <a
+            v-for="item in footerNavigation.social"
+            :key="item.name"
+            :href="item.href"
+            class="text-gray-400 hover:text-gray-500"
+          >
+            <span class="sr-only">{{ item.name }}</span>
+            <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+          </a>
+        </div>
+        <p class="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
+          &copy; 2020 Your Company, Inc. All rights reserved.
+        </p>
       </div>
     </div>
   </footer>
@@ -116,7 +111,7 @@
 <script setup lang="ts">
 import { defineComponent, h } from 'vue'
 
-const FooterNavigation = {
+const footerNavigation = {
   categories: [
     { name: 'Main Categories:' },
     { name: 'Laptops', href: '#' },
@@ -212,6 +207,4 @@ const FooterNavigation = {
     }
   ]
 }
-
-defineExpose({ FooterNavigation })
 </script>
