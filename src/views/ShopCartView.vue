@@ -5,31 +5,23 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const store = useProductStore()
-
 let total = ref(0)
 let checkout = ref(false)
-
 for (let i = 0; i < store.productsOnCart.length; i++) {
   store.productsOnCart[i].quantity = 1
 }
 
-async function increase(id: string) {
+async function increase(id) {
   const item = store.productsOnCart.find((element) => element._id === id)
-  if (!item) return
-
   item.quantity++
   const price = await item.price
   total.value += await price
 }
-
-async function removeItem(id: string) {
+async function removeItem(id) {
   store.productsOnCart = store.productsOnCart.filter((product) => product._id != id)
 }
-
-async function decrease(id: string) {
+async function decrease(id) {
   const item = store.productsOnCart.find((element) => element._id === id)
-  if (!item) return
-
   if (item.quantity > 1) {
     item.quantity--
     const price = await item.price
@@ -52,7 +44,7 @@ store.productsOnCart.forEach((element) => {
 
           <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
             <li
-              v-for="(product, productIdx) in store.products"
+              v-for="product in store.productsOnCart"
               :key="product._id"
               class="flex py-6 sm:py-10"
             >
@@ -113,6 +105,7 @@ store.productsOnCart.forEach((element) => {
                       <button
                         type="button"
                         class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
+                        @click="removeItem(product._id)"
                       >
                         <span class="sr-only">Remove</span>
                         <XMarkIcon class="h-5 w-5" aria-hidden="true" />
@@ -173,7 +166,9 @@ store.productsOnCart.forEach((element) => {
             </div>
             <div class="flex items-center justify-between border-t border-gray-200 pt-4">
               <dt class="text-base font-medium text-gray-900">Order total</dt>
-              <dd class="text-base font-medium text-gray-900">$112.32</dd>
+              <dd class="text-base font-medium text-gray-900">
+                ${{ Math.round(product.quantity * product.price * 1e12) / 1e12 }}
+              </dd>
             </div>
           </dl>
 
@@ -182,6 +177,7 @@ store.productsOnCart.forEach((element) => {
               <button
                 type="submit"
                 class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+                @click="store.clearCart"
               >
                 Checkout
               </button>
