@@ -5,23 +5,31 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 
 const store = useProductStore()
+
 let total = ref(0)
 let checkout = ref(false)
+
 for (let i = 0; i < store.productsOnCart.length; i++) {
   store.productsOnCart[i].quantity = 1
 }
 
-async function increase(id) {
+async function increase(id: string) {
   const item = store.productsOnCart.find((element) => element._id === id)
+  if (!item) return
+
   item.quantity++
   const price = await item.price
   total.value += await price
 }
-async function removeItem(id) {
+
+async function removeItem(id: string) {
   store.productsOnCart = store.productsOnCart.filter((product) => product._id != id)
 }
-async function decrease(id) {
+
+async function decrease(id: string) {
   const item = store.productsOnCart.find((element) => element._id === id)
+  if (!item) return
+
   if (item.quantity > 1) {
     item.quantity--
     const price = await item.price
@@ -83,12 +91,12 @@ store.productsOnCart.forEach((element) => {
                   </div>
 
                   <div class="mt-4 sm:mt-0 sm:pr-9">
-                    <label :for="`quantity-${productIdx}`" class="sr-only"
+                    <label :for="`quantity-${product._id}`" class="sr-only"
                       >Quantity, {{ product.productName }}</label
                     >
                     <select
-                      :id="`quantity-${productIdx}`"
-                      :name="`quantity-${productIdx}`"
+                      :id="`quantity-${product._id}`"
+                      :name="`quantity-${product._id}`"
                       class="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
                     >
                       <option value="1">1</option>
@@ -167,7 +175,7 @@ store.productsOnCart.forEach((element) => {
             <div class="flex items-center justify-between border-t border-gray-200 pt-4">
               <dt class="text-base font-medium text-gray-900">Order total</dt>
               <dd class="text-base font-medium text-gray-900">
-                ${{ Math.round(product.quantity * product.price * 1e12) / 1e12 }}
+                <!-- {{ Math.round(product.quantity * product.price * 1e12) / 1e12 }} -->
               </dd>
             </div>
           </dl>
