@@ -95,7 +95,7 @@
         </Dialog>
       </TransitionRoot>
 
-      <main class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+      <main class="px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
         <div class="border-b border-gray-200 pb-10">
           <h1 class="text-4xl font-bold tracking-tight text-gray-900">New Arrivals</h1>
           <p class="mt-4 text-base text-gray-500">

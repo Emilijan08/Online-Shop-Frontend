@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useProductStore } from '@/stores/ProductsStore'
+import { QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid'
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const store = useProductStore()
 
@@ -176,18 +178,17 @@ store.productsOnCart.forEach((element) => {
           </dl>
 
           <div class="mt-6">
-            <Routerlink to="/order-summary">
+            <router-link to="/order-summary">
               <button
                 type="submit"
                 class="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
               >
                 Checkout
               </button>
-            </Routerlink>
+            </router-link>
           </div>
         </section>
       </form>
     </div>
-    <Recommendations />
   </div>
 </template>
