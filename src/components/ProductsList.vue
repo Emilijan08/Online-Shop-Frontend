@@ -7,14 +7,9 @@
         class="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8"
       >
         <router-link
-          v-for="(product, index) in store.products"
+          v-for="(product, index) in filteredProducts"
           :key="index"
           :to="`/products/${product._id}`"
-          :name="product.name"
-          :price="product.price"
-          :productImg="product.image"
-          :id="product._id"
-          class="group"
         >
           <div
             class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
@@ -37,7 +32,6 @@
 <script setup lang="ts">
 import { useProductStore } from '@/stores/ProductsStore'
 import { computed } from 'vue'
-
 const store = useProductStore()
 
 const filteredProducts = computed(() => {
@@ -50,11 +44,9 @@ const filteredProducts = computed(() => {
   if (store.selectedCategory && store.selectedCategory !== 'All') {
     products = products.filter((product) => product.category === store.selectedCategory)
   }
-  if (store.selectedType && store.selectedType !== 'All') {
-    products = products.filter((product) => product.type === store.selectedType)
-  }
+
   if (store.selectedPrice && store.selectedPrice !== 'All') {
-    let price = store.selectedPrice
+    const price = store.selectedPrice
     switch (price) {
       case '0-50':
         products = products.filter((product) => product.price >= 0 && product.price <= 50)
@@ -69,6 +61,7 @@ const filteredProducts = computed(() => {
         break
     }
   }
+
   return products
 })
 </script>
