@@ -28,20 +28,16 @@
       class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6"
     >
       <div class="flex min-w-0 gap-x-4">
-        <img
-          class="h-12 w-12 flex-none bg-gray-50"
-          :src="wishlistItem.product.productImage"
-          alt=""
-        />
+        <img class="h-12 w-12 flex-none bg-gray-50" :src="wishlistItem.product.image" alt="" />
         <div class="min-w-0 flex-auto">
           <p class="text-sm font-semibold leading-6 text-gray-900">
             <router-link :to="`/products/${wishlistItem.productId}`">
               <span class="absolute inset-x-0 -top-px bottom-0" />
-              {{ wishlistItem.product.productName }}
+              {{ wishlistItem.product.name }}
             </router-link>
           </p>
           <p class="relative truncate hover:underline">
-            {{ wishlistItem.product.productDescription }}
+            {{ wishlistItem.product.description }}
           </p>
         </div>
       </div>

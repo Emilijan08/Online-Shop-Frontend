@@ -2,12 +2,12 @@ import type { CommentType } from './Comment'
 
 export type ProductType = {
   _id: string
-  productName: string
-  productImage: string
-  productDescription: string
-  productCategory: string
+  name: string
+  description: string
+  image: string
   price: number
-  brandName: string
-  quantity: number
+  brand: string
+  category: string
   comments: CommentType[]
+  quantity: number
 }

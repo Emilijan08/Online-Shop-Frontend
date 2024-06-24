@@ -10,9 +10,9 @@
           v-for="(product, index) in store.products"
           :key="index"
           :to="`/products/${product._id}`"
-          :productName="product.productName"
+          :name="product.name"
           :price="product.price"
-          :productImg="product.productImage"
+          :productImg="product.image"
           :id="product._id"
           class="group"
         >
@@ -20,12 +20,12 @@
             class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7"
           >
             <img
-              :src="product.productImage"
-              :alt="product.productName"
+              :src="product.image"
+              :alt="product.name"
               class="h-full w-full object-cover object-center group-hover:opacity-75"
             />
           </div>
-          <h3 class="mt-4 text-sm text-gray-700">{{ product.productName }}</h3>
+          <h3 class="mt-4 text-sm text-gray-700">{{ product.name }}</h3>
           <p class="mt-1 text-lg font-medium text-gray-900">{{ product.price }}</p>
         </router-link>
       </div>
@@ -44,11 +44,11 @@ const filteredProducts = computed(() => {
   let products = store.products
 
   if (store.selectedBrand && store.selectedBrand !== 'All') {
-    products = products.filter((product) => product.brandName === store.selectedBrand)
+    products = products.filter((product) => product.brand === store.selectedBrand)
   }
 
   if (store.selectedCategory && store.selectedCategory !== 'All') {
-    products = products.filter((product) => product.productCategory === store.selectedCategory)
+    products = products.filter((product) => product.category === store.selectedCategory)
   }
   if (store.selectedType && store.selectedType !== 'All') {
     products = products.filter((product) => product.type === store.selectedType)

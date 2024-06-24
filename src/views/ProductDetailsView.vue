@@ -13,7 +13,7 @@
       <div class="lg:max-w-lg lg:self-end">
         <div class="mt-4 flex justify-between">
           <h1 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-            {{ product?.productName }}
+            {{ product?.name }}
           </h1>
           <button @click="toggleWishlist" :class="wishlistButtonClass">
             <HeartIcon class="h-6 w-6" aria-hidden="true" />
@@ -49,7 +49,7 @@
           </div>
 
           <div class="mt-4 space-y-6">
-            <p class="text-base text-gray-500">{{ product?.productDescription }}</p>
+            <p class="text-base text-gray-500">{{ product?.description }}</p>
           </div>
 
           <div class="mt-6 flex items-center">
@@ -63,8 +63,8 @@
       <div class="mt-10 lg:col-start-2 lg:row-span-2 lg:mt-0 lg:self-center">
         <div class="aspect-h-1 aspect-w-1 overflow-hidden rounded-lg">
           <img
-            :src="product?.productImage"
-            :alt="product?.productName"
+            :src="product?.image"
+            :alt="product?.name"
             class="h-full w-full object-cover object-center"
           />
         </div>

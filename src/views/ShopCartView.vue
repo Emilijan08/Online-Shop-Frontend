@@ -58,8 +58,8 @@ store.productsOnCart.forEach((element) => {
             >
               <div class="flex-shrink-0">
                 <img
-                  :src="product.productImage"
-                  :alt="product.productName"
+                  :src="product.image"
+                  :alt="product.name"
                   class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
                 />
               </div>
@@ -70,9 +70,9 @@ store.productsOnCart.forEach((element) => {
                     <div class="flex justify-between">
                       <h3 class="text-sm">
                         <a
-                          :href="product.productImage"
+                          :href="product.image"
                           class="font-medium text-gray-700 hover:text-gray-800"
-                          >{{ product.productName }}</a
+                          >{{ product.name }}</a
                         >
                       </h3>
                     </div>
@@ -92,7 +92,7 @@ store.productsOnCart.forEach((element) => {
 
                   <div class="mt-4 sm:mt-0 sm:pr-9">
                     <label :for="`quantity-${product._id}`" class="sr-only"
-                      >Quantity, {{ product.productName }}</label
+                      >Quantity, {{ product.name }}</label
                     >
                     <select
                       :id="`quantity-${product._id}`"
