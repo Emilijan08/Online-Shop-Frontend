@@ -38,7 +38,6 @@ export const useAuthStore = defineStore<
           password: password
         })
 
-        console.log(res)
         const { message, username, role } = res.data
         this.token = message
         this.user.username = username

@@ -58,16 +58,14 @@ export const useProductStore = defineStore<
           text: _comment,
           user: _username
         })
-        console.log(response)
       } catch (err) {
-        console.log(err)
+        console.error(err)
       }
     },
     async getComments(productId: string) {
       const URL = `${import.meta.env.VITE_BASE_URL}/products/${productId}/comments`
       const response = await axios.get(URL)
       this.comments = await response.data.comments
-      console.log(this.comments)
     }
   }
 })

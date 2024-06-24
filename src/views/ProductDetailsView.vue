@@ -180,11 +180,11 @@ import { useWishlistStore } from '@/stores/WishlistStore'
 import type { ProductType } from '@/types/Product'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
 import {
-  CheckIcon,
-  ChevronLeftIcon,
-  HeartIcon,
-  StarIcon,
-  UserCircleIcon
+CheckIcon,
+ChevronLeftIcon,
+HeartIcon,
+StarIcon,
+UserCircleIcon
 } from '@heroicons/vue/20/solid'
 import axios from 'axios'
 import { computed, onMounted, ref } from 'vue'
@@ -201,7 +201,6 @@ const addProduct = ref(false)
 const comment = ref('')
 
 onMounted(async () => {
-  console.log(productStore.comments)
   if (!product.value) {
     await productStore.getProducts()
     product.value = productStore.products.find((element) => element._id === productId) || null
@@ -237,10 +236,9 @@ async function addComment() {
         comment: comment.value,
         username: authStore.user.username
       })
-      console.log(response)
     }
   } catch (err) {
-    console.log(err)
+    console.error(err)
   } finally {
     comment.value = ''
     if (product.value) {
