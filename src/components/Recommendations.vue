@@ -11,11 +11,13 @@
           <div
             class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80"
           >
-            <img
-              :src="product.image"
-              :alt="product.name"
-              class="h-full w-full object-cover object-center lg:h-full lg:w-full"
-            />
+            <RouterLink :to="`/products/${product._id}`">
+              <img
+                :src="product.image"
+                :alt="product.name"
+                class="h-full w-full object-cover object-center lg:h-full lg:w-full"
+              />
+            </RouterLink>
           </div>
           <div class="mt-4 flex justify-between">
             <div>
@@ -37,6 +39,7 @@
 
 <script setup lang="ts">
 import { useProductStore } from '@/stores/ProductsStore'
+import { RouterLink } from 'vue-router'
 
 const store = useProductStore()
 
