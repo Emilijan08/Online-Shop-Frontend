@@ -76,6 +76,7 @@
                               :name="`${section.id}[]`"
                               :value="option.value"
                               type="checkbox"
+                              v-model="selectedFilters[section.id as keyof SelectedFiltersType]"
                               class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                             />
                             <label
@@ -138,6 +139,7 @@
                           :name="`${section.id}[]`"
                           :value="option.value"
                           type="checkbox"
+                          v-model="selectedFilters[section.id as keyof SelectedFiltersType]"
                           class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                         />
                         <label
@@ -168,13 +170,13 @@
 import ProductsList from '@/components/ProductsList.vue'
 import { useProductStore } from '@/stores/ProductsStore'
 import {
-  Dialog,
-  DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  TransitionChild,
-  TransitionRoot
+Dialog,
+DialogPanel,
+Disclosure,
+DisclosureButton,
+DisclosurePanel,
+TransitionChild,
+TransitionRoot
 } from '@headlessui/vue'
 import { ChevronDownIcon, PlusIcon } from '@heroicons/vue/20/solid'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
@@ -182,32 +184,37 @@ import { computed, ref } from 'vue'
 
 const store = useProductStore()
 
+type SelectedFiltersType = {
+  brands: string[],
+  category: string[],
+  price: string[]
+}
+
+const selectedFilters = ref<SelectedFiltersType>({
+  brands: [],
+  category: [],
+  price: []
+})
+
 const filteredProducts = computed(() => {
   let products = store.products
 
-  if (store.selectedBrand && store.selectedBrand !== 'All') {
-    products = products.filter((product) => product.brand === store.selectedBrand)
+  if (selectedFilters.value.brands.length) {
+    products = products.filter(product =>
+      selectedFilters.value.brands.includes(product.brand)
+    )
   }
 
-  if (store.selectedCategory && store.selectedCategory !== 'All') {
-    products = products.filter((product) => product.category === store.selectedCategory)
+  if (selectedFilters.value.category.length) {
+    products = products.filter(product =>
+      selectedFilters.value.category.includes(product.category)
+    )
   }
 
-  if (store.selectedPrice && store.selectedPrice !== 'All') {
-    const price = store.selectedPrice
-    switch (price) {
-      case '0-50':
-        products = products.filter((product) => product.price >= 0 && product.price <= 50)
-        break
-      case '50-100':
-        products = products.filter((product) => product.price >= 50 && product.price <= 100)
-        break
-      case '100-150':
-        products = products.filter((product) => product.price >= 100 && product.price <= 150)
-        break
-      default:
-        break
-    }
+  if (selectedFilters.value.price.length) {
+    products = products.filter(product =>
+      selectedFilters.value.price.includes(product.price.toString())
+    )
   }
 
   return products
