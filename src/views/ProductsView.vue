@@ -155,7 +155,7 @@
 
           <!-- Product grid -->
           <div class="mt-6 lg:col-span-2 lg:mt-0 xl:col-span-3">
-            <ProductsList />
+            <ProductsList :products="filteredProducts" />
             <!-- Your content -->
           </div>
         </div>
@@ -166,6 +166,7 @@
 
 <script setup lang="ts">
 import ProductsList from '@/components/ProductsList.vue'
+import { useProductStore } from '@/stores/ProductsStore'
 import {
   Dialog,
   DialogPanel,
@@ -177,7 +178,40 @@ import {
 } from '@headlessui/vue'
 import { ChevronDownIcon, PlusIcon } from '@heroicons/vue/20/solid'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
+
+const store = useProductStore()
+
+const filteredProducts = computed(() => {
+  let products = store.products
+
+  if (store.selectedBrand && store.selectedBrand !== 'All') {
+    products = products.filter((product) => product.brand === store.selectedBrand)
+  }
+
+  if (store.selectedCategory && store.selectedCategory !== 'All') {
+    products = products.filter((product) => product.category === store.selectedCategory)
+  }
+
+  if (store.selectedPrice && store.selectedPrice !== 'All') {
+    const price = store.selectedPrice
+    switch (price) {
+      case '0-50':
+        products = products.filter((product) => product.price >= 0 && product.price <= 50)
+        break
+      case '50-100':
+        products = products.filter((product) => product.price >= 50 && product.price <= 100)
+        break
+      case '100-150':
+        products = products.filter((product) => product.price >= 100 && product.price <= 150)
+        break
+      default:
+        break
+    }
+  }
+
+  return products
+})
 
 const filters = [
   {
