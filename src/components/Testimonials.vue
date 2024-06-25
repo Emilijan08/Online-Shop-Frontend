@@ -28,10 +28,11 @@
 </template>
 
 <script setup lang="ts">
-import { StarIcon } from '@heroicons/vue/20/solid'
-import { Splide, SplideSlide } from '@splidejs/vue-splide'
-import '@splidejs/vue-splide/css'
-import { ref } from 'vue'
+import { StarIcon } from '@heroicons/vue/20/solid';
+ // @ts-ignore
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import '@splidejs/vue-splide/css';
+import { ref } from 'vue';
 
 const splideOptions = ref({
   type: 'loop',

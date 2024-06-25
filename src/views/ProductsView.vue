@@ -212,9 +212,18 @@ const filteredProducts = computed(() => {
   }
 
   if (selectedFilters.value.price.length) {
-    products = products.filter(product =>
-      selectedFilters.value.price.includes(product.price.toString())
-    )
+    products = products.filter(product => {
+      return selectedFilters.value.price.some(priceRange => {
+        const [min, max] = priceRange.split('-').map(Number)
+        if (min === 0) {
+          return product.price <= max
+        } else if (max === 0) {
+          return product.price >= min
+        } else {
+          return product.price >= min && product.price <= max
+        }
+      })
+    })
   }
 
   return products
@@ -225,37 +234,36 @@ const filters = [
     id: 'brands',
     name: 'Brands',
     options: [
-      { value: 'apple', label: 'Apple' },
-      { value: 'samsung', label: 'Samsung' },
-      { value: 'xiaomi', label: 'Xiaomi' },
-      { value: 'google', label: 'Google' },
-      { value: 'huawei', label: 'Huawei' },
-      { value: 'lenovo', label: 'Lenovo' },
-      { value: 'microsoft', label: 'Microsoft' },
-      { value: 'other', label: 'Other' }
+      { value: 'Apple', label: 'Apple' },
+      { value: 'Samsung', label: 'Samsung' },
+      { value: 'Xiaomi', label: 'Xiaomi' },
+      { value: 'Google', label: 'Google' },
+      { value: 'Huawei', label: 'Huawei' },
+      { value: 'Lenovo', label: 'Lenovo' },
+      { value: 'Microsoft', label: 'Microsoft' },
+      { value: 'Other', label: 'Other' }
     ]
   },
   {
     id: 'category',
     name: 'Category',
     options: [
-      { value: 'laptops', label: 'Laptops' },
-      { value: 'smartwatches', label: 'Smartwatches' },
-      { value: 'computers', label: 'Computers' },
-      { value: 'smartphones', label: 'Smartphones' },
-      { value: 'other', label: 'Other' }
+      { value: 'Laptops', label: 'Laptops' },
+      { value: 'Smartwatches', label: 'Smartwatches' },
+      { value: 'Computers', label: 'Computers' },
+      { value: 'Smartphones', label: 'Smartphones' },
+      { value: 'Other', label: 'Other' }
     ]
   },
   {
-    id: 'sizes',
-    name: 'Sizes',
+    id: 'price',
+    name: 'Price',
     options: [
-      { value: 'xs', label: 'XS' },
-      { value: 's', label: 'S' },
-      { value: 'm', label: 'M' },
-      { value: 'l', label: 'L' },
-      { value: 'xl', label: 'XL' },
-      { value: '2xl', label: '2XL' }
+      { value: '0-300', label: 'Up to 300' },
+      { value: '300-500', label: '300 to 500' },
+      { value: '500-1000', label: '500 to 1000' },
+      { value: '1000-1500', label: '1000 to 1500' },
+      { value: '1500-0', label: '1500 and above' }
     ]
   }
 ]
