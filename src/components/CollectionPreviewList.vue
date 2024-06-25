@@ -40,8 +40,9 @@ const callouts = [
     href: '#'
   },
   {
-    name: 'Smartwatches',
-    description: 'Smartwatches and fitness trackers',
+    name: 'Smartwatches and fitness trackers',
+    description:
+      'Stay on time and track your fitness goals with these smartwatches and fitness trackers',
     imageSrc:
       'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=3376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     imageAlt: 'Smartwatches lined up in a row on a white background.',

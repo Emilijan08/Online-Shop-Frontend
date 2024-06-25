@@ -12,7 +12,7 @@
     <main class="relative lg:min-h-full">
       <div class="h-80 overflow-hidden lg:absolute lg:h-full lg:w-1/2 lg:pr-4 xl:pr-12">
         <img
-          src="https://tailwindui.com/img/ecommerce-images/confirmation-page-06-hero.jpg"
+          src="https://images.unsplash.com/photo-1483058712412-4245e9b90334?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="TODO"
           class="h-full w-full object-cover object-center"
         />
@@ -34,25 +34,29 @@
 
             <dl class="mt-16 text-sm font-medium">
               <dt class="text-gray-900">Tracking number</dt>
-              <dd class="mt-2 text-indigo-600">51547878755545848512</dd>
+              <dd class="mt-2 text-indigo-600">{{ createTrackingNumber }}</dd>
             </dl>
 
             <ul
               role="list"
               class="mt-6 divide-y divide-gray-200 border-t border-gray-200 text-sm font-medium text-gray-500"
             >
-              <li v-for="product in products" :key="product.id" class="flex space-x-6 py-6">
+              <li
+                v-for="product in store.productsOnCart"
+                :key="product._id"
+                class="flex space-x-6 py-6"
+              >
                 <img
-                  :src="product.imageSrc"
-                  :alt="product.imageAlt"
+                  :src="product.image"
+                  :alt="product.name"
                   class="h-24 w-24 flex-none rounded-md bg-gray-100 object-cover object-center"
                 />
                 <div class="flex-auto space-y-1">
                   <h3 class="text-gray-900">
-                    <a :href="product.href">{{ product.name }}</a>
+                    <a :href="product.image">{{ product.name }}</a>
                   </h3>
-                  <p>{{ product.color }}</p>
-                  <p>{{ product.size }}</p>
+                  <p>{{ product.category }}</p>
+                  <p>{{ product.brand }}</p>
                 </div>
                 <p class="flex-none font-medium text-gray-900">
                   {{ product.price }}
@@ -63,24 +67,24 @@
             <dl class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500">
               <div class="flex justify-between">
                 <dt>Subtotal</dt>
-                <dd class="text-gray-900">$72.00</dd>
+                <dd class="text-gray-900" :="sumUpSubtotal">{{ sumUpSubtotal }}CHF</dd>
               </div>
 
               <div class="flex justify-between">
                 <dt>Shipping</dt>
-                <dd class="text-gray-900">$8.00</dd>
+                <dd class="text-gray-900">Free</dd>
               </div>
 
               <div class="flex justify-between">
                 <dt>Taxes</dt>
-                <dd class="text-gray-900">$6.40</dd>
+                <dd class="text-gray-900">6.40 CHF</dd>
               </div>
 
               <div
                 class="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900"
               >
                 <dt class="text-base">Total</dt>
-                <dd class="text-base">$86.40</dd>
+                <dd class="text-base" :="sumUpTotal">{{ sumUpTotal }}CHF</dd>
               </div>
             </dl>
 
@@ -148,4 +152,33 @@ const products = [
     imageAlt: "Model wearing men's charcoal basic tee in large."
   }
 ]
+import { useProductStore } from '@/stores/ProductsStore'
+import { ref } from 'vue'
+
+// Initialize subtotal and total
+
+const subTotal = ref(0)
+const total = ref(0)
+const store = useProductStore()
+
+// Function to sum up the subtotal
+function sumUpSubtotal() {
+  subTotal.value = 0 // Reset subtotal
+  store.productsOnCart.forEach((product) => {
+    subTotal.value += product.price
+  })
+}
+
+// Function to sum up the total
+function sumUpTotal() {
+  total.value = subTotal.value + 6.4 // Add fixed amount to subtotal
+}
+
+sumUpSubtotal()
+
+sumUpTotal()
+
+function createTrackingNumber() {
+  return Math.floor(Math.random() * 10000000000000000000)
+}
 </script>

@@ -100,7 +100,7 @@
         <div class="border-b border-gray-200 pb-10">
           <h1 class="text-4xl font-bold tracking-tight text-gray-900">New Arrivals</h1>
           <p class="mt-4 text-base text-gray-500">
-            Checkout out the latest release of Basic Tees, new and improved with four openings!
+            Check out the latest products from our collection
           </p>
         </div>
 
@@ -170,13 +170,13 @@
 import ProductsList from '@/components/ProductsList.vue'
 import { useProductStore } from '@/stores/ProductsStore'
 import {
-Dialog,
-DialogPanel,
-Disclosure,
-DisclosureButton,
-DisclosurePanel,
-TransitionChild,
-TransitionRoot
+  Dialog,
+  DialogPanel,
+  Disclosure,
+  DisclosureButton,
+  DisclosurePanel,
+  TransitionChild,
+  TransitionRoot
 } from '@headlessui/vue'
 import { ChevronDownIcon, PlusIcon } from '@heroicons/vue/20/solid'
 import { XMarkIcon } from '@heroicons/vue/24/outline'
@@ -185,8 +185,8 @@ import { computed, ref } from 'vue'
 const store = useProductStore()
 
 type SelectedFiltersType = {
-  brands: string[],
-  category: string[],
+  brands: string[]
+  category: string[]
   price: string[]
 }
 
@@ -200,20 +200,18 @@ const filteredProducts = computed(() => {
   let products = store.products
 
   if (selectedFilters.value.brands.length) {
-    products = products.filter(product =>
-      selectedFilters.value.brands.includes(product.brand)
-    )
+    products = products.filter((product) => selectedFilters.value.brands.includes(product.brand))
   }
 
   if (selectedFilters.value.category.length) {
-    products = products.filter(product =>
+    products = products.filter((product) =>
       selectedFilters.value.category.includes(product.category)
     )
   }
 
   if (selectedFilters.value.price.length) {
-    products = products.filter(product => {
-      return selectedFilters.value.price.some(priceRange => {
+    products = products.filter((product) => {
+      return selectedFilters.value.price.some((priceRange) => {
         const [min, max] = priceRange.split('-').map(Number)
         if (min === 0) {
           return product.price <= max
