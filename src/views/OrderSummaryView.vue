@@ -34,7 +34,7 @@
 
             <dl class="mt-16 text-sm font-medium">
               <dt class="text-gray-900">Tracking number</dt>
-              <dd class="mt-2 text-indigo-600">{{ createTrackingNumber }}</dd>
+              <dd class="mt-2 text-indigo-600">{{ randomTrackingNumber }}</dd>
             </dl>
 
             <ul
@@ -140,18 +140,6 @@
 </template>
 
 <script setup lang="ts">
-const products = [
-  {
-    id: 1,
-    name: 'Basic Tee',
-    href: '#',
-    price: '$36.00',
-    color: 'Charcoal',
-    size: 'L',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/confirmation-page-06-product-01.jpg',
-    imageAlt: "Model wearing men's charcoal basic tee in large."
-  }
-]
 import { useProductStore } from '@/stores/ProductsStore'
 import { ref } from 'vue'
 
@@ -178,7 +166,18 @@ sumUpSubtotal()
 
 sumUpTotal()
 
-function createTrackingNumber() {
-  return Math.floor(Math.random() * 10000000000000000000)
+const generateTrackingNumber = () => {
+  // Generiere die zufällige Zahl mit 19 Nachkommastellen
+  let randomNumber = 0
+  for (let i = 0; i < 19; i++) {
+    randomNumber += Math.floor(Math.random() * 10) // Zufällige Ziffer zwischen 0 und 9
+  }
+
+  // Multipliziere die zufällige Zahl mit 10^19 (1e19)
+  const TrackingNumber = Number(randomNumber) * Math.pow(10, 19)
+
+  return TrackingNumber
 }
+
+const randomTrackingNumber = ref(generateTrackingNumber.toLocaleString())
 </script>
