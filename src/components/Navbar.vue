@@ -140,7 +140,7 @@ import { RouterLink, useRoute } from 'vue-router'
 
 const navItems = reactive([
   { name: 'Home', path: '/', selected: false },
-  { name: 'About us', path: '/about', selected: false }
+  { name: 'About', path: '/about', selected: false }
 ])
 
 const auth = useAuthStore()

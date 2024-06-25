@@ -28,11 +28,11 @@
 </template>
 
 <script setup lang="ts">
-import { StarIcon } from '@heroicons/vue/20/solid';
- // @ts-ignore
-import { Splide, SplideSlide } from '@splidejs/vue-splide';
-import '@splidejs/vue-splide/css';
-import { ref } from 'vue';
+import { StarIcon } from '@heroicons/vue/20/solid'
+// @ts-ignore
+import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import '@splidejs/vue-splide/css'
+import { ref } from 'vue'
 
 const splideOptions = ref({
   type: 'loop',
@@ -53,32 +53,33 @@ const testimonials = ref([
     image:
       'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80'
   },
+
   {
     id: 2,
     quote:
-      '“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”',
-    name: 'Judith Black',
-    position: 'CEO of Workcation',
+      '“Finding the perfect tech gadget is easy with this store. Their extensive collection of smartphones, laptops, and smartwatches covers all major brands, ensuring there is something for everyone. The website is user-friendly, and I received my order promptly. A fantastic experience overall!”',
+    name: 'Alex Johnson',
+    position: 'Tech Enthusiast',
     image:
-      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80'
+      'https://images.unsplash.com/photo-1624561172888-ac93c696e10c?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjJ8fHByb2ZpbGUlMjBwaWN0dXJlfGVufDB8MXwwfHx8MA%3D%3D'
   },
   {
     id: 3,
     quote:
-      '“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”',
-    name: 'Judith Black',
-    position: 'CEO of Workcation',
+      '“This website is a tech lover’s paradise! They offer an impressive selection of smartphones, laptops, and smartwatches from leading brands. Navigating through their catalog was seamless, and I found exactly what I needed at a great price. Definitely my go-to for tech shopping.”',
+    name: 'Emily Brown',
+    position: 'Gadget Guru',
     image:
-      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80'
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   },
   {
     id: 4,
     quote:
-      '“Qui dolor enim consectetur do et non ex amet culpa sint in ea non dolore. Enim minim magna anim id minim eu cillum sunt dolore aliquip. Amet elit laborum culpa irure incididunt adipisicing culpa amet officia exercitation. Eu non aute velit id velit Lorem elit anim pariatur.”',
-    name: 'Judith Black',
-    position: 'CEO of Workcation',
+      '“I stumbled upon this gem of an online store while searching for a new smartphone. To my delight, they not only had a wide range of smartphones but also laptops and smartwatches from top brands. Their website is intuitive, making it easy to compare products and make informed choices. A fantastic resource for tech enthusiasts!”',
+    name: 'Michael Smith',
+    position: 'Tech Savvy Shopper',
     image:
-      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=1024&h=1024&q=80'
+      'https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
   }
 ])
 </script>

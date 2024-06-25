@@ -32,26 +32,27 @@
 <script setup lang="ts">
 const callouts = [
   {
-    name: 'Desk and Office',
-    description: 'Work from home accessories',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg',
-    imageAlt:
-      'Desk with leather desk pad, walnut desk organizer, wireless keyboard and mouse, and porcelain mug.',
+    name: 'Laptops and Computers',
+    description: 'Work from home with these powerful laptops and desktop computers',
+    imageSrc:
+      'https://images.unsplash.com/photo-1593392611486-bb795fc994b5?q=80&w=3840&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Laptops and desktop computers arranged in a modern home office.',
     href: '#'
   },
   {
-    name: 'Self-Improvement',
-    description: 'Journals and note-taking',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',
-    imageAlt:
-      'Wood table with porcelain mug, leather journal, brass pen, leather key ring, and a houseplant.',
+    name: 'Smartwatches',
+    description: 'Smartwatches and fitness trackers',
+    imageSrc:
+      'https://images.unsplash.com/photo-1508685096489-7aacd43bd3b1?q=80&w=3376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Smartwatches lined up in a row on a white background.',
     href: '#'
   },
   {
-    name: 'Travel',
-    description: 'Daily commute essentials',
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-03.jpg',
-    imageAlt: 'Collection of four insulated travel bottles on wooden shelf.',
+    name: 'Smartphones',
+    description: 'a collection of the latest and most well-known smartphones',
+    imageSrc:
+      'https://images.unsplash.com/photo-1537589376225-5405c60a5bd8?q=80&w=3928&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    imageAlt: 'Smartphones lined up in a row on a white background.',
     href: '#'
   }
 ]

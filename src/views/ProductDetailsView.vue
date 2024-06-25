@@ -1,7 +1,7 @@
 <template>
   <div class="bg-white">
     <!--go-back-Arrow-->
-    <div class="flex justify-start items-start ml-7" id="goBackArrow">
+    <div class="flex justify-start items-start ml-7 z-10" id="goBackArrow">
       <RouterLink to="/products">
         <ChevronLeftIcon />
       </RouterLink>
@@ -180,11 +180,11 @@ import { useWishlistStore } from '@/stores/WishlistStore'
 import type { ProductType } from '@/types/Product'
 import { Tab, TabGroup, TabList, TabPanel, TabPanels } from '@headlessui/vue'
 import {
-CheckIcon,
-ChevronLeftIcon,
-HeartIcon,
-StarIcon,
-UserCircleIcon
+  CheckIcon,
+  ChevronLeftIcon,
+  HeartIcon,
+  StarIcon,
+  UserCircleIcon
 } from '@heroicons/vue/20/solid'
 import axios from 'axios'
 import { computed, onMounted, ref } from 'vue'

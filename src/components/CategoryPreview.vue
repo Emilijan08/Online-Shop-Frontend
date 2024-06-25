@@ -5,13 +5,14 @@
     <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
       <div class="sm:flex sm:items-baseline sm:justify-between">
         <h2 class="text-2xl font-bold tracking-tight text-gray-900">Shop by Category</h2>
-        <a
-          href="#"
+
+        <router-link
+          to="/products"
           class="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
         >
           Browse all categories
           <span aria-hidden="true"> &rarr;</span>
-        </a>
+        </router-link>
       </div>
 
       <div
@@ -43,8 +44,8 @@
           class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full"
         >
           <img
-            src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-01.jpg"
-            alt="Wooden shelf with gray and olive drab green baseball caps, next to wooden clothes hanger with sweaters."
+            src="https://images.unsplash.com/photo-1601225998165-be1f75bfc94b?q=80&w=3456&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="A desk with a laptop, smartphone, and plant."
             class="object-cover object-center group-hover:opacity-75 sm:absolute sm:inset-0 sm:h-full sm:w-full"
           />
           <div
@@ -56,7 +57,7 @@
               <h3 class="font-semibold text-white">
                 <a href="#">
                   <span class="absolute inset-0" />
-                  Accessories
+                  Smartphones
                 </a>
               </h3>
               <p aria-hidden="true" class="mt-1 text-sm text-white">Shop now</p>
@@ -67,8 +68,8 @@
           class="group aspect-h-1 aspect-w-2 overflow-hidden rounded-lg sm:aspect-none sm:relative sm:h-full"
         >
           <img
-            src="https://tailwindui.com/img/ecommerce-images/home-page-03-category-02.jpg"
-            alt="Walnut desk organizer set with white modular trays, next to porcelain mug on wooden desk."
+            src="https://images.unsplash.com/photo-1542541864-4abf21a55761?q=80&w=2577&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt="Smartwatch Image"
             class="object-cover object-center group-hover:opacity-75 sm:absolute sm:inset-0 sm:h-full sm:w-full"
           />
           <div
@@ -80,7 +81,7 @@
               <h3 class="font-semibold text-white">
                 <a href="#">
                   <span class="absolute inset-0" />
-                  Workspace
+                  Smartwatches and Fitness Trackers
                 </a>
               </h3>
               <p aria-hidden="true" class="mt-1 text-sm text-white">Shop now</p>
@@ -95,7 +96,7 @@
           <div class="relative overflow-hidden rounded-lg lg:h-96">
             <div class="absolute inset-0">
               <img
-                src="https://tailwindui.com/img/ecommerce-images/category-page-01-featured-collection.jpg"
+                src="https://images.unsplash.com/photo-1615750185825-fc85c6aba18d?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt=""
                 class="h-full w-full object-cover object-center"
               />
@@ -108,7 +109,7 @@
               <div>
                 <h2 class="text-xl font-bold text-white">Workspace Collection</h2>
                 <p class="mt-1 text-sm text-gray-300">
-                  Upgrade your desk with objects that keep you organized and clear-minded.
+                  Upgrade your home office with these modern computer essentials
                 </p>
               </div>
               <a
