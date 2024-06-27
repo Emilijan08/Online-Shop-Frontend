@@ -7,7 +7,7 @@ interface ProductsState {
   products: ProductType[]
   loading: boolean
   comments: CommentType[]
-  productsOnCart: ProductType[]
+  productsOnCart: { product: ProductType; quantity: number }[]
   selectedBrand: string
   selectedCategory: string
   selectedPrice: string
@@ -21,6 +21,8 @@ export const useProductStore = defineStore<
   {
     getProducts: () => Promise<void>
     addToCart: (id: string) => void
+    removeFromCart: (id: string) => void
+    updateCartQuantity: (id: string, quantity: number) => void
     clearCart: () => void
     addComment: (_productId: string, _comment: string, _username: string) => Promise<void>
     getComments: (productId: string) => Promise<void>
@@ -48,8 +50,24 @@ export const useProductStore = defineStore<
     },
     addToCart(id: string) {
       const product = this.products.find((element) => element._id === id)
-      if (product && !this.productsOnCart.includes(product)) {
-        this.productsOnCart.push(product)
+      if (product) {
+        const cartItem = this.productsOnCart.find((item) => item.product._id === id)
+        if (cartItem) {
+          cartItem.quantity++
+        } else {
+          this.productsOnCart.push({ product, quantity: 1 })
+        }
+        this.saveCart()
+      }
+    },
+    removeFromCart(id: string) {
+      this.productsOnCart = this.productsOnCart.filter((item) => item.product._id !== id)
+      this.saveCart()
+    },
+    updateCartQuantity(id: string, quantity: number) {
+      const cartItem = this.productsOnCart.find((item) => item.product._id === id)
+      if (cartItem) {
+        cartItem.quantity = quantity
         this.saveCart()
       }
     },
@@ -60,7 +78,7 @@ export const useProductStore = defineStore<
     async addComment(_productId: string, _comment: string, _username: string) {
       try {
         const URL = `${import.meta.env.VITE_BASE_URL}/products/${_productId}/comments`
-        axios.post(URL, {
+        await axios.post(URL, {
           text: _comment,
           user: _username
         })

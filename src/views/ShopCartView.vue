@@ -6,8 +6,7 @@ import { RouterLink } from 'vue-router';
 
 const store = useProductStore()
 
-let total = ref(0)
-let checkout = ref(false)
+const total = ref(0)
 
 onMounted(() => {
   store.loadCart()
@@ -15,34 +14,31 @@ onMounted(() => {
 })
 
 function updateTotal() {
-  total.value = store.productsOnCart.reduce((acc, product) => acc + product.price * product.quantity, 0)
+  total.value = store.productsOnCart.reduce((acc, item) => acc + item.product.price * item.quantity, 0)
 }
 
 async function increase(id: string) {
-  const item = store.productsOnCart.find((element) => element._id === id)
+  const item = store.productsOnCart.find((element) => element.product._id === id)
   if (!item) return
 
   item.quantity++
-  const price = await item.price
-  total.value += await price
-  store.saveCart()
+  updateTotal()
+  store.updateCartQuantity(id, item.quantity)
 }
 
 async function removeItem(id: string) {
-  store.productsOnCart = store.productsOnCart.filter((product) => product._id != id)
-  store.saveCart()
+  store.removeFromCart(id)
   updateTotal()
 }
 
 async function decrease(id: string) {
-  const item = store.productsOnCart.find((element) => element._id === id)
+  const item = store.productsOnCart.find((element) => element.product._id === id)
   if (!item) return
 
   if (item.quantity > 1) {
     item.quantity--
-    const price = await item.price
-    total.value -= await price
-    store.saveCart()
+    updateTotal()
+    store.updateCartQuantity(id, item.quantity)
   }
 }
 
@@ -58,14 +54,14 @@ async function decrease(id: string) {
 
           <ul role="list" class="divide-y divide-gray-200 border-b border-t border-gray-200">
             <li
-              v-for="product in store.productsOnCart"
-              :key="product._id"
+              v-for="item in store.productsOnCart"
+              :key="item.product._id"
               class="flex py-6 sm:py-10"
             >
               <div class="flex-shrink-0">
                 <img
-                  :src="product.image"
-                  :alt="product.name"
+                  :src="item.product.image"
+                  :alt="item.product.name"
                   class="h-24 w-24 rounded-md object-cover object-center sm:h-48 sm:w-48"
                 />
               </div>
@@ -76,52 +72,36 @@ async function decrease(id: string) {
                     <div class="flex justify-between">
                       <h3 class="text-sm">
                         <a
-                          :href="product.image"
+                          :href="item.product.image"
                           class="font-medium text-gray-700 hover:text-gray-800"
-                          >{{ product.name }}</a
+                          >{{ item.product.name }}</a
                         >
                       </h3>
                     </div>
-                    <!-- <div class="mt-1 flex text-sm">
-                      <p class="text-gray-500">{{ product.color }}</p>
-                      <p
-                        v-if="product.size"
-                        class="ml-4 border-l border-gray-200 pl-4 text-gray-500"
-                      >
-                        {{ product.size }}
-                      </p>
-                    </div> -->
                     <p class="mt-1 text-sm font-medium text-gray-900">
-                      {{ product.price }}
+                      {{ item.product.price }}
                     </p>
                   </div>
 
                   <div class="mt-4 sm:mt-0 sm:pr-9">
-                    <label :for="`quantity-${product._id}`" class="sr-only"
-                      >Quantity, {{ product.name }}</label
+                    <label :for="`quantity-${item.product._id}`" class="sr-only"
+                      >Quantity, {{ item.product.name }}</label
                     >
                     <select
-                      :id="`quantity-${product._id}`"
-                      :name="`quantity-${product._id}`"
+                      :id="`quantity-${item.product._id}`"
+                      :name="`quantity-${item.product._id}`"
                       class="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
-                      v-model="product.quantity"
-                      @change="updateTotal"
+                      v-model.number="item.quantity"
+                      @change="store.updateCartQuantity(item.product._id, item.quantity); updateTotal()"
                     >
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
+                      <option v-for="n in 8" :key="n" :value="n">{{ n }}</option>
                     </select>
 
                     <div class="absolute right-0 top-0">
                       <button
                         type="button"
                         class="-m-2 inline-flex p-2 text-gray-400 hover:text-gray-500"
-                        @click="removeItem(product._id)"
+                        @click="removeItem(item.product._id)"
                       >
                         <span class="sr-only">Remove</span>
                         <XMarkIcon class="h-5 w-5" aria-hidden="true" />
@@ -130,19 +110,6 @@ async function decrease(id: string) {
                   </div>
                 </div>
 
-                <!-- <p class="mt-4 flex space-x-2 text-sm text-gray-700">
-                  <CheckIcon
-                    v-if="product.inStock"
-                    class="h-5 w-5 flex-shrink-0 text-green-500"
-                    aria-hidden="true"
-                  />
-                  <ClockIcon
-                    v-else
-                    class="h-5 w-5 flex-shrink-0 text-gray-300"
-                    aria-hidden="true"
-                  />
-                  <span>{{ product.inStock ? 'In stock' : `Ships in ${product.leadTime}` }}</span>
-                </p> -->
               </div>
             </li>
           </ul>

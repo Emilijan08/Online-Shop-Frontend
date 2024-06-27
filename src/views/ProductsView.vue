@@ -170,13 +170,13 @@
 import ProductsList from '@/components/ProductsList.vue'
 import { useProductStore } from '@/stores/ProductsStore'
 import {
-  Dialog,
-  DialogPanel,
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  TransitionChild,
-  TransitionRoot
+Dialog,
+DialogPanel,
+Disclosure,
+DisclosureButton,
+DisclosurePanel,
+TransitionChild,
+TransitionRoot
 } from '@headlessui/vue'
 import { ChevronDownIcon, PlusIcon } from '@heroicons/vue/20/solid'
 import { XMarkIcon } from '@heroicons/vue/24/outline'

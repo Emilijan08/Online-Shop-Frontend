@@ -140,8 +140,8 @@
 </template>
 
 <script setup lang="ts">
-import { useProductStore } from '@/stores/ProductsStore'
-import { ref } from 'vue'
+import { useProductStore } from '@/stores/ProductsStore';
+import { ref } from 'vue';
 
 // Initialize subtotal and total
 
@@ -152,7 +152,7 @@ const store = useProductStore()
 // Function to sum up the subtotal
 function sumUpSubtotal() {
   subTotal.value = 0 // Reset subtotal
-  store.productsOnCart.forEach((product) => {
+  store.productsOnCart.forEach((product: any) => {
     subTotal.value += product.price
   })
 }
