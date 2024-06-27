@@ -42,7 +42,7 @@
               class="mt-6 divide-y divide-gray-200 border-t border-gray-200 text-sm font-medium text-gray-500"
             >
               <li
-                v-for="product in store.productsOnCart"
+                v-for="product in store.productsOnCart as any"
                 :key="product._id"
                 class="flex space-x-6 py-6"
               >
@@ -67,7 +67,7 @@
             <dl class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500">
               <div class="flex justify-between">
                 <dt>Subtotal</dt>
-                <dd class="text-gray-900" :="sumUpSubtotal">{{ sumUpSubtotal }}CHF</dd>
+                <dd class="text-gray-900">{{ sumUpSubtotal }}CHF</dd>
               </div>
 
               <div class="flex justify-between">
@@ -84,7 +84,7 @@
                 class="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900"
               >
                 <dt class="text-base">Total</dt>
-                <dd class="text-base" :="sumUpTotal">{{ sumUpTotal }}CHF</dd>
+                <dd class="text-base">{{ sumUpTotal }}CHF</dd>
               </div>
             </dl>
 
