@@ -39,7 +39,7 @@
             </router-link>
           </p>
           <p class="relative truncate hover:underline">
-            {{ wishlistItem.product.description }}
+            {{ wishlistItem.product.price }}
           </p>
         </div>
       </div>
