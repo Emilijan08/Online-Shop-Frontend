@@ -143,39 +143,31 @@
 import { useProductStore } from '@/stores/ProductsStore';
 import { ref } from 'vue';
 
-// Initialize subtotal and total
-
 const subTotal = ref(0)
 const total = ref(0)
 const store = useProductStore()
 
-// Function to sum up the subtotal
 function sumUpSubtotal() {
-  subTotal.value = 0 // Reset subtotal
+  subTotal.value = 0 
   store.productsOnCart.forEach((product: any) => {
     subTotal.value += product.price
   })
 }
 
-// Function to sum up the total
 function sumUpTotal() {
-  total.value = subTotal.value + 6.4 // Add fixed amount to subtotal
+  total.value = subTotal.value + 6.4 
 }
 
 sumUpSubtotal()
-
 sumUpTotal()
 
 const generateTrackingNumber = () => {
-  // Generiere die zufällige Zahl mit 19 Nachkommastellen
   let randomNumber = 0
   for (let i = 0; i < 19; i++) {
-    randomNumber += Math.floor(Math.random() * 10) // Zufällige Ziffer zwischen 0 und 9
+    randomNumber += Math.floor(Math.random() * 10) 
   }
 
-  // Multipliziere die zufällige Zahl mit 10^19 (1e19)
   const TrackingNumber = Number(randomNumber) * Math.pow(10, 19)
-
   return TrackingNumber
 }
 

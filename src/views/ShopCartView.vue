@@ -5,7 +5,6 @@ import { onMounted, ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
 const store = useProductStore()
-
 const total = ref(0)
 
 onMounted(() => {
@@ -41,7 +40,6 @@ async function decrease(id: string) {
     store.updateCartQuantity(id, item.quantity)
   }
 }
-
 </script>
 
 <template>
