@@ -23,11 +23,8 @@ export const useAuthStore = defineStore<
   state: (): AuthState => ({
     error: false,
     message: '',
-    token: '',
-    user: {
-      username: '',
-      role: ''
-    }
+    token: localStorage.getItem('token') || '',
+    user: JSON.parse(localStorage.getItem('user') || '{}')
   }),
   actions: {
     async login(temp_username: string, password: string) {
@@ -38,12 +35,12 @@ export const useAuthStore = defineStore<
           password: password
         })
 
-        const { message, username, role } = res.data
-        this.token = message
-        this.user.username = username
-        this.user.role = role
+        const { token, username, role } = res.data
+        this.token = token
+        this.user = { username, role }
 
         localStorage.setItem('token', this.token)
+        localStorage.setItem('user', JSON.stringify(this.user))
 
         router.push('/')
       } catch (err) {
@@ -60,9 +57,9 @@ export const useAuthStore = defineStore<
         })
         const { token, username, role } = res.data
         this.token = token
-        this.user.username = username
-        this.user.role = role
+        this.user = { username, role }
         localStorage.setItem('token', this.token)
+        localStorage.setItem('user', JSON.stringify(this.user))
         router.push('/')
       } catch (err: any) {
         if (err.response && err.response.status === 409) {
@@ -73,9 +70,13 @@ export const useAuthStore = defineStore<
       }
     },
     async logout() {
-      await router.push('/auth/login')
       localStorage.removeItem('auth')
       localStorage.removeItem('token')
+      localStorage.removeItem('user')
+      router.push('/auth/login')
     }
+  },
+  getters: {
+    isAuthenticated: (state) => !!state.token
   }
 })

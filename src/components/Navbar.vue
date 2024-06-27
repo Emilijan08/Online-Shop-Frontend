@@ -125,18 +125,19 @@
 <script setup lang="ts">
 import { useAuthStore } from '@/stores/AuthStore'
 import {
-  Disclosure,
-  DisclosureButton,
-  DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems
+Disclosure,
+DisclosureButton,
+DisclosurePanel,
+Menu,
+MenuButton,
+MenuItem,
+MenuItems
 } from '@headlessui/vue'
 import { Bars3Icon, HeartIcon, ShoppingBagIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { UserCircleIcon } from '@heroicons/vue/24/solid'
 import { reactive, watchEffect } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import { router } from '../router/index'
 
 const navItems = reactive([
   { name: 'Home', path: '/', selected: false },
@@ -150,5 +151,10 @@ watchEffect(() => {
   navItems.forEach((item) => {
     item.selected = item.path === route.path
   })
+
+
+  if (!auth && route.path !== '/auth/login') {
+    router.push('/auth/login')
+  }
 })
 </script>
