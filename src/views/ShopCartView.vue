@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import { useProductStore } from '@/stores/ProductsStore'
-import { QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid'
-import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { useProductStore } from '@/stores/ProductsStore';
+import { QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid';
+import { onMounted, ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const store = useProductStore()
 
 let total = ref(0)
 let checkout = ref(false)
 
-for (let i = 0; i < store.productsOnCart.length; i++) {
-  store.productsOnCart[i].quantity = 1
+onMounted(() => {
+  store.loadCart()
+  updateTotal()
+})
+
+function updateTotal() {
+  total.value = store.productsOnCart.reduce((acc, product) => acc + product.price * product.quantity, 0)
 }
 
 async function increase(id: string) {
@@ -20,10 +25,13 @@ async function increase(id: string) {
   item.quantity++
   const price = await item.price
   total.value += await price
+  store.saveCart()
 }
 
 async function removeItem(id: string) {
   store.productsOnCart = store.productsOnCart.filter((product) => product._id != id)
+  store.saveCart()
+  updateTotal()
 }
 
 async function decrease(id: string) {
@@ -34,12 +42,10 @@ async function decrease(id: string) {
     item.quantity--
     const price = await item.price
     total.value -= await price
+    store.saveCart()
   }
 }
 
-store.productsOnCart.forEach((element) => {
-  total.value += element.price
-})
 </script>
 
 <template>
@@ -98,6 +104,8 @@ store.productsOnCart.forEach((element) => {
                       :id="`quantity-${product._id}`"
                       :name="`quantity-${product._id}`"
                       class="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
+                      v-model="product.quantity"
+                      @change="updateTotal"
                     >
                       <option value="1">1</option>
                       <option value="2">2</option>
@@ -150,7 +158,7 @@ store.productsOnCart.forEach((element) => {
           <dl class="mt-6 space-y-4">
             <div class="flex items-center justify-between">
               <dt class="text-sm text-gray-600">Subtotal</dt>
-              <dd class="text-sm font-medium text-gray-900">$99.00</dd>
+              <dd class="text-sm font-medium text-gray-900">{{ total }}</dd>
             </div>
             <div class="flex items-center justify-between border-t border-gray-200 pt-4">
               <dt class="flex items-center text-sm text-gray-600">
@@ -174,9 +182,7 @@ store.productsOnCart.forEach((element) => {
             </div>
             <div class="flex items-center justify-between border-t border-gray-200 pt-4">
               <dt class="text-base font-medium text-gray-900">Order total</dt>
-              <dd class="text-base font-medium text-gray-900">
-                <!-- {{ Math.round(product.quantity * product.price * 1e12) / 1e12 }} -->
-              </dd>
+              <dd class="text-base font-medium text-gray-900">{{ total }}</dd>
             </div>
           </dl>
 

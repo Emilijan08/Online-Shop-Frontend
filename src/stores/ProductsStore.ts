@@ -24,6 +24,8 @@ export const useProductStore = defineStore<
     clearCart: () => void
     addComment: (_productId: string, _comment: string, _username: string) => Promise<void>
     getComments: (productId: string) => Promise<void>
+    loadCart: () => void
+    saveCart: () => void
   }
 >('product', {
   state: (): ProductsState => ({
@@ -44,17 +46,21 @@ export const useProductStore = defineStore<
       this.products = await response.data
       this.loading = false
     },
-    async addToCart(id: string) {
+    addToCart(id: string) {
       const product = this.products.find((element) => element._id === id)
-      if (product && !this.productsOnCart.includes(product)) this.productsOnCart.push(product)
+      if (product && !this.productsOnCart.includes(product)) {
+        this.productsOnCart.push(product)
+        this.saveCart()
+      }
     },
-    async clearCart() {
+    clearCart() {
       this.productsOnCart = []
+      this.saveCart()
     },
     async addComment(_productId: string, _comment: string, _username: string) {
       try {
         const URL = `${import.meta.env.VITE_BASE_URL}/products/${_productId}/comments`
-        const response = await axios.post(URL, {
+        axios.post(URL, {
           text: _comment,
           user: _username
         })
@@ -66,6 +72,15 @@ export const useProductStore = defineStore<
       const URL = `${import.meta.env.VITE_BASE_URL}/products/${productId}/comments`
       const response = await axios.get(URL)
       this.comments = await response.data.comments
+    },
+    loadCart() {
+      const cart = localStorage.getItem('cart')
+      if (cart) {
+        this.productsOnCart = JSON.parse(cart)
+      }
+    },
+    saveCart() {
+      localStorage.setItem('cart', JSON.stringify(this.productsOnCart))
     }
   }
 })
