@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { useProductStore } from '@/stores/ProductsStore';
-import { QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid';
-import { onMounted, ref } from 'vue';
-import { RouterLink } from 'vue-router';
+import { useProductStore } from '@/stores/ProductsStore'
+import { QuestionMarkCircleIcon, XMarkIcon } from '@heroicons/vue/20/solid'
+import { onMounted, ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const store = useProductStore()
 const total = ref(0)
@@ -11,9 +11,11 @@ onMounted(() => {
   store.loadCart()
   updateTotal()
 })
-
 function updateTotal() {
-  total.value = store.productsOnCart.reduce((acc, item) => acc + item.product.price * item.quantity, 0)
+  total.value = store.productsOnCart.reduce(
+    (acc, item) => acc + item.product.price * item.quantity,
+    0
+  )
 }
 
 async function increase(id: string) {
@@ -40,6 +42,8 @@ async function decrease(id: string) {
     store.updateCartQuantity(id, item.quantity)
   }
 }
+
+defineExpose(updateTotal)
 </script>
 
 <template>
@@ -90,7 +94,9 @@ async function decrease(id: string) {
                       :name="`quantity-${item.product._id}`"
                       class="max-w-full rounded-md border border-gray-300 py-1.5 text-left text-base font-medium leading-5 text-gray-700 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500 sm:text-sm"
                       v-model.number="item.quantity"
-                      @change="store.updateCartQuantity(item.product._id, item.quantity); updateTotal()"
+                      @change="
+                        store.updateCartQuantity(item.product._id, item.quantity), updateTotal()
+                      "
                     >
                       <option v-for="n in 8" :key="n" :value="n">{{ n }}</option>
                     </select>
@@ -107,7 +113,6 @@ async function decrease(id: string) {
                     </div>
                   </div>
                 </div>
-
               </div>
             </li>
           </ul>

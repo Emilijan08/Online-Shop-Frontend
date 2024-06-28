@@ -67,7 +67,7 @@
             <dl class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500">
               <div class="flex justify-between">
                 <dt>Subtotal</dt>
-                <dd class="text-gray-900">{{ sumUpSubtotal }}CHF</dd>
+                <dd class="text-gray-900">{{ formattedSubtotal }} CHF</dd>
               </div>
 
               <div class="flex justify-between">
@@ -84,7 +84,7 @@
                 class="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900"
               >
                 <dt class="text-base">Total</dt>
-                <dd class="text-base">{{ sumUpTotal }}CHF</dd>
+                <dd class="text-base">{{ formattedTotal }} CHF</dd>
               </div>
             </dl>
 
@@ -140,37 +140,53 @@
 </template>
 
 <script setup lang="ts">
-import { useProductStore } from '@/stores/ProductsStore';
-import { ref } from 'vue';
+import { useProductStore } from '@/stores/ProductsStore'
+import updateTotal from '@/views/ShopCartView.vue'
+import { computed, onMounted, ref, watchEffect } from 'vue'
+import { RouterLink } from 'vue-router'
 
-const subTotal = ref(0)
-const total = ref(0)
 const store = useProductStore()
 
-function sumUpSubtotal() {
-  subTotal.value = 0 
-  store.productsOnCart.forEach((product: any) => {
-    return subTotal.value += product.price
-  })
-  
-}
+// Reactive references for subtotal and total
+const subTotal = ref(0)
+const total = ref(0)
 
+// Watch for changes in store.productsOnCart and recalculate subtotal/total
+watchEffect(() => {
+  updateTotal // Update subtotal based on products in cart
+  total.value = sumUpTotal() // Calculate total including taxes
+})
+
+// Function to update subtotal based on cart items
+
+// Function to calculate total including taxes
 function sumUpTotal() {
-  return subTotal.value + 6.40 
+  return updateTotal.value + 6.4 // Add tax (assuming 6.4 as fixed value)
 }
 
-sumUpSubtotal()
-sumUpTotal()
+// Computed properties to format subtotal and total for display
+const formattedSubtotal = computed(() => subTotal.value.toFixed(2))
+const formattedTotal = computed(() => total.value.toFixed(2))
 
+// Initialize calculation on component mount
+onMounted(() => {
+  updateTotal.value // Initialize subtotal based on products in cart
+  total.value = sumUpTotal() // Initialize total including taxes
+})
+
+// Generate random tracking number
 const generateTrackingNumber = () => {
   let randomNumber = 0
   for (let i = 0; i < 19; i++) {
-    randomNumber += Math.floor(Math.random() * 10) 
+    randomNumber += Math.floor(Math.random() * 10)
   }
-
-  const TrackingNumber = Number(randomNumber) * Math.pow(10, 19)
-  return TrackingNumber
+  return Number(randomNumber) * Math.pow(10, 19)
 }
 
-const randomTrackingNumber = ref(generateTrackingNumber.toLocaleString())
+const randomTrackingNumber = ref(generateTrackingNumber())
+
+// Logging for debugging purposes
+console.log('Random Tracking Number:', randomTrackingNumber.value)
+console.log('Subtotal:', subTotal.value)
+console.log('Total:', total.value)
 </script>
