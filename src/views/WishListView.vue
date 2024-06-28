@@ -23,21 +23,21 @@
     class="divide-y divide-gray-100 overflow-hidden bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl m-6 md:m-10"
   >
     <li
-      v-for="(wishlistItem, index) in wishlistStore.wishlist"
+      v-for="(wishlistItem, index) in wishlistItems"
       :key="index"
       class="relative flex justify-between gap-x-6 px-4 py-5 hover:bg-gray-50 sm:px-6"
     >
       <div class="flex min-w-0 gap-x-4">
-        <img class="h-12 w-12 flex-none bg-gray-50" :src="wishlistItem.product.image" alt="" />
+        <img class="h-12 w-12 flex-none bg-gray-50" :src="wishlistItem.productId.image" alt="" />
         <div class="min-w-0 flex-auto">
           <p class="text-sm font-semibold leading-6 text-gray-900">
             <router-link :to="`/products/${wishlistItem.productId}`">
               <span class="absolute inset-x-0 -top-px bottom-0" />
-              {{ wishlistItem.product.name }}
+              {{ wishlistItem.productId.name }}
             </router-link>
           </p>
           <p class="relative truncate hover:underline">
-            {{ wishlistItem.product.description }}
+            {{ wishlistItem.productId.description }}
           </p>
         </div>
       </div>
@@ -45,7 +45,7 @@
         <button
           type="button"
           class="inline-flex items-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
-          @click="removeFromWishlist(wishlistItem.productId)"
+          @click="removeFromWishlist(wishlistItem.productId._id)"
         >
           Remove
         </button>
@@ -56,13 +56,12 @@
 
 <script setup lang="ts">
 import { useWishlistStore } from '@/stores/WishlistStore'
-import { onMounted } from 'vue'
 
 const wishlistStore = useWishlistStore()
+wishlistStore.getWishlist()
 
-onMounted(() => {
-  wishlistStore.getWishlist()
-})
+const wishlistItems = wishlistStore.wishlist
+console.log(wishlistItems)
 
 const removeFromWishlist = (productId: string) => {
   wishlistStore.removeFromWishlist(productId)
