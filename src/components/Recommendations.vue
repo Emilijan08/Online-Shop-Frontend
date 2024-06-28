@@ -13,7 +13,7 @@
           >
             <RouterLink :to="`/products/${product._id}`">
               <img
-                :src="product.image"
+                :to="`/products/${product._id}`"
                 :alt="product.name"
                 class="h-full w-full object-cover object-center lg:h-full lg:w-full"
               />
@@ -44,6 +44,8 @@ import { RouterLink } from 'vue-router'
 const store = useProductStore()
 
 let products = store.products
+
+const randomIndex = Math.floor(Math.random() * store.products.length);
 </script>
 
 <style scoped>

@@ -150,12 +150,13 @@ const store = useProductStore()
 function sumUpSubtotal() {
   subTotal.value = 0 
   store.productsOnCart.forEach((product: any) => {
-    subTotal.value += product.price
+    return subTotal.value += product.price
   })
+  
 }
 
 function sumUpTotal() {
-  total.value = subTotal.value + 6.4 
+  return subTotal.value + 6.40 
 }
 
 sumUpSubtotal()
