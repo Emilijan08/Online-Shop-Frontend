@@ -42,7 +42,7 @@
               class="mt-6 divide-y divide-gray-200 border-t border-gray-200 text-sm font-medium text-gray-500"
             >
               <li
-                v-for="product in store.productsOnCart"
+                v-for="product in store.productsOnCart as any"
                 :key="product._id"
                 class="flex space-x-6 py-6"
               >
@@ -67,7 +67,7 @@
             <dl class="space-y-6 border-t border-gray-200 pt-6 text-sm font-medium text-gray-500">
               <div class="flex justify-between">
                 <dt>Subtotal</dt>
-                <dd class="text-gray-900" :="sumUpSubtotal">{{ sumUpSubtotal }}CHF</dd>
+                <dd class="text-gray-900">{{ sumUpSubtotal }}CHF</dd>
               </div>
 
               <div class="flex justify-between">
@@ -84,7 +84,7 @@
                 class="flex items-center justify-between border-t border-gray-200 pt-6 text-gray-900"
               >
                 <dt class="text-base">Total</dt>
-                <dd class="text-base" :="sumUpTotal">{{ sumUpTotal }}CHF</dd>
+                <dd class="text-base">{{ sumUpTotal }}CHF</dd>
               </div>
             </dl>
 
@@ -140,42 +140,35 @@
 </template>
 
 <script setup lang="ts">
-import { useProductStore } from '@/stores/ProductsStore'
-import { ref } from 'vue'
-
-// Initialize subtotal and total
+import { useProductStore } from '@/stores/ProductsStore';
+import { ref } from 'vue';
 
 const subTotal = ref(0)
 const total = ref(0)
 const store = useProductStore()
 
-// Function to sum up the subtotal
 function sumUpSubtotal() {
-  subTotal.value = 0 // Reset subtotal
-  store.productsOnCart.forEach((product) => {
-    subTotal.value += product.price
+  subTotal.value = 0 
+  store.productsOnCart.forEach((product: any) => {
+    return subTotal.value += product.price
   })
+  
 }
 
-// Function to sum up the total
 function sumUpTotal() {
-  total.value = subTotal.value + 6.4 // Add fixed amount to subtotal
+  return subTotal.value + 6.40 
 }
 
 sumUpSubtotal()
-
 sumUpTotal()
 
 const generateTrackingNumber = () => {
-  // Generiere die zufällige Zahl mit 19 Nachkommastellen
   let randomNumber = 0
   for (let i = 0; i < 19; i++) {
-    randomNumber += Math.floor(Math.random() * 10) // Zufällige Ziffer zwischen 0 und 9
+    randomNumber += Math.floor(Math.random() * 10) 
   }
 
-  // Multipliziere die zufällige Zahl mit 10^19 (1e19)
   const TrackingNumber = Number(randomNumber) * Math.pow(10, 19)
-
   return TrackingNumber
 }
 

@@ -10,7 +10,7 @@ import SignInView from '@/views/SignInView.vue'
 import WishListView from '@/views/WishListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
-const router = createRouter({
+export const router = createRouter({
   history: createWebHistory(),
   scrollBehavior(to, from, savedPosition) {
     return { top: 0 }

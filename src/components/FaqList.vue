@@ -30,11 +30,6 @@ const faqs = [
     id: 4
   },
   {
-    question: 'Why is this E-Commerce Store so great?',
-    answer: 'Idk tbh lol',
-    id: 5
-  },
-  {
     question: 'Can I change or cancel my order after it has been placed?',
     answer:
       'Yes, you may be able to change or cancel your order, depending on its current status and our policies. We recommend contacting our customer service team as soon as possible with your order details to request any changes or cancellations. Please note that orders that have already been processed or shipped may not be eligible for changes or cancellations.',

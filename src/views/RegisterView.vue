@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { useAuthStore } from '@/stores/AuthStore'
-import { ExclamationCircleIcon } from '@heroicons/vue/20/solid'
-import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
+import { useAuthStore } from '@/stores/AuthStore';
+import { ExclamationCircleIcon } from '@heroicons/vue/20/solid';
+import { ref } from 'vue';
+import { RouterLink } from 'vue-router';
 
 const store = useAuthStore()
 
-let username = ref('')
-let password = ref('')
-let confirmPassword = ref('')
-let errors = ref({
+const username = ref('')
+const password = ref('')
+const confirmPassword = ref('')
+const errors = ref({
   username: '',
   password: '',
   confirmPassword: '',
